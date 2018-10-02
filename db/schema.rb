@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2018_10_02_161645) do
     t.string "serial_id"
   end
 
+  create_table "reversals", force: :cascade do |t|
+    t.string "city"
+    t.string "town"
+    t.integer "doses"
+    t.string "kit_type"
+    t.integer "time_between"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
