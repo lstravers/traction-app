@@ -1,0 +1,19 @@
+{
+  "name": "harm-reduction-tracker",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "jquery": "^3.3.1",
+    "resolve-url-loader": "^3.0.0",
+    "semantic-ui-css": "^2.4.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  },
+  "version": "1.0.0",
+  "description": "This application is designed to track harm reduction supplies and distribution. ",
+  "main": "index.js",
+  "repository": "https://github.com/HarmReductionTrackerGroup/HarmReductionTracker",
+  "author": "Harm Reduction Tracker Group",
+  "license": "MIT"
+}
