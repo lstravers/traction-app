@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
     include ActionController::HttpAuthentication::Token::ControllerMethods
   protect_from_forgery with: :null_session 
   helper_method :current_user
-   helper_method :logged_in?
-   helper_method :token_user
+  helper_method :logged_in?
+  helper_method :token_user
   
    def verify_authentication
     unless token_user
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def token_user
    user = authenticate_with_http_token do |token, options|
-   User.find_by_api_token(token)
+   User.find_by_auth_token(token)
    end
   end
    
