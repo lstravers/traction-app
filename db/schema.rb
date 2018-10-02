@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_10_02_161645) do
 
   # These are extensions that must be enabled in order to support this database
@@ -29,9 +28,11 @@ ActiveRecord::Schema.define(version: 2018_10_02_161645) do
     t.string "county"
     t.boolean "first_kit"
     t.bigint "client_confidential_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_confidential_id"], name: "index_clients_on_client_confidential_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -69,4 +70,5 @@ ActiveRecord::Schema.define(version: 2018_10_02_161645) do
   end
 
   add_foreign_key "clients", "client_confidentials"
+  add_foreign_key "clients", "users"
 end

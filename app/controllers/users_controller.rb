@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+  
+  skip_before_action :verify_authentication
+  before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     @user = User.all
+    render json: @users
   end
 
   def new
@@ -36,6 +40,16 @@ class UsersController < ApplicationController
     @user.destroy
    
     redirect_to user_path(@user)
+  end
+
+  def verify_authentication
+    user = authenticate_with_http_token do |token, options|
+      User.find_by_auth_token(token)
+    end
+
+    unless user
+      render json: { error: "Unauthorized" }, status: :unauthorized
+    end
   end
 
   private
