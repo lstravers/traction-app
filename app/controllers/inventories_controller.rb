@@ -2,7 +2,7 @@ class InventoriesController < ApplicationController
     def index
         @inventory = Inventory.all
     end
-    def create
+    def new
         
     end
     def update
