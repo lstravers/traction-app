@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
   
   before_action :verify_authentication
 
+=======
+  before_action :verify_authentication
+  
+>>>>>>> 9c318a702eb9cc1a5e83e518baefe235abf9785f
   def index
     @user = User.all
     render json: @user
