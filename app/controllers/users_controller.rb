@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to new_session_path, notice: "Your account was created successfully. Please login with your email address."
     else
-      render 'new'
+      render json: @user
     end
   end
 
@@ -41,19 +41,9 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  # def verify_authentication
-  #   user = authenticate_with_http_token do |token, options|
-  #     User.find_by_auth_token(token)
-  #   end
-
-  #   unless user
-  #     render json: { error: "Unauthorized" }, status: :unauthorized
-  #   end
-  # end
-
   private
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.permit(:email, :password)
   end
 
   def set_user
