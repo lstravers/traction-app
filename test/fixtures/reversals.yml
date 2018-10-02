@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: 
+  town: 
+  doses: 
+  kit_type: 
+  time_between: 1
+
+two:
+  city: 
+  town: 
+  doses: 
+  kit_type: 
+  time_between: 1
