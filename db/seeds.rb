@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 20.times do
     User.create!(
-      username: Faker::Superhero.name,
+        first_name: "test",
+      last_name: Faker::Superhero.name,
       password: "123"
     )
   end

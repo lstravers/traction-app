@@ -1,9 +1,13 @@
 class InventoriesController < ApplicationController
     before_action :verify_authentication
-    
+
     def index
         @inventories = Inventory.all
+        render json: @inventories
     end
+    def show
+        render json: @inventory
+      end
     # New
     def new
         redirect_to xxx_path, notice: 'You must be logged in to add a new kit' if !(current_user)

@@ -1,0 +1,2 @@
+class Reversal < ApplicationRecord
+end
