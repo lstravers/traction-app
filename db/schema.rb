@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_204002) do
+ActiveRecord::Schema.define(version: 2018_10_02_161645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "client_confidentials", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "city"
+    t.string "county"
+    t.boolean "first_kit"
+    t.bigint "client_confidential_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_confidential_id"], name: "index_clients_on_client_confidential_id"
+  end
 
   create_table "inventories", force: :cascade do |t|
     t.integer "user_id"
@@ -59,4 +77,5 @@ ActiveRecord::Schema.define(version: 2018_10_02_204002) do
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 
+  add_foreign_key "clients", "client_confidentials"
 end

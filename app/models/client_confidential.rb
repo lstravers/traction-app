@@ -1,0 +1,2 @@
+class ClientConfidential < ApplicationRecord
+end
