@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 
   def index
     @user = User.all
+<<<<<<< HEAD
     render json: @users
+=======
+    
+      render json: @user
+  
+>>>>>>> b5e63531fd96c6572a732f78083670d144523054
   end
 
   def new
