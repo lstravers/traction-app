@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_234614) do
   end
 
   create_table "reversals", force: :cascade do |t|
-    t.string "city"
+    t.string "county"
     t.string "town"
     t.integer "doses"
     t.string "kit_type"
