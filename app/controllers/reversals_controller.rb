@@ -53,7 +53,7 @@ class ReversalsController < ApplicationController
 
     private
 
-    def revesal_params
+    def reversal_params
         params.require(:reversal).permit(:county, :town, :doses, :kit_type, :time_between )
         
     end
