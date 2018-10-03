@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-  before_action :verify_authentication
-  
+  skip_before_action :verify_authentication
+  #before_action :set_user, only: [:show, :update, :destroy]
+
   def index
     @user = User.all
     render json: @user
   end
 
-  def new
-    @user = User.new
-  end
-
   def show
     @user = User.find(params[:id])
+    render json: @user
   end
 
   def create
@@ -42,7 +40,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:email, :password)
+    params.require(:user).permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
   end
 
   def set_user
