@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authentication, only: [:create]
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update]
 
   def index
     @user = User.all
@@ -26,11 +26,6 @@ class UsersController < ApplicationController
     else
       render json: @user, notice: "Your account was updated successfully."
     end
-  end
-  
-  def destroy
-    @user.destroy
-    redirect_to user_path(@user)
   end
 
   private
