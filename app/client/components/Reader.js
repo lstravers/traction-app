@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
 
-class Reader extends Component {
+class Scanner extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -36,8 +36,8 @@ class Reader extends Component {
   }
 }
 
-Reader.propTypes = {
+Scanner.propTypes = {
   handleScan: PropTypes.func
 }
 
-export default Reader
+export default Scanner
