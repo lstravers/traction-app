@@ -6,11 +6,13 @@ class Scanner extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      delay: 300,
+      delay: 1000,
       result: 'No result'
     }
     this.handleScan = this.handleScan.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleScan (data) {
     if (data) {
       this.setState({
@@ -21,6 +23,17 @@ class Scanner extends Component {
   handleError (err) {
     console.error(err)
   }
+
+  componentDidUpdate () {
+    // console.log(this.state.result)
+  }
+
+  handleSubmit (state) {
+    // const result = this.state.result
+    // window.localStorage.setItem('Serial', 'result')
+    // console.log(this.state.result)
+  }
+
   render () {
     return (
       <div>
@@ -30,6 +43,7 @@ class Scanner extends Component {
           onScan={this.handleScan}
           style={{ width: '50%' }}
         />
+        <a href='/home'><button onClick={this.handleSubmit}>Done</button></a>
         <p>{this.state.result}</p>
       </div>
     )

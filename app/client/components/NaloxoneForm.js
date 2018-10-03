@@ -24,6 +24,67 @@ const NaloxoneForm = () => (
           <label htmlFor='firstName'>First Name</label>
           <Field type='text' name='firstName' />
           <ErrorMessage name='firstName' component='div' />
+
+          <label htmlFor='lastName'>Last Name</label>
+          <Field type='text' name='lastName' />
+          <ErrorMessage name='lastName' component='div' />
+
+          <label htmlFor='dateOfBirthName'>Date Of Birth</label>
+          <Field type='text' name='dateOfBirthName' />
+          <ErrorMessage name='dateOfBirth' component='div' />
+
+          <label htmlFor='townCity'>Town/City</label>
+          <Field type='text' name='townCity' />
+          <ErrorMessage name='townCity' component='div' />
+
+          <label htmlFor='county'>County</label>
+          <Field type='select' name='county' />
+          <ErrorMessage name='county' component='div' />
+
+          <label htmlFor='dateOfDistribution'>Date of Distribution</label>
+          <Field type='date' name='dateOfDistribution' />
+          <ErrorMessage name='dateOfDistribution' component='div' />
+
+          <label htmlFor='numberOfKits'>Number of Naloxone Kits</label>
+          <Field type='number' name='numberOfKits' />
+          <ErrorMessage name='numberOfKits' component='div' />
+
+          <label htmlFor='kitType'>Naloxone Kit Type</label>
+          <Field type='text' name='kitType' />
+          <ErrorMessage name='kitType' component='div' />
+
+          <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
+          <Field type='text' name='kitSerialNumber' />
+          <ErrorMessage name='kitSerialNumber' component='div' />
+
+          <label htmlFor='firstNaloxoneKit'>First Naloxone Kit</label>
+          <Field type='boolean' name='firstNaloxoneKit' />
+          <ErrorMessage name='firstNaloxoneKit' component='div' />
+
+          <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
+          <Field type='boolean' name='overdoseReversal' />
+          <ErrorMessage name='overdoseReversal' component='div' />
+
+          <label htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
+          <Field type='select' name='overdoseReversalKitType' />
+          <ErrorMessage name='overdoseReversalKitType' component='div' />
+
+          <label htmlFor='overdoseReversalTownCity'>Overdose Reversal Town/City</label>
+          <Field type='text' name='overdoseReversalTownCity' />
+          <ErrorMessage name='overdoseReversalTownCity' component='div' />
+
+          <label htmlFor='overdosReversalCounty'>Overdose Reversal County</label>
+          <Field type='select' name='overdosReversalCounty' />
+          <ErrorMessage name='overdosReversalCounty' component='div' />
+
+          <label htmlFor='numberOfDoses'>Number of Doses</label>
+          <Field type='number' name='numberOfDoses' />
+          <ErrorMessage name='numberOfDoses' component='div' />
+
+          <label htmlFor='minutesBetweenDoses'>Minutes Between Doses</label>
+          <Field type='number' name='minutesBetweenDoses' />
+          <ErrorMessage name='minutesBetweenDoses' component='div' />
+
           <button type='submit' disabled={isSubmitting}>
         Submit
           </button>
