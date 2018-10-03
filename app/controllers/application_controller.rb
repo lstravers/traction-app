@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
    user = authenticate_with_http_token do |token, options|
    User.find_by_auth_token(token)
    end
+   #temporal to storage user REMOVE when FE is ready with views
+   @current_user=user
+
   end
    
 

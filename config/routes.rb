@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :inventories
 resources :users
 
+resource :session, only: [:new, :create, :destroy]
+
 end
