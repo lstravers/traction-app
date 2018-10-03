@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :token_user
   before_action :verify_authentication
-  
+
    def verify_authentication
     unless token_user
      render json: { error: " FUERA! ACCESS DENIED" }, status: :unauthorized
