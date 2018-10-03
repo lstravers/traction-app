@@ -2,9 +2,10 @@ class InventoriesController < ApplicationController
     before_action :verify_authentication
 
     def index
-        @inventories = Inventory.all
-        render json: @inventories
+        @inventory = Inventory.all
+        render json: @inventory
     end
+
     def show
         render json: @inventory
       end
@@ -19,7 +20,7 @@ class InventoriesController < ApplicationController
         
             if @inventory.save
             #   redirect_to xxx, notice: 'Kit was successfully recorded.'
-            render json: @inventory, 'Kit was successfully recorded'
+            render json: @inventory, notice: 'Kit was successfully recorded'
             else
               render :new 
             end
