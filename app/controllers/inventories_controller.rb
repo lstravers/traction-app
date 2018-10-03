@@ -7,6 +7,7 @@ class InventoriesController < ApplicationController
     end
 
     def show
+        @inventory = Inventory.find(params[:id])
         render json: @inventory
       end
     # New
@@ -16,39 +17,56 @@ class InventoriesController < ApplicationController
     end
     # Create
     def create
-            @inventory = Invenroty.new(inventory_params)
+            @inventory = Inventory.new(inventory_params)
         
             if @inventory.save
             #   redirect_to xxx, notice: 'Kit was successfully recorded.'
             render json: @inventory, notice: 'Kit was successfully recorded'
             else
+                render json: @inventory, notice: 'Error creating Kit recorded'
               render :new 
             end
     end
         
-          # Update
+          # Update only Admin
     def update
+        if @current_user.admin
+        @inventory = Inventory.find(params[:id])
             if @inventory.update(inventory_params)
             #   redirect_to xxxx, notice: 'Kit was successfully updated.'
             render json: @inventory, notice: 'Kit was successfully updated.'
             else
               render json: @inventory, notice: 'Error'
             end
+        else
+            render json: @inventory, notice: "you don't have access to update."
+        end
     end
         
-          # DELETE 
+          # DELETE only Admin
     def destroy
+        # user_valid= User.find_by_email(current_user) after FE is bring screen
+
+        if @current_user.admin
+
+        @inventory = Inventory.find(params[:id])
             @inventory.destroy
-            XXXX do |format|
+            
             #   format.html { redirect_to XXX_url, notice: 'Kit was successfully deleted.' }
             render json: @inventory, notice: 'Kit was successfully deleted.'
+        else
+            render json: @inventory, notice: "you don't have access to deleted."
         end
-          end
+
+
+    end
+        
 
     private
 
-    def inventory_parms
-        params.require(:inventory).permit(:user_id, :serial_id, :number_kits, :kit_type, :date_expiration)
+    def inventory_params
+        params.require(:inventory).permit(:user_id, :serial_num, :client_id, :kit_type, :expiration_date, :distributed_date)
+       
     end
 
 end
