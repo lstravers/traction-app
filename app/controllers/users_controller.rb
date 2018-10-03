@@ -27,11 +27,6 @@ class UsersController < ApplicationController
       render json: @user, notice: "Your account was updated successfully."
     end
   end
-  
-  def destroy
-    @user.destroy
-    redirect_to user_path(@user)
-  end
 
   private
   def user_params
