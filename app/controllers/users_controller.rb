@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit({ roles: [] }, :email, :password, :password_confirmation)
+    end
+  end
+
   private
   def user_params
     params.permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
