@@ -1,0 +1,26 @@
+<h1>Listing of Kits in the inventory</h1>
+ <%= link_to 'New Kit', new_inventory_path %>
+<table>
+  <tr>
+    <th>Serial Number</th>
+    <th>Kit Type</th>
+    <th>Expiration Date</th>
+    <th>Distributed Date </th>
+    <th>Client id </th>
+    <th>User id </th>
+
+  </tr>
+ 
+  <% @inventories.each do |inventory| %>
+    <tr>
+      <td><%= inventory.serial_num %></td>
+      <td><%= inventory.kit_type%></td>
+      <td><%= inventory.expiration_date %></td>
+      <td><%= inventory.distributed_date %></td>
+      <td><%= inventory.client_id %></td>
+      <td><%= inventory.user_id %></td>
+      <td><%= link_to 'Show', inventory_path(inventory) %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(inventory) %></td>
+    </tr>
+  <% end %>
+</table>
