@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   #before_action :verify_authentication
 
   #helper methods for devise gem
-  user_signed_in?
-  current_user
-  user_session
+  helper_method :user_signed_in?
+  helper_method :current_user  #current user signed-in
+  helper_method :user_session  #access session for this scope
 
    def verify_authentication
     unless token_user

@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  # You can also override after_sign_in_path_for and
+  # after_sign_out_path_for to customize your redirect hooks.
+
 end
