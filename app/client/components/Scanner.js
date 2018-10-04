@@ -28,9 +28,9 @@ class Scanner extends Component {
     // console.log(this.state.result)
   }
 
-  handleSubmit (state) {
-    // const result = this.state.result
-    // window.localStorage.setItem('Serial', 'result')
+  handleSubmit () {
+    const result = this.state.result
+    window.localStorage.setItem('Serial', result)
     // console.log(this.state.result)
   }
 
