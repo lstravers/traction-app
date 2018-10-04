@@ -30,6 +30,7 @@ gem 'faker'
 # Use webpacker gem version '~> 3.5' to allow use of JavaScript and React (if applicable)
 gem 'webpacker'
 gem 'react-rails'
+gem 'devise'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
