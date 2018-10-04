@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :users
   resources :reversals
   resource :session, only: [:new, :create, :destroy]
-
+  resources :clients
 end
