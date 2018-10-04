@@ -1,4 +1,4 @@
-<h1>Listing of Kits in the inventory</h1>
+<h1>Inventory Kit List</h1>
  <%= link_to 'New Kit', new_inventory_path %>
 <table>
   <tr>
@@ -6,8 +6,8 @@
     <th>Kit Type</th>
     <th>Expiration Date</th>
     <th>Distributed Date </th>
-    <th>Client id </th>
-    <th>User id </th>
+    <th>Client ID </th>
+    <th>User ID </th>
 
   </tr>
  
@@ -20,7 +20,7 @@
       <td><%= inventory.client_id %></td>
       <td><%= inventory.user_id %></td>
       <td><%= link_to 'Show', inventory_path(inventory) %></td>
-        <td><%= link_to 'Edit', edit_inventory_path(inventory) %></td>
+        <td><%= link_to 'Update', inventory_path(inventory) %></td>
     </tr>
   <% end %>
 </table>

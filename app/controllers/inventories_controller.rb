@@ -10,7 +10,6 @@ class InventoriesController < ApplicationController
         # volunteer only show their own records
         # @inventories = Inventory.where(user_id: @current_user.id)
         # end
-
     end
 
     def show
@@ -18,11 +17,12 @@ class InventoriesController < ApplicationController
         # render json: @inventory
       end
     # New
+    
     def new
         redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
-         @inventory = Inventory.new
-        
+         @inventory = Inventory.new   
     end
+    
     # Create
     def create
             @inventory = Inventory.new(inventory_params)
@@ -36,7 +36,7 @@ class InventoriesController < ApplicationController
             end
     end
         
-          # Update only Admin
+    # Update only Admin
     def update
         if @current_user.admin
         @inventory = Inventory.find(params[:id])
@@ -49,11 +49,11 @@ class InventoriesController < ApplicationController
             end
         else
             #render json: @inventory, notice: "you don't have access to update."
-            redirect_to inventories_path, notice: "you don't have access to update."
+            redirect_to inventories_path, notice: "You do not have access to update the inventory."
         end
     end
         
-          # DELETE only Admin
+    # DELETE only Admin
     def destroy
         # user_valid= User.find_by_email(current_user) after FE is bring screen
 
