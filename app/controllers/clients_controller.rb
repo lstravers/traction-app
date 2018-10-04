@@ -24,6 +24,7 @@ class ClientsController < ApplicationController
             render 'new'
         else
             render 'new', notice: "Not able to create"
+        end
     end
 
     def update
