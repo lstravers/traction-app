@@ -19,6 +19,11 @@ class ClientsController < ApplicationController
 
     def create
         @client = Client.new(client_params)
+
+        if @client.save
+            render 'new'
+        else
+            render 'new', notice: "Not able to create"
     end
 
     def update
