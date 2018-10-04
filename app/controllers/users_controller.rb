@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authentication, only: [:create]
+  #skip_before_action :authenticate_user! , only: [:create]
   before_action :set_user, only: [:show, :update]
 
   def index
     @user = User.all
-    render json: @user
   end
 
   def show
