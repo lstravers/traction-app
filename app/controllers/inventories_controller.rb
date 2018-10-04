@@ -19,7 +19,7 @@ class InventoriesController < ApplicationController
     # New
     
     def new
-        redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
+        #redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
          @inventory = Inventory.new   
     end
     

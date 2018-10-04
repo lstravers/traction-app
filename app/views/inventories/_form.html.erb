@@ -1,13 +1,15 @@
+<h2>Add a New Kit to the Inventory<h2><br>
+
 <%= form_with model: @inventory, local:true do |form| %>
 
-  <% if @user.errors.any? %>
+  <% if @inventory.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
+        <%= pluralize(@inventory.errors.count, "error") %> prohibited
         this inventory from being updated:
       </h2>
       <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @user.inventories.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
@@ -15,28 +17,26 @@
   <% end %>
   
 <p>  
-  <%= form.label :Serial Number %><br>
+  <%= form.label :Serial_Number %><br>
   <%= form.text_field :serial_num %> 
 </p>
    
 <p>
-  <%= form.label :Kit Type %><br>
+  <%= form.label :Kit_Type %><br>
   <%= form.text_field :kit_type %>
 </p>
-    
+
 <p>
-  <%= form.submit %>
+  <%= form.label :Expiration_Date %><br>
+  <%= form.text_field :expiration_date %>
+</p>
+
+<p>
+  <%= form.label :Distribution_Date %><br>
+  <%= form.text_field :distributed_date %>
 </p>
 
   <%= form.submit %>
 <% end %>
 
-<%= link_to 'Back', inventories_path %>
-
-
-
-
-
-
-
-
+<%= link_to '<<Back', inventories_path %> 
