@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get "/", to: "home#index"
   get "home", to: "home#home"
+  get "qrscanner", to: ""
+  get "kitserials", to: "" 
+  
   resources :inventories
   resources :users
   resources :reversals

@@ -20,10 +20,10 @@ class ClientsController < ApplicationController
     def create
         @client = Client.new(client_params)
 
-        if @client.save
-            render 'new'
+        if @user.save
+            render json: @user, status: :created, notice: "Your account was created successfully."
         else
-            render 'new', notice: "Not able to create"
+            render json: @user.errors, status: :unprocessable_entity
         end
     end
 
