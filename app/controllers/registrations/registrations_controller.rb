@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+frozen_string_literal: true
 
 class registrations::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
@@ -15,14 +15,14 @@ class registrations::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -34,9 +34,9 @@ class registrations::RegistrationsController < Devise::RegistrationsController
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+  def cancel
+    super
+  end
 
   protected
 
