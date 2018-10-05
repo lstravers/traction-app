@@ -2,7 +2,7 @@ import React from 'react'
 import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
-// import Header from './Header'
+import Header from './Header'
 
 class Dashboard extends React.Component {
   setCurrentUser (user) {
@@ -17,23 +17,14 @@ class Dashboard extends React.Component {
   }
   render () {
     const { currentUser } = this.props
-    if (currentUser) {
-      return (
-        <div className='Dashboard'>
-          {/* <Header onLogout={this.onLogout} /> */}
-          <div className='main'>
-            <WelcomeView currentUser={currentUser} />
-          </div>
+    return (
+      <div className='Dashboard'>
+        <Header onLogout={this.onLogout} />
+        <div className='main'>
+          <WelcomeView currentUser={currentUser} />
         </div>
-      )
-    } else {
-      return (
-        // return to rails login view
-        <div>
-          <p>Login</p>
-        </div>
-      )
-    }
+      </div>
+    )
   }
 }
 export default Dashboard
