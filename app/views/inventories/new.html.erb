@@ -35,6 +35,7 @@
   <%= form.label :Distribution_Date %><br>
   <%= form.text_field :distributed_date %>
 </p>
+<%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.submit %>
 <% end %>
