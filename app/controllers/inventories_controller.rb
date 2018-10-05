@@ -25,6 +25,11 @@ class InventoriesController < ApplicationController
 
     def edit
       @inventory = Inventory.find(params[:id])
+      if @current_user.admin == @admin.user_id
+        @inventory = Inventory.find(params[:inventory_id])
+      else
+        redirect_to inventories_path, notice: "Error: Only an administrator can edit the inventory."
+      end
     end
     
     # Create
