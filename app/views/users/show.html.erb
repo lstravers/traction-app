@@ -1,21 +1,68 @@
-<h1>Volunteer Information</h1>
-<table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @user.each do |user| %>
-    <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.email %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<h1>Your Volunteer Information</h1>
 
-<%= link_to 'Back', root_path %>
+<p>
+  <strong>FirstName:</strong>
+  <%= @user.first_name %>
+</p>
+<p>
+  <strong>LastName:</strong>
+  <%= @user.last_name%>
+</p>
+ 
+<p>
+  <strong>Email:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+<strong>PhoneNumber:</strong>
+<%= @user.phone%>
+</p>
+
+<p>
+<strong>Preferred_Method_of_Contact:</strong>
+<%= @user.contact_type%>
+</p>
+
+<p>
+<strong>Address:</strong>
+<%= @user.address1%>
+</p>
+
+<p>
+<strong>Address2:</strong>
+<%= @user.address2%>
+</p>
+
+<p>
+<strong>City:</strong>
+<%= @user.city %>
+</p>
+
+<p>
+<strong>County</strong>
+<%= @user.county %>
+</p>
+
+<p>
+<strong>State</strong>
+</p>
+
+<p>
+<strong>Zip Code</strong>
+<%= @user.zip %>
+</p>
+
+<p>
+<strong>DateofVolunteerAuthorization</strong>
+<%= @user.date_auth %>
+</p>
+
+<p>
+<strong>DateofAdminAuthorization</strong>
+<%= @user.admin_auth %>
+</p>
+
+
+<%= link_to 'Back', users_path %>
+
