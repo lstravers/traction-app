@@ -1,12 +1,24 @@
 class ApplicationController < ActionController::Base
-  # include ActionController::HttpAuthentication::Token::ControllerMethods
+   include ActionController::HttpAuthentication::Token::ControllerMethods
   # protect_from_forgery with: :null_session 
   # helper_method :current_user
   # helper_method :logged_in?
   # helper_method :token_user
   # before_action :verify_authentication
 
-  #  def verify_authentication
+  # #helper methods for devise gem
+  # helper_method :user_signed_in?
+  # helper_method :current_user  #current user signed-in
+  # helper_method :user_session  #access session for this scope
+
+  # def authenticate_user!
+  #   unless token_user
+  #     render @user.error { error: " FUERA! ACCESS DENIED" }, status: :unauthorized
+  #    end
+  # end
+  
+
+  # def verify_authentication
   #   unless token_user
   #    render json: { error: " FUERA! ACCESS DENIED" }, status: :unauthorized
   #   end
@@ -28,7 +40,7 @@ class ApplicationController < ActionController::Base
   #  #temporal to storage user REMOVE when FE is ready with views
   #  @current_user=user
 
-  # end
+  #end
    
 
 end
