@@ -1,15 +1,15 @@
 class ReversalsController < ApplicationController
 
-    before_action :verify_authentication
+    #before_action :verify_authentication
 
     def index
         @reversal = Reversal.all
-        render json: @reversal
+        #render json: @reversal
     end
 
     def show
         @reversal = Reversal.find(params[:id])
-        render json: @reversal
+        #render json: @reversal
       end
     # New
     def new
