@@ -73,8 +73,6 @@ class InventoriesController < ApplicationController
             # render json: @inventory, notice: "you don't have access to deleted."
             redirect_to inventories_path, notice: "Kit was successfully deleted."
         end
-
-
     end
         
 
