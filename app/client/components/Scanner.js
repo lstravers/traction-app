@@ -7,19 +7,29 @@ class Scanner extends Component {
     super(props)
     this.state = {
       delay: 1000,
-      result: 'No result'
+      results: []
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleScan (data) {
+    let results = this.state.results
     if (data) {
       this.setState({
-        result: data
+        results: results.concat(data)
       })
+
+      // concat   and animation
+      // if (data[idx] > 1) {
+      //   this.setState({
+      //     result: data,
+  
+      //   })
+      // }
     }
   }
+
   handleError (err) {
     console.error(err)
   }
@@ -30,7 +40,8 @@ class Scanner extends Component {
 
   handleSubmit () {
     const result = this.state.result
-    window.localStorage.setItem('Serial', result)
+    // instead of set results- set state to not scanning and show form 
+    // window.localStorage.setItem('Serial', result)
     // console.log(this.state.result)
   }
 
