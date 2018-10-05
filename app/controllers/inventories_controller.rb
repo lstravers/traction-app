@@ -10,7 +10,6 @@ class InventoriesController < ApplicationController
         # volunteer only show their own records
         # @inventories = Inventory.where(user_id: @current_user.id)
         # end
-
     end
 
     def show
@@ -18,11 +17,21 @@ class InventoriesController < ApplicationController
         # render json: @inventory
       end
     # New
+    
     def new
-        redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
-         @inventory = Inventory.new
-        
+        #redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
+         @inventory = Inventory.new   
     end
+
+    def edit
+      @inventory = Inventory.find(params[:id])
+      if @current_user.admin == @admin.user_id
+        @inventory = Inventory.find(params[:inventory_id])
+      else
+        redirect_to inventories_path, notice: "Error: Only an administrator can edit the inventory."
+      end
+    end
+    
     # Create
     def create
             @inventory = Inventory.new(inventory_params)
@@ -36,7 +45,7 @@ class InventoriesController < ApplicationController
             end
     end
         
-          # Update only Admin
+    # Update only Admin
     def update
         if @current_user.admin
         @inventory = Inventory.find(params[:id])
@@ -49,11 +58,11 @@ class InventoriesController < ApplicationController
             end
         else
             #render json: @inventory, notice: "you don't have access to update."
-            redirect_to inventories_path, notice: "you don't have access to update."
+            redirect_to inventories_path, notice: "You do not have access to update the inventory."
         end
     end
         
-          # DELETE only Admin
+    # DELETE only Admin
     def destroy
         # user_valid= User.find_by_email(current_user) after FE is bring screen
 
@@ -69,15 +78,13 @@ class InventoriesController < ApplicationController
             # render json: @inventory, notice: "you don't have access to deleted."
             redirect_to inventories_path, notice: "Kit was successfully deleted."
         end
-
-
     end
         
 
     private
 
     def inventory_params
-        params.require(:inventory).permit(:user_id, :serial_num, :client_id, :kit_type, :expiration_date, :distributed_date)
+        params.require(:inventory).permit(:serial_num, :kit_type, :expiration_date, :distributed_date)
        
     end
 
