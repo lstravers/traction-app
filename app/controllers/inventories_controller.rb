@@ -3,12 +3,12 @@ class InventoriesController < ApplicationController
 
     def index
         # if admin show all records
-        # if @current_user.admin
+        # if current_user.admin
         @inventories = Inventory.all
         # render json: @inventory
         # else
         # volunteer only show their own records
-        # @inventories = Inventory.where(user_id: @current_user.id)
+        # @inventories = Inventory.where(user_id: current_user.id)
         # end
     end
 
@@ -24,9 +24,9 @@ class InventoriesController < ApplicationController
     end
 
     def edit
-      @inventory = Inventory.find(params[:id])
-      if @current_user.admin == @admin.user_id
-        @inventory = Inventory.find(params[:inventory_id])
+      
+      if current_user.admin
+        @inventory = Inventory.find(params[:id])
       else
         redirect_to inventories_path, notice: "Error: Only an administrator can edit the inventory."
       end
@@ -48,7 +48,7 @@ class InventoriesController < ApplicationController
         
     # Update only Admin
     def update
-        if @current_user.admin
+        if current_user.admin
         @inventory = Inventory.find(params[:id])
             if @inventory.update(inventory_params)
             redirect_to inventories_path, notice: 'Kit was successfully updated.'
@@ -67,7 +67,7 @@ class InventoriesController < ApplicationController
     def destroy
         # user_valid= User.find_by_email(current_user) after FE is bring screen
 
-        if @current_user.admin
+        if current_user.admin
 
         @inventory = Inventory.find(params[:id])
             @inventory.destroy
