@@ -34,6 +34,9 @@ class InventoriesController < ApplicationController
     
     # Create
     def create
+        
+            byebug
+
             @inventory = Inventory.new(inventory_params)
         
             if @inventory.save
@@ -84,7 +87,7 @@ class InventoriesController < ApplicationController
     private
 
     def inventory_params
-        params.require(:inventory).permit(:serial_num, :kit_type, :expiration_date, :distributed_date, :user_id)
+        params.require(:inventory).permit(:user_id, :serial_num, :kit_type, :expiration_date, :distributed_date)
        
     end
 
