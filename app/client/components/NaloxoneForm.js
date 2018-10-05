@@ -1,26 +1,33 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import moment from 'moment'
+import counties from './util'
 
 const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 
-const NaloxoneForm = () => (
+const NaloxoneForm = (props) => (
   <div>
     <Formik
       initialValues={{ firstName: '', lastName: '', dateOfBirth: '', townCity: '', county: '', dateOfDistribution: '', numberOfKits: '', kitType: '', kitSerialNumber: '', firstNaloxoneKit: '', overdoseReversal: '', overdoseReversalKitType: '', overdoseReversalTownCity: '', overdoseReversalCounty: '', numberOfDoses: '', minutesBetweenDoses: '' }}
       validate={values => {
         let errors = {}
-        if (!values.firstName || !values.lastName || !values.dateOfBirth) {
+        if (!values.firstName) {
           errors.firstName = 'Required'
+        }
+        if (!values.lastName) {
           errors.lastName = 'Required'
+        }
+        if (!values.dateOfBirth) {
           errors.dateOfBirth = 'Required'
         }
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
-        request.post(`${apiDomain}/clients`)
+        { /* request.post(`${apiDomain}/clients`) */ }
+        {/* console.log(values) */}
         setSubmitting(false)
       }}
+
     >
       {({ isSubmitting }) => (
         <Form>
@@ -37,8 +44,8 @@ const NaloxoneForm = () => (
           </div>
 
           <div>
-            <label htmlFor='dateOfBirthName'>Year Of Birth</label>
-            <Field type='text' name='dateOfBirthName' />
+            <label htmlFor='dateOfBirth'>Year Of Birth</label>
+            <Field type='text' name='dateOfBirth' />
             <ErrorMessage name='dateOfBirth' component='div' />
           </div>
 
@@ -51,10 +58,7 @@ const NaloxoneForm = () => (
           <div>
             <label htmlFor='county'>County</label>
             <Field type='select' name='county' />
-            {util.Counties.map((counties, idx) => (
-              <option key={idx} value={counties[idx]}>{counties[idx]}</option>
-            )
-            )}
+
             <ErrorMessage name='county' component='div' />
           </div>
 
@@ -125,9 +129,9 @@ const NaloxoneForm = () => (
           </div>
 
           <div>
-            <label htmlFor='overdosReversalCounty'>Overdose Reversal County</label>
-            <Field type='select' name='overdosReversalCounty' />
-            <ErrorMessage name='overdosReversalCounty' component='div' />
+            <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
+            <Field type='text' name='overdoseReversalCounty' />
+            <ErrorMessage name='overdoseReversalCounty' component='div' />
           </div>
 
           <div>
