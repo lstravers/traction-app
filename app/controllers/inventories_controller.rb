@@ -84,7 +84,7 @@ class InventoriesController < ApplicationController
     private
 
     def inventory_params
-        params.require(:inventory).permit(:serial_num, :kit_type, :expiration_date, :distributed_date)
+        params.require(:inventory).permit(:serial_num, :kit_type, :expiration_date, :distributed_date, :user_id)
        
     end
 
