@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 9c464d24081544ded9319038a70ddb83ddd0b487
 const { environment } = require('@rails/webpacker');
 const webpack = require('webpack');
 

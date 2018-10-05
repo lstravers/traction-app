@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authentication, only: [:create]
+  #skip_before_action :authenticate_user! , only: [:create]
   before_action :set_user, only: [:show, :update]
 
   def index
     @user = User.all
-    render json: @user
   end
 
   def show
@@ -25,6 +24,12 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render json: @user, notice: "Your account was updated successfully."
+    end
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit({ roles: [] }, :email, :password, :password_confirmation)
     end
   end
 
