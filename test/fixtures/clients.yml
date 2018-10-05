@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: MyString
+  county: MyString
+  first_kit: false
+  client_confidential: one
+  user: one
+
+two:
+  city: MyString
+  county: MyString
+  first_kit: false
+  client_confidential: two
+  user: two
