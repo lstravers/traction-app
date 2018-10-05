@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
+import NaloxoneForm from './NaloxoneForm'
 
 class Scanner extends Component {
   constructor (props) {
     super(props)
     this.state = {
       delay: 1000,
-      results: []
+      results: [],
+      scanning: true
+      // reversal: false
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,14 +22,6 @@ class Scanner extends Component {
       this.setState({
         results: results.concat(data)
       })
-
-      // concat   and animation
-      // if (data[idx] > 1) {
-      //   this.setState({
-      //     result: data,
-  
-      //   })
-      // }
     }
   }
 
@@ -34,30 +29,34 @@ class Scanner extends Component {
     console.error(err)
   }
 
-  componentDidUpdate () {
-    // console.log(this.state.result)
-  }
-
   handleSubmit () {
-    const result = this.state.result
-    // instead of set results- set state to not scanning and show form 
-    // window.localStorage.setItem('Serial', result)
-    // console.log(this.state.result)
+    if (this.state.results.length === 0) {
+    } else {
+      this.setState(state => ({ scanning: !state.scanning }))
+    }
   }
 
   render () {
     return (
       <div>
-        <QrReader
-          delay={this.state.delay}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          style={{ width: '50%' }}
-        />
-        <a href='/home'><button onClick={this.handleSubmit}>Done</button></a>
-        <p>{this.state.result}</p>
-      </div>
-    )
+        {this.state.scanning ? (
+          <div>
+            <div><button>X</button></div>
+            <QrReader
+              delay={this.state.delay}
+              onError={this.handleError}
+              onScan={this.handleScan}
+              style={{ width: '50%' }}
+            />
+            <button>Enter Serial #</button>
+            <button onClick={this.handleSubmit}>Done</button>
+            <p>{this.state.result}</p>
+          </div>)
+          : (
+            <NaloxoneForm results={this.state.results} />
+          )
+        }
+      </div>)
   }
 }
 

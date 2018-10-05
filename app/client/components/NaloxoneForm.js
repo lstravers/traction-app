@@ -1,14 +1,149 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import moment from 'moment'
-import counties from './util'
 
 const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+const counties = [
+  'Alamance',
+  'Alexander',
+  'Alleghany',
+  'Anson',
+  'Ashe',
+  'Avery',
+  'Beaufort',
+  'Bertie',
+  'Bladen',
+  'Brunswuick',
+  'Buncombe',
+  'Burke',
+  'Cabarrus',
+  'Caldwell',
+  'Camden',
+  'Carteret',
+  'Caswell',
+  'Catawba',
+  'Chatham',
+  'Cherokee',
+  'Chowan',
+  'Clay',
+  'Cleveland',
+  'Columbus',
+  'Craven',
+  'Cumberland',
+  'Currituck',
+  'Dare',
+  'Davidson',
+  'Davie',
+  'Duplin',
+  'Durham',
+  'Edgecombe',
+  'Forsyth',
+  'Franklin',
+  'Gaston',
+  'Gates',
+  'Graham',
+  'Granville',
+  'Greene',
+  'Guilford',
+  'Halifax',
+  'Harnett',
+  'Haywood',
+  'Henderson',
+  'Hertford',
+  'Hoke',
+  'Hyde',
+  'Iredell',
+  'Jackson',
+  'Johnston',
+  'Jones',
+  'Lee',
+  'Lenoir',
+  'Lincoln',
+  'McDowell',
+  'Macon',
+  'Madison',
+  'Martin',
+  'Mecklenburg',
+  'Mitchell',
+  'Montgomery',
+  'Moore',
+  'Nash',
+  'New Hanover',
+  'Northampton',
+  'Onslow',
+  'Orange',
+  'Pamlico',
+  'Pasquotank',
+  'Pender',
+  'Perquimans',
+  'Person',
+  'Pitt',
+  'Polk',
+  'Randolph',
+  'Richmond',
+  'Robeson',
+  'Rockingham',
+  'Rowan',
+  'Rutherford',
+  'Sampson',
+  'Scotland',
+  'Stanly',
+  'Stokes',
+  'Surry',
+  'Swain',
+  'Transylvania',
+  'Tyrrell',
+  'Union',
+  'Vance',
+  'Wake',
+  'Warren',
+  'Washington',
+  'Watauga',
+  'Wayne',
+  'Wilkes',
+  'Wilson',
+  'Yadkin',
+  'Yancey'
+]
+
+const RadioButton = ({
+  field: { name, value },
+  id,
+  label,
+  className
+}) => {
+  return (
+    <div>
+      <input
+        name={name}
+        id={id}
+        type='radio'
+        value={value}
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
+  )
+}
 
 const NaloxoneForm = (props) => (
   <div>
     <Formik
-      initialValues={{ firstName: '', lastName: '', dateOfBirth: '', townCity: '', county: '', dateOfDistribution: '', numberOfKits: '', kitType: '', kitSerialNumber: '', firstNaloxoneKit: '', overdoseReversal: '', overdoseReversalKitType: '', overdoseReversalTownCity: '', overdoseReversalCounty: '', numberOfDoses: '', minutesBetweenDoses: '' }}
+      initialValues={{ firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        townCity: '',
+        county: '',
+        dateOfDistribution: moment().format('YYYY-MM-D'),
+        numberOfKits: props.results.length,
+        kitType: 'IM',
+        kitSerialNumber: props.results,
+        firstNaloxoneKit: '',
+        overdoseReversal: '',
+        overdoseReversalKitType: '',
+        overdoseReversalTownCity: '',
+        overdoseReversalCounty: '',
+        numberOfDoses: '',
+        minutesBetweenDoses: '' }}
       validate={values => {
         let errors = {}
         if (!values.firstName) {
@@ -24,13 +159,13 @@ const NaloxoneForm = (props) => (
       }}
       onSubmit={(values, { setSubmitting }) => {
         { /* request.post(`${apiDomain}/clients`) */ }
-        {/* console.log(values) */}
+        console.log(values)
         setSubmitting(false)
       }}
-
     >
       {({ isSubmitting }) => (
         <Form>
+          <div><p>Please fill out the following form</p></div>
           <div>
             <label htmlFor='firstName'>First Name</label>
             <Field type='text' name='firstName' />
@@ -58,13 +193,15 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='county'>County</label>
             <Field type='select' name='county' />
-
+            {counties.map((county, idx) =>
+              <option key={idx} name='county'>{county}</option>
+            )}
             <ErrorMessage name='county' component='div' />
           </div>
 
           <div>
             <label htmlFor='dateOfDistribution'>Date of Distribution</label>
-            <Field name='dateOfDistribution' value={moment().format('YYYY-MM-D')} />
+            <Field name='dateOfDistribution' />
             <ErrorMessage name='dateOfDistribution' component='div' />
           </div>
 
@@ -75,19 +212,22 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='kitType'>Naloxone Kit Type</label>
-            <Field component='select' name='kitType'>
-              <option value='im'>IM</option>
-              <option value='e'>E</option>
-              <option value='n'>N</option>
-            </Field>
-            <ErrorMessage name='kitType' component='div' />
-          </div>
-
-          <div>
-            <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
-            <Field type='text' name='kitSerialNumber' value={window.localStorage.Serial} />
-            <ErrorMessage name='kitSerialNumber' component='div' />
+            {props.results.map((result, idx) =>
+              <div>
+                <div key={idx}>
+                  <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
+                  <Field type='text' value={result} name='kitSerialNumber' />
+                  <ErrorMessage name='kitSerialNumber' component='div' />
+                </div>
+                <label htmlFor='kitType'>Naloxone Kit Type</label>
+                <Field component='select' name='kitType'>
+                  <option value='IM' selected>IM</option>
+                  <option value='E'>E</option>
+                  <option value='N'>N</option>
+                </Field>
+                <ErrorMessage name='kitType' component='div' />
+              </div>
+            )}
           </div>
 
           <div>
@@ -104,10 +244,20 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
             <span className='overdoseReversal'>
-              <input type='radio' name='overdoseReversal' value='true' />
-              <label htmlFor='reversalTrue'>Yes</label>
-              <input type='radio' name='overdoseReversal' value='false' />
-              <label htmlFor='reversalFalse'>No</label>
+              <div><Field
+                component={RadioButton}
+                name='overdoseReversalTrue'
+                id='true'
+                label='Yes'
+                value='True'
+              /></div>
+              <div><Field
+                component={RadioButton}
+                name='overdoseReversalFalse'
+                id='false'
+                label='No'
+                value='False'
+              /></div>
             </span>
             <ErrorMessage name='overdoseReversal' component='div' />
           </div>
@@ -115,9 +265,10 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
             <Field component='select' name='overdoseReversalKitType'>
-              <option value='im'>IM</option>
-              <option value='e'>E</option>
-              <option value='n'>N</option>
+              <option value='selectOptions'>Select</option>
+              <option value='IM'>IM</option>
+              <option value='E'>E</option>
+              <option value='N'>N</option>
             </Field>
             <ErrorMessage name='overdoseReversalKitType' component='div' />
           </div>
