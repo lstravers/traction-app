@@ -15,11 +15,7 @@ Reversal.delete_all
   User.create!(
     first_name: "test",
     last_name: Faker::Superhero.name,
-<<<<<<< HEAD
     password: "12345678",
-=======
-    password: "1234abcd",
->>>>>>> 8ca32cfa08a5c3b6f1f26acb0ea3ead604f40cbd
     email: Faker::Internet.safe_email,
     phone: Faker::PhoneNumber.phone_number,
     county: Faker::Address.city,
