@@ -2,32 +2,38 @@ import React from 'react'
 import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
+// import Header from './Header'
 
 class Dashboard extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      currentUser: null
-    }
-    const username = window.localStorage.getItem('username')
-    const token = window.localStorage.getItem('token')
-    if (username && token) {
-      this.state.currentUser = [ username, token ]
-    }
-  }
   setCurrentUser (user) {
-    window.localStorage.setItem('username', user.usernamer)
+    window.localStorage.setItem('username', user.username)
     window.localStorage.setItem('token', user.token)
+    this.setState({currentUser: user})
+  }
+  onLogout () {
+    window.localStorage.removeItem('username')
+    window.localStorage.removeItem('token')
+    this.setState({currentUser: false})
   }
   render () {
-    const { currentUser } = this.state
-    return (
-      <div className='Dashboard'>
-        <div className='main'>
-          <WelcomeView currentUser={currentUser} />
+    const { currentUser } = this.props
+    if (currentUser) {
+      return (
+        <div className='Dashboard'>
+          {/* <Header onLogout={this.onLogout} /> */}
+          <div className='main'>
+            <WelcomeView currentUser={currentUser} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        // return to rails login view
+        <div>
+          <p>Login</p>
+        </div>
+      )
+    }
   }
 }
 export default Dashboard
