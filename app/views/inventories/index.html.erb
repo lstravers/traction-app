@@ -20,7 +20,7 @@
       <td><%= inventory.client_id %></td>
       <td><%= inventory.user_id %></td>
       <td><%= link_to 'Show', inventory_path(inventory) %></td>
-        <td><%= link_to 'Update', inventory_path(inventory) %></td>
+        <td><%= link_to 'Update', edit_inventory_path(inventory) %></td>
     </tr>
   <% end %>
 </table>

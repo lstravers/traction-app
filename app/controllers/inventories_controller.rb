@@ -22,6 +22,10 @@ class InventoriesController < ApplicationController
         #redirect_to inventories_path, notice: 'You must be logged in to add a new kit' if !(current_user)
          @inventory = Inventory.new   
     end
+
+    def edit
+      @inventory = Inventory.find(params[:id])
+    end
     
     # Create
     def create
