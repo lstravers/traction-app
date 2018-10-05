@@ -1,0 +1,21 @@
+<h1>Reversals</h1>
+
+<table>
+  <tr>
+    <th>County</th>
+    <th>Town</th>
+    <th>Number of Doses</th>
+    <th>Kit Type </th>
+    <th>Time Between Doses (minutes) </th>
+  </tr>
+ 
+  <% @reversals.each do |reversal| %>
+    <tr>
+      <td><%= reversal.county %></td>
+      <td><%= reversal.town%></td>
+      <td><%= reversal.doses %></td>
+      <td><%= reversal.kit_type %></td>
+      <td><%= reversal.time_between %></td>
+    </tr>
+  <% end %>
+</table>
