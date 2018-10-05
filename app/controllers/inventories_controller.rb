@@ -34,8 +34,6 @@ class InventoriesController < ApplicationController
     
     # Create
     def create
-        
-            byebug
 
             @inventory = Inventory.new(inventory_params)
         
