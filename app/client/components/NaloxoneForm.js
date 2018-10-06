@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import moment from 'moment'
 
 const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 const counties = [
+  'Select',
   'Alamance',
   'Alexander',
   'Alleghany',
@@ -132,7 +133,7 @@ const NaloxoneForm = (props) => (
         lastName: '',
         dateOfBirth: '',
         townCity: '',
-        county: '',
+        county: props.county,
         dateOfDistribution: moment().format('YYYY-MM-D'),
         numberOfKits: props.results.length,
         kitType: 'IM',
@@ -141,7 +142,7 @@ const NaloxoneForm = (props) => (
         overdoseReversal: '',
         overdoseReversalKitType: '',
         overdoseReversalTownCity: '',
-        overdoseReversalCounty: '',
+        overdoseReversalCounty: props.county,
         numberOfDoses: '',
         minutesBetweenDoses: '' }}
       validate={values => {
@@ -192,9 +193,9 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='county'>County</label>
-            <Field component='select' name='county'>
+            <Field component='select' id='county' name='county'>
               {counties.map((county, idx) =>
-                <option key={idx}>`${county}`</option>
+                <option key={idx} value={county} onChange={(event) => this.setState(event.target.value)}>{county}</option>
               )}
             </Field>
             <ErrorMessage name='county' component='div' />
@@ -244,22 +245,22 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
-            <span className='overdoseReversal'>
-              <div><Field
+            <div className='overdoseReversal'>
+              <Field
                 component={RadioButton}
-                name='overdoseReversalTrue'
-                id='true'
+                name='overdoseReversal'
+                id='overdoseReversal'
                 label='Yes'
                 value='True'
-              /></div>
-              <div><Field
+              />
+              <Field
                 component={RadioButton}
-                name='overdoseReversalFalse'
-                id='false'
+                name='overdoseReversal'
+                id='overdoseReversal'
                 label='No'
                 value='False'
-              /></div>
-            </span>
+              />
+            </div>
             <ErrorMessage name='overdoseReversal' component='div' />
           </div>
 
@@ -282,9 +283,9 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
-            <Field type='text' name='overdoseReversalCounty'>
+            <Field component='select' id='county' name='county'>
               {counties.map((county, idx) =>
-                <option key={idx}>`${county}`</option>
+                <option key={idx} value={county} onChange={(event) => this.setState(event.target.value)}>{county}</option>
               )}
             </Field>
             <ErrorMessage name='overdoseReversalCounty' component='div' />
