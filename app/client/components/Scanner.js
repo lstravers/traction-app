@@ -9,11 +9,13 @@ class Scanner extends Component {
     this.state = {
       delay: 1000,
       results: [],
-      scanning: true
+      scanning: true,
+      value: ''
       // reversal: false
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleScan (data) {
@@ -27,6 +29,10 @@ class Scanner extends Component {
 
   handleError (err) {
     console.error(err)
+  }
+
+  handleChange (event) {
+    this.setState({ value: event.target.value })
   }
 
   handleSubmit () {
@@ -53,7 +59,7 @@ class Scanner extends Component {
             <p>{this.state.result}</p>
           </div>)
           : (
-            <NaloxoneForm results={this.state.results} />
+            <NaloxoneForm results={this.state.results} handleChange={this.handleChange} />
           )
         }
       </div>)
