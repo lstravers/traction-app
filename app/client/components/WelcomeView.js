@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bulma/css/bulma.css'
-// import { Title, Button } from 'bloomer'
+import { Title, Button } from 'bloomer'
 
 class WelcomeView extends React.Component {
   render () {

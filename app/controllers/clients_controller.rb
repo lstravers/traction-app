@@ -20,10 +20,10 @@ class ClientsController < ApplicationController
     def create
         @client = Client.new(client_params)
 
-        if @client.save
-            render 'new'
+        if @user.save
+            render json: @user, status: :created, notice: "Your account was created successfully."
         else
-            render 'new', notice: "Not able to create"
+            render json: @user.errors, status: :unprocessable_entity
         end
     end
 
@@ -37,7 +37,11 @@ private
     end
 
     def client_params
-        params.require(:clients).permit(:city, :county, :first_kit, :user_id, client_confidential: [:first_name, :last_name, :date_of_birth])
+        new_params = {}
+        params.each do |k,v|
+            new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
+        end
+        new_params.permit(:city_town, :county, :first_kit, :user_id, client_confidential: [:first_name, :last_name, :date_of_birth])
     end
 
 end
