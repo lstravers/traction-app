@@ -215,15 +215,15 @@ const NaloxoneForm = (props) => (
 
           <div>
             {props.results.map((result, idx) =>
-              <div key={idx}>
-                <div>
+              <div>
+                <div key={idx}>
                   <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
                   <Field type='text' value={result} name='kitSerialNumber' />
                   <ErrorMessage name='kitSerialNumber' component='div' />
                 </div>
                 <label htmlFor='kitType'>Naloxone Kit Type</label>
                 <Field component='select' name='kitType'>
-                  <option value='IM'>IM</option>
+                  <option value='IM' selected>IM</option>
                   <option value='E'>E</option>
                   <option value='N'>N</option>
                 </Field>
