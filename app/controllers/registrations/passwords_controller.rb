@@ -1,6 +1,6 @@
-frozen_string_literal: true
-
-class registrations::PasswordsController < Devise::PasswordsController
+# frozen_string_literal: true
+module Registrations
+class PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   def new
     super
@@ -31,4 +31,5 @@ class registrations::PasswordsController < Devise::PasswordsController
   def after_sending_reset_password_instructions_path_for(resource_name)
     super(resource_name)
   end
+end
 end
