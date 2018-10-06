@@ -194,7 +194,7 @@ const NaloxoneForm = (props) => (
             <label htmlFor='county'>County</label>
             <Field component='select' name='county'>
               {counties.map((county, idx) =>
-                <option key={idx}>{county}</option>
+                <option key={idx}>`${county}`</option>
               )}
             </Field>
             <ErrorMessage name='county' component='div' />
@@ -214,8 +214,8 @@ const NaloxoneForm = (props) => (
 
           <div>
             {props.results.map((result, idx) =>
-              <div>
-                <div key={idx}>
+              <div key={idx}>
+                <div>
                   <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
                   <Field type='text' value={result} name='kitSerialNumber' />
                   <ErrorMessage name='kitSerialNumber' component='div' />
@@ -284,7 +284,7 @@ const NaloxoneForm = (props) => (
             <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
             <Field type='text' name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
-                <option key={idx}>{county}</option>
+                <option key={idx}>`${county}`</option>
               )}
             </Field>
             <ErrorMessage name='overdoseReversalCounty' component='div' />

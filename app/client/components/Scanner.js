@@ -41,14 +41,14 @@ class Scanner extends Component {
       <div>
         {this.state.scanning ? (
           <div>
-            <div><button>X</button></div>
+            <div><button onClick={() => window.location.href='/'}>X</button></div>
             <QrReader
               delay={this.state.delay}
               onError={this.handleError}
               onScan={this.handleScan}
               style={{ width: '50%' }}
             />
-            <button>Enter Serial #</button>
+            <button onClick={() => window.location.href='/kitserials'}>Enter Serial #</button>
             <button onClick={this.handleSubmit}>Done</button>
             <p>{this.state.result}</p>
           </div>)
