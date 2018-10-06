@@ -1,5 +1,5 @@
 <h1>Inventory Kit List</h1>
- <%= link_to 'New Kit', new_inventory_path %>
+ <%= link_to 'Enter a New Kit', new_inventory_path %>
 <table>
   <tr>
     <th>Serial Number</th>
@@ -8,7 +8,6 @@
     <th>Distributed Date </th>
     <th>Client ID </th>
     <th>User ID </th>
-
   </tr>
  
   <% @inventories.each do |inventory| %>
@@ -19,8 +18,7 @@
       <td><%= inventory.distributed_date %></td>
       <td><%= inventory.client_id %></td>
       <td><%= inventory.user_id %></td>
-      <td><%= link_to 'Show', inventory_path(inventory) %></td>
-        <td><%= link_to 'Update', edit_inventory_path(inventory) %></td>
+      <td><%= link_to 'Update', edit_inventory_path(inventory) %></td>
     </tr>
   <% end %>
 </table>
