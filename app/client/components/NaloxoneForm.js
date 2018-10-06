@@ -222,6 +222,7 @@ const NaloxoneForm = (props) => (
                 </div>
                 <label htmlFor='kitType'>Naloxone Kit Type</label>
                 <Field component='select' name='kitType'>
+
                   <option value='IM'>IM</option>
                   <option value='E'>E</option>
                   <option value='N'>N</option>

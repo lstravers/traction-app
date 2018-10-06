@@ -48,6 +48,7 @@ class Scanner extends Component {
               onScan={this.handleScan}
               style={{ width: '50%' }}
             />
+
             <button onClick={() => window.location.href='/kitserials'}>Enter Serial #</button>
             <button onClick={this.handleSubmit}>Done</button>
             <p>{this.state.result}</p>
