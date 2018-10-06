@@ -1,14 +1,18 @@
 import React from 'react'
+import NaloxoneForm from './NaloxoneForm'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 class SerialForm extends React.Component {
   constructor () {
     super()
     this.state = {
-      formCount: 3
+      formCount: 3,
+      inputtingSerials: true,
+      results: []
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   addInputForm () {
@@ -17,7 +21,15 @@ class SerialForm extends React.Component {
     })
   }
 
-  handleSubmit () {
+  handleChange (e) {
+    let results = this.state.results
+    this.setState({
+      results: results.concat(e.target.value)
+    })
+  }
+
+  handleSubmit (e) {
+    e.preventDefault()
     this.setState(state => ({ inputtingSerials: !this.state.inputtingSerials }))
   }
 
@@ -27,7 +39,7 @@ class SerialForm extends React.Component {
       kitForms.push(
         <div key={i}>
           <label htmlFor='enterSerialNumber'>Enter Kit Serial Number</label>
-          <Field type='text' name='enterSerialNumber' onChange={(e) => e.target.value} />
+          <Field type='text' name='enterSerialNumber' onChange={this.handleChange} />
           <ErrorMessage name='enterSerialNumber' component='div' />
         </div>)
     }
@@ -46,6 +58,7 @@ class SerialForm extends React.Component {
               }
               return errors
             }}
+            handleChange
           >
             {({ isSubmitting }) => (
               <Form>
