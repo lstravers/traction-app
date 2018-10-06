@@ -1,6 +1,6 @@
-frozen_string_literal: true
-
-class [registrations]::UnlocksController < Devise::UnlocksController
+# frozen_string_literal: true
+module Registrations
+class UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
   def new
     super
@@ -27,4 +27,5 @@ class [registrations]::UnlocksController < Devise::UnlocksController
   def after_unlock_path_for(resource)
     super(resource)
   end
+end
 end
