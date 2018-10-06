@@ -10,6 +10,7 @@ class SerialForm extends React.Component {
       inputtingSerials: true
     }
     this.addInputForm = this.addInputForm.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   addInputForm () {
@@ -19,7 +20,7 @@ class SerialForm extends React.Component {
   }
 
   handleSubmit () {
-    this.setState(state => ({ inputtingSerials: !state.inputtingSerials }))
+    this.setState(state => ({ inputtingSerials: !this.state.inputtingSerials }))
   }
 
   render () {
@@ -28,7 +29,7 @@ class SerialForm extends React.Component {
       kitForms.push(
         <div key={i}>
           <label htmlFor='enterSerialNumber'>Enter Kit Serial Number</label>
-          <Field type='text' name='enterSerialNumber' />
+          <Field type='text' name='enterSerialNumber' onChange={(e) => e.target.value} />
           <ErrorMessage name='enterSerialNumber' component='div' />
         </div>)
     }
@@ -43,7 +44,7 @@ class SerialForm extends React.Component {
             validate={values => {
               let errors = {}
               if (!values.enterSerialNumer) {
-                errors.enterSerialNumer = 'Required'
+                errors.enterSerialNumer = 'Serial Number Required'
               }
               return errors
             }}
