@@ -1,13 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import NaloxoneForm from './NaloxoneForm'
 
 class SerialForm extends React.Component {
   constructor () {
     super()
     this.state = {
-      formCount: 3,
-      inputtingSerials: true
+      formCount: 3
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -63,6 +61,7 @@ class SerialForm extends React.Component {
         )
           </div>
         }
+
       </div>
     )
   }
