@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Title } from 'bloomer'
+import { Title, Button } from 'bloomer'
 import 'bulma/css/bulma.css'
 
 class Header extends Component {
@@ -12,58 +12,67 @@ class Header extends Component {
   }
 
   handleClick () {
-    this.setState(state => ({ expanded: !state.expanded }))
+    console.log('hey')
+    this.setState(state => ({ expanded: !this.state.expanded }))
   }
 
   render () {
     return (
       <div>
         {this.state.expanded ? (
-          <div className='navbar'>
-            <span>Harm Reduction Tracker</span>
-            <span className='dropdown is-right is-hoverable'>
-              <span className='dropdown-trigger'>
-                <div className='button' onClick={this.handleClick}>
-                  <span className='icon'>
-                  &equiv;
-                  </span>
-                </div>
-              </span>
-              <span className='dropdown-menu' id='dropdown-menu' role='menu'>
-                <span className='dropdown-content'>
-                  <div>
-                    <a href='#' className='dropdown-item'>
-        Scan QR Code
-                    </a>
-                  </div>
-                  <div>
-                    <a className='dropdown-item'>
-        Input Kit Serial Number
-                    </a>
-                  </div>
-                  <div>
-                    <a href='#' className='dropdown-item'>
-        Logout
-                    </a>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
+          <nav className='navbar' role='navigation' aria-label='main navigation'>
+            <div className='navbar-brand'>
+              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
+              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' onClick={this.handleClick}>
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
+              </a>
+            </div>
+            <div id='navbar-main' className='navbar-menu'>
+              <div className='navbar-start'>
+                <a className='navbar-item' href='#'>
+    Home
+                </a>
+              </div>
+            </div>
+
+            <div id='navbar-main' className='navbar-menu'>
+              <div className='navbar-start'>
+                <a className='navbar-item' href='#'>
+    Scan QR Code
+                </a>
+              </div>
+            </div>
+
+            <div id='navbar-main' className='navbar-menu'>
+              <div className='navbar-start'>
+                <a className='navbar-item' href='#'>
+    Input Kit Serial Codes
+                </a>
+              </div>
+            </div>
+
+            <div id='navbar-main' className='navbar-menu'>
+              <div className='navbar-start'>
+                <a className='navbar-item'>
+    Logout
+                </a>
+              </div>
+            </div>
+          </nav>
         )
-          : (<div className='header'>
-            <span>Harm Reduction Tracker</span>
-            <span className='dropdown is-right'>
-              <span className='dropdown-trigger is-hoverable'>
-                <button className='button' onClick={this.handleClick}>
-                  {/* <span className='icon is-large'> */}
-                  &equiv;
-                  {/* </span> */}
-                </button>
-              </span>
-            </span>
-          </div>)
-        }
+          : (<nav className='navbar' role='navigation' aria-label='main navigation'>
+            <div className='navbar-brand'>
+              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
+              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
+              </a>
+            </div>
+          </nav>
+          )}
       </div>
     )
   }
