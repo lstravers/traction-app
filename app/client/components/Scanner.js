@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Button } from 'bloomer'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
 import NaloxoneForm from './NaloxoneForm'
+import request from 'superagent/superagent.js'
 
 class Scanner extends Component {
   constructor (props) {
@@ -33,7 +33,9 @@ class Scanner extends Component {
   }
 
   handleChange (event) {
+    console.log(event.target.value, 'event.target.value')
     this.setState({ value: event.target.value })
+    
   }
 
   handleSubmit () {
@@ -53,7 +55,7 @@ class Scanner extends Component {
               delay={this.state.delay}
               onError={this.handleError}
               onScan={this.handleScan}
-              style={{ width: '100%' }}
+              style={{ width: '50%' }}
             />
             <div className='serial-button-div'><button className='serial-button'>Enter Serial #</button></div>
             <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
