@@ -31,18 +31,18 @@ class Header extends Component {
               <span className='dropdown-menu' id='dropdown-menu' role='menu'>
                 <span className='dropdown-content'>
                   <div>
-                    <a href='#' className='dropdown-item'>
-        Scan QR Code
+                    <a href='/qrscanner' className='dropdown-item'>
+                      Scan QR Code
                     </a>
                   </div>
                   <div>
-                    <a className='dropdown-item'>
-        Input Kit Serial Number
+                    <a href='/kitserials' className='dropdown-item'>
+                     Input Kit Serial Number
                     </a>
                   </div>
                   <div>
-                    <a href='#' className='dropdown-item'>
-        Logout
+                    <a href='/logout' className='dropdown-item'>
+                      Logout
                     </a>
                   </div>
                 </span>

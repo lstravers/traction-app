@@ -159,14 +159,17 @@ const NaloxoneForm = (props) => (
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
-        { /* request.post(`${apiDomain}/clients`) */ }
+        return request.post(`${apiDomain}/clients`)
+          .send({
+            
+          })
         console.log(values)
         setSubmitting(false)
       }}
     >
       {({ isSubmitting }) => (
-        <Form>
-          <div><p>Please fill out the following form</p></div>
+        <Form className='form'>
+          <div className='form-instructions'><p>Please fill out the following form</p></div>
           <div>
             <label htmlFor='firstName'>First Name</label>
             <Field type='text' name='firstName' />
@@ -311,8 +314,8 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <div>
-            <button type='submit' disabled={isSubmitting}>
+          <div className='submit-button-div'>
+            <button type='submit' className='submit-button' disabled={isSubmitting}>
         Submit
             </button>
           </div>
