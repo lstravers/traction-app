@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :reversals
   # resource :session, only: [:new, :create, :destroy]
   resources :clients
-  root to: "welcome#index"
+  root to: "home#index"
 
   # You can also override after_sign_in_path_for and
   # after_sign_out_path_for to customize your redirect hooks.
