@@ -2,6 +2,7 @@ import React from 'react'
 import NaloxoneForm from './NaloxoneForm'
 import {Button} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import NaloxoneForm from './NaloxoneForm'
 
 class SerialForm extends React.Component {
   constructor () {
