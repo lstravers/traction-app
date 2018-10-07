@@ -1,5 +1,6 @@
 import React from 'react'
 import NaloxoneForm from './NaloxoneForm'
+import {Button} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import NaloxoneForm from './NaloxoneForm'
 
@@ -9,12 +10,13 @@ class SerialForm extends React.Component {
     this.state = {
       formCount: 3,
       inputtingSerials: true,
+      input: '',
       results: []
-      input: []
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.onBlur = this.onBlur.bind(this)
   }
 
   addInputForm () {
@@ -23,10 +25,19 @@ class SerialForm extends React.Component {
     })
   }
 
-  handleChange (e) {
+  onBlur (e) {
     let results = this.state.results
+    let input = this.state.input
+    if (input) {
+      this.setState({
+        results: results.concat(input)
+      })
+    }
+  }
+
+  handleChange (e) {
     this.setState({
-      results: results.concat(e.target.value)
+      input: e.target.value
     })
   }
 
@@ -41,7 +52,7 @@ class SerialForm extends React.Component {
       kitForms.push(
         <div key={i}>
           <label htmlFor='enterSerialNumber'>Enter Kit Serial Number</label>
-          <Field type='text' name='enterSerialNumber' onChange={this.handleChange} />
+          <Field type='text' name='enterSerialNumber' onBlur={this.onBlur} onChange={this.handleChange} />
           <ErrorMessage name='enterSerialNumber' component='div' />
         </div>)
     }
@@ -65,8 +76,8 @@ class SerialForm extends React.Component {
             {({ isSubmitting }) => (
               <Form>
                 {kitForms}
-                <button type='button' onClick={this.addInputForm}>Add</button>
-                <button type='submit' onClick={this.handleSubmit} disabled={isSubmitting}>Submit</button>
+                <Button className='is-primary' type='button' onClick={this.addInputForm}>Add</Button>
+                <Button type='submit' onClick={this.handleSubmit} disabled={isSubmitting}>Submit</Button>
               </Form>
             )}
           </Formik>)
