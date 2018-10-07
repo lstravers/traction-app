@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
 class Header extends Component {
@@ -18,15 +19,15 @@ class Header extends Component {
     return (
       <div>
         {this.state.expanded ? (
-          <div className='header'>
+          <div className='navbar'>
             <span>Harm Reduction Tracker</span>
             <span className='dropdown is-right is-hoverable'>
               <span className='dropdown-trigger'>
-                <button className='button is-large' onClick={this.handleClick}>
-                  <span className='icon is-large'>
+                <div className='button' onClick={this.handleClick}>
+                  <span className='icon'>
                   &equiv;
                   </span>
-                </button>
+                </div>
               </span>
               <span className='dropdown-menu' id='dropdown-menu' role='menu'>
                 <span className='dropdown-content'>
@@ -55,9 +56,9 @@ class Header extends Component {
             <span className='dropdown is-right'>
               <span className='dropdown-trigger is-hoverable'>
                 <button className='button' onClick={this.handleClick}>
-                  <span className='icon is-large'>
+                  {/* <span className='icon is-large'> */}
                   &equiv;
-                  </span>
+                  {/* </span> */}
                 </button>
               </span>
             </span>
