@@ -136,7 +136,7 @@ const NaloxoneForm = (props) => (
         county: props.county,
         dateOfDistribution: moment().format('YYYY-MM-D'),
         numberOfKits: props.results.length,
-        kitType: 'IM',
+        kitType: props.value,
         kitSerialNumber: props.results,
         firstNaloxoneKit: props.value,
         overdoseReversal: props.value,
@@ -235,9 +235,9 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
             <span className='firstNaloxoneKit'>
-              <input type='radio' name='firstNaloxoneKit' value='true' />
+              <input type='radio' name='firstNaloxoneKit' id='true' value='true' />
               <label htmlFor='firstNaloxoneKit'>Yes</label>
-              <input type='radio' name='firstNaloxoneKit' value='false' />
+              <input type='radio' name='firstNaloxoneKit' id='false' value='false' />
               <label htmlFor='firtNaloxoneKit'>No</label>
             </span>
             <ErrorMessage name='firstNaloxoneKit' component='div' />
@@ -246,9 +246,9 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
             <span className='overdoseReversal'>
-              <input type='radio' name='overdoseReversal' value='true' />
+              <input type='radio' name='overdoseReversal' id='true' value='true' />
               <label htmlFor='overdoseReversal'>Yes</label>
-              <input type='radio' name='overdoseReversal' value='false' />
+              <input type='radio' name='overdoseReversal' id='false' value='false' />
               <label htmlFor='overdoseReversal'>No</label>
             </span>
             {/* <div className='overdoseReversal'>

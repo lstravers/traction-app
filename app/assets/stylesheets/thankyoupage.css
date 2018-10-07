@@ -1,0 +1,33 @@
+.thank-container {
+    max-width: 90%;
+    margin: 300px auto;
+    text-align: center;
+
+}
+
+.thanks {
+    font-size: 5rem;
+    padding: 30px 10px;
+}
+
+.instructions {
+    font-size: 2.5rem;
+    padding: 10px 20px 40px 20px;
+}
+
+.scan-button, .input-button {
+    margin: 40px;
+    font-size: 3rem;
+    height: 120px;
+    background-color: lightseagreen;
+    border-radius: 20px;
+    color: white;
+}
+
+.scan-button {
+    width: 390px;
+}
+
+.input-button {
+    width: 525px;
+}
