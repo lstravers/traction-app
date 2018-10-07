@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  # get 'welcome/index'
   # devise_for :users, controllers: {
   #   sessions: 'users/sessions'
   # }
+
   devise_for :users, skip: [:sessions]
   as :user do
-    get '/', to: 'devise/sessions#new', as: :new_user_session
-    post '/', to: 'devise/sessions#create', as: :user_session
-    delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get 'signin', to: 'devise/sessions#new', as: :new_user_session
+    post 'signin', to: 'devise/sessions#create', as: :user_session
+    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   resources :reversals
   # resource :session, only: [:new, :create, :destroy]
   resources :clients
-  root to: "home#index"
+  root to: "welcome#index"
 
   # You can also override after_sign_in_path_for and
   # after_sign_out_path_for to customize your redirect hooks.

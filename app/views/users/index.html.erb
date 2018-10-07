@@ -1,6 +1,7 @@
 <h1>All Volunteers</h1>
-
- <%= link_to 'Register a New Volunteer', new_user_registration_path %>
+<%= link_to "Register a New Volunteer Account", new_user_registration_path %><br>
+<%= link_to "View Inventory", inventories_path %><br>
+<%= link_to "View All Reversals", reversals_path %><br>
 <table>
   <tr>
     <th>Date Authorized as Volunteer</th>
@@ -34,9 +35,8 @@
       <td><%= user.address2 %></td>
       <td><%= user.city %></td>
       <td><%= user.state %></td>
-      <td><%= user.zip %></td><br>
-      <td><%= link_to 'Show', user_path(user) %></td><br>
-      <td><%= link_to 'Update', user_path(user) %></td>
+      <td><%= user.zip %></td>
+      <td><%= link_to 'Update', edit_user_registration_path(user) %></td>
     </tr>
   <% end %>
 </table>

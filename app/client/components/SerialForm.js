@@ -10,6 +10,7 @@ class SerialForm extends React.Component {
       formCount: 3,
       inputtingSerials: true,
       results: []
+      input: []
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
