@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
       :phone, :county, :address1, :address2, :city, :state, :zip, :admin, 
       :contact_type, :date_auth, :admin_auth])
   end
+
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_index_path
+  end
+ 
   # protect_from_forgery with: :null_session 
   # helper_method :current_user
   # helper_method :logged_in?
