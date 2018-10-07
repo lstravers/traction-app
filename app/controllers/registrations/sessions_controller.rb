@@ -1,6 +1,6 @@
-frozen_string_literal: true
-
-class [registrations]::SessionsController < Devise::SessionsController
+# frozen_string_literal: true
+module Registrations
+class SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,4 +24,5 @@ class [registrations]::SessionsController < Devise::SessionsController
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   end
+end
 end
