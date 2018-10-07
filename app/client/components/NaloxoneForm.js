@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage, isInteger } from 'formik'
 import moment from 'moment'
+import request from 'superagent/superagent.js'
 
-const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+const apiDomain = 'http://localhost:3000'
 const counties = [
   'Select',
   'Alamance',
@@ -108,10 +110,10 @@ const counties = [
 ]
 
 const RadioButton = ({
-  field: { name, value },
+  field: { name, value, onChange, onBlur },
   id,
   label,
-  className
+  ...props
 }) => {
   return (
     <div>
@@ -119,9 +121,30 @@ const RadioButton = ({
         name={name}
         id={id}
         type='radio'
-        value={label}
+        onChange={onChange}
+        onBlur={onBlur}
+        {...props}
       />
       <label htmlFor={id}>{label}</label>
+    </div>
+  )
+}
+
+const RadioButtonGroup = ({
+  value,
+  error,
+  touched,
+  id,
+  label,
+  children
+}) => {
+  return (
+    <div>
+      <fieldset>
+        <legend>{label}</legend>
+        {children}
+        {touched}
+      </fieldset>
     </div>
   )
 }
@@ -153,20 +176,39 @@ const NaloxoneForm = (props) => (
         if (!values.lastName) {
           errors.lastName = 'Required'
         }
-        if (!values.dateOfBirth || !values.dateOfBirth === isInteger) {
+        if (!values.dateOfBirth) {
           errors.dateOfBirth = 'Required'
         }
         return errors
       }}
+
       onSubmit={(values, { setSubmitting }) => {
-        { /* request.post(`${apiDomain}/clients`) */ }
         console.log(values)
-        setSubmitting(false)
-      }}
+        return request.post(`${apiDomain}/clients`)
+          .send({firstName: '',
+            lastName: '',
+            dateOfBirth: '',
+            townCity: '',
+            county: props.county,
+            dateOfDistribution: moment().format('YYYY-MM-D'),
+            numberOfKits: props.results.length,
+            kitType: props.value,
+            kitSerialNumber: props.results,
+            firstNaloxoneKit: '',
+            overdoseReversal: props.value,
+            overdoseReversalKitType: props.value,
+            overdoseReversalTownCity: '',
+            overdoseReversalCounty: props.county,
+            numberOfDoses: '',
+            minutesBetweenDoses: '' })
+          .then(setSubmitting(false))
+      }
+
+      }
     >
       {({ isSubmitting }) => (
-        <Form>
-          <div><p>Please fill out the following form</p></div>
+        <Form className='form'>
+          <div className='form-instructions'><p>Please fill out the following form</p></div>
           <div>
             <label htmlFor='firstName'>First Name</label>
             <Field type='text' name='firstName' />
@@ -181,7 +223,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='dateOfBirth'>Year Of Birth</label>
-            <Field type='text' name='dateOfBirth' placeholder='YYYY' />
+            <Field type='number' name='dateOfBirth' placeholder='YYYY' />
             <ErrorMessage name='dateOfBirth' component='div' />
           </div>
 
@@ -234,30 +276,42 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
-            <span className='firstNaloxoneKit'>
+            {/* <span className='firstNaloxoneKit'>
               <input type='radio' name='firstNaloxoneKit' id='true' value='true' />
               <label htmlFor='firstNaloxoneKit'>Yes</label>
               <input type='radio' name='firstNaloxoneKit' id='false' value='false' />
               <label htmlFor='firtNaloxoneKit'>No</label>
-            </span>
+            </span> */}
+            <RadioButtonGroup id='firstNaloxoneKit'>
+              <Field
+                component={RadioButton}
+                name='firstNaloxoneKit'
+                id='firstNaloxoneKit'
+                label='Yes'
+                value={'true'}
+                onChange={props.handleChange}
+              />
+              <Field
+                component={RadioButton}
+                name='firstNaloxoneKit'
+                id='firstNaloxoneKit'
+                label='No'
+                value={'false'}
+                onChange={props.handleChange}
+              />
+            </RadioButtonGroup>
             <ErrorMessage name='firstNaloxoneKit' component='div' />
           </div>
 
           <div>
             <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
-            <span className='overdoseReversal'>
-              <input type='radio' name='overdoseReversal' id='true' value='true' />
-              <label htmlFor='overdoseReversal'>Yes</label>
-              <input type='radio' name='overdoseReversal' id='false' value='false' />
-              <label htmlFor='overdoseReversal'>No</label>
-            </span>
-            {/* <div className='overdoseReversal'>
+            <RadioButtonGroup id='overdoseReversal'>
               <Field
                 component={RadioButton}
                 name='overdoseReversal'
                 id='overdoseReversal'
                 label='Yes'
-                value='True'
+                value={'true'}
                 onChange={props.handleChange}
               />
               <Field
@@ -265,10 +319,10 @@ const NaloxoneForm = (props) => (
                 name='overdoseReversal'
                 id='overdoseReversal'
                 label='No'
-                value='False'
+                value={'false'}
                 onChange={props.handleChange}
               />
-            </div> */}
+            </RadioButtonGroup>
             <ErrorMessage name='overdoseReversal' component='div' />
           </div>
 
@@ -311,8 +365,8 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <div>
-            <button type='submit' disabled={isSubmitting}>
+          <div className='submit-button-div'>
+            <button type='submit' className='submit-button' disabled={isSubmitting}>
         Submit
             </button>
           </div>

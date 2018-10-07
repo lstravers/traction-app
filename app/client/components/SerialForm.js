@@ -1,7 +1,6 @@
 import React from 'react'
-import NaloxoneForm from './NaloxoneForm'
-import {Button} from 'bloomer'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import {Button, Input} from 'bloomer'
+import { Formik, Form, ErrorMessage } from 'formik'
 import NaloxoneForm from './NaloxoneForm'
 
 class SerialForm extends React.Component {
@@ -11,6 +10,7 @@ class SerialForm extends React.Component {
       formCount: 3,
       inputtingSerials: true,
       input: '',
+      inputArr: [],
       results: []
     }
     this.addInputForm = this.addInputForm.bind(this)
@@ -25,12 +25,12 @@ class SerialForm extends React.Component {
     })
   }
 
-  onBlur (e) {
-    let results = this.state.results
+  onBlur () {
     let input = this.state.input
+    let inputArr = this.state.inputArr
     if (input) {
       this.setState({
-        results: results.concat(input)
+        inputArr: inputArr.concat(input)
       })
     }
   }
@@ -44,6 +44,14 @@ class SerialForm extends React.Component {
   handleSubmit (e) {
     e.preventDefault()
     this.setState(state => ({ inputtingSerials: !this.state.inputtingSerials }))
+
+    let results = this.state.results
+    let inputArr = this.state.inputArr
+    if (inputArr) {
+      this.setState({
+        results: results.concat(inputArr)
+      })
+    }
   }
 
   render () {
@@ -51,13 +59,13 @@ class SerialForm extends React.Component {
     for (let i = 0; i < this.state.formCount; i++) {
       kitForms.push(
         <div key={i}>
-          <label htmlFor='enterSerialNumber'>Enter Kit Serial Number</label>
-          <Field type='text' name='enterSerialNumber' onBlur={this.onBlur} onChange={this.handleChange} />
+          <div><label htmlFor='enterSerialNumber'>Enter Kit Serial Number</label></div>
+          <Input type='text' name='enterSerialNumber' onBlur={this.onBlur} onChange={this.handleChange} />
           <ErrorMessage name='enterSerialNumber' component='div' />
         </div>)
     }
     return (
-      <div>
+      <div className='form-container'>
         {this.state.inputtingSerials
           ? (<Formik
             initialValues={{ enterSerialNumer: '' }}
@@ -77,7 +85,7 @@ class SerialForm extends React.Component {
               <Form>
                 {kitForms}
                 <Button className='is-primary' type='button' onClick={this.addInputForm}>Add</Button>
-                <Button type='submit' onClick={this.handleSubmit} disabled={isSubmitting}>Submit</Button>
+                <Button className='is-primary button' type='submit' onClick={this.handleSubmit} disabled={isSubmitting}>Submit</Button>
               </Form>
             )}
           </Formik>)
