@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage, isInteger } from 'formik'
 import moment from 'moment'
-import request from 'superagent/superagent.js'
+import request from 'superagent'
 
 // const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 const apiDomain = 'http://localhost:3000'
@@ -156,16 +156,16 @@ const NaloxoneForm = (props) => (
         lastName: '',
         dateOfBirth: '',
         townCity: '',
-        county: props.county,
+        county: '',
         dateOfDistribution: moment().format('YYYY-MM-D'),
         numberOfKits: props.results.length,
-        kitType: props.value,
+        kitType: props.results.map(() => 'IM'),
         kitSerialNumber: props.results,
-        firstNaloxoneKit: props.value,
-        overdoseReversal: props.value,
-        overdoseReversalKitType: props.value,
+        firstNaloxoneKit: '',
+        overdoseReversal: '',
+        overdoseReversalKitType: '',
         overdoseReversalTownCity: '',
-        overdoseReversalCounty: props.county,
+        overdoseReversalCounty: '',
         numberOfDoses: '',
         minutesBetweenDoses: '' }}
       validate={values => {
@@ -189,16 +189,16 @@ const NaloxoneForm = (props) => (
             lastName: '',
             dateOfBirth: '',
             townCity: '',
-            county: props.county,
-            dateOfDistribution: moment().format('YYYY-MM-D'),
-            numberOfKits: props.results.length,
-            kitType: props.value,
-            kitSerialNumber: props.results,
+            county: '',
+            dateOfDistribution: '',
+            numberOfKits: '',
+            kitType: '',
+            kitSerialNumber: '',
             firstNaloxoneKit: '',
-            overdoseReversal: props.value,
-            overdoseReversalKitType: props.value,
+            overdoseReversal: '',
+            overdoseReversalKitType: '',
             overdoseReversalTownCity: '',
-            overdoseReversalCounty: props.county,
+            overdoseReversalCounty: '',
             numberOfDoses: '',
             minutesBetweenDoses: '' })
           .then(setSubmitting(false))
@@ -206,7 +206,7 @@ const NaloxoneForm = (props) => (
 
       }
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values, errors, touched }) => (
         <Form className='form'>
           <div className='form-instructions'><p>Please fill out the following form</p></div>
           <div>
@@ -237,7 +237,7 @@ const NaloxoneForm = (props) => (
             <label htmlFor='county'>County</label>
             <Field component='select' name='county'>
               {counties.map((county, idx) =>
-                <option key={idx} value={county} onChange={props.handleChange}>{county}</option>
+                <option key={idx} value={county}>{county}</option>
               )}
             </Field>
             <ErrorMessage name='county' component='div' />
@@ -259,17 +259,17 @@ const NaloxoneForm = (props) => (
             {props.results.map((result, idx) =>
               <div key={idx}>
                 <div>
-                  <label htmlFor='kitSerialNumber'>Kit Serial Number</label>
-                  <Field type='text' value={result} name='kitSerialNumber' />
-                  <ErrorMessage name='kitSerialNumber' component='div' />
+                  <label htmlFor={`kitSerialNumber[${idx}]`}>Kit Serial Number</label>
+                  <Field type='text' value={result} name={`kitSerialNumber[${idx}]`} />
+                  <ErrorMessage name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
-                <label htmlFor='kitType'>Naloxone Kit Type</label>
-                <Field component='select' name={'kitType' + [idx]}>
-                  <option onChange={props.handleChange}>IM</option>
-                  <option onChange={props.handleChange}>E</option>
-                  <option onChange={props.handleChange}>N</option>
+                <label htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
+                <Field component='select' name={`kitType[${idx}]`}>
+                  <option>IM</option>
+                  <option>E</option>
+                  <option>N</option>
                 </Field>
-                <ErrorMessage name='kitType' component='div' />
+                <ErrorMessage name={`kitType[${idx}]`} component='div' />
               </div>
             )}
           </div>
@@ -277,27 +277,28 @@ const NaloxoneForm = (props) => (
           <div>
             <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
             {/* <span className='firstNaloxoneKit'>
-              <input type='radio' name='firstNaloxoneKit' id='true' value='true' />
+              <input type='radio' name='firstNaloxoneKit' value='true' />
               <label htmlFor='firstNaloxoneKit'>Yes</label>
-              <input type='radio' name='firstNaloxoneKit' id='false' value='false' />
-              <label htmlFor='firtNaloxoneKit'>No</label>
+              <input type='radio' name='firstNaloxoneKit' value='false' />
+              <label htmlFor='firstNaloxoneKit'>No</label>
             </span> */}
-            <RadioButtonGroup id='firstNaloxoneKit'>
+            <RadioButtonGroup id='firstNaloxoneKit'
+              value={values.overdoseReversal}
+              error={errors.overdoseReversal}
+              touched={touched.overdoseReversal}>
               <Field
                 component={RadioButton}
                 name='firstNaloxoneKit'
-                id='firstNaloxoneKit'
+                id='firstNaloxoneKit1'
                 label='Yes'
                 value={'true'}
-                onChange={props.handleChange}
               />
               <Field
                 component={RadioButton}
                 name='firstNaloxoneKit'
-                id='firstNaloxoneKit'
+                id='firstNaloxoneKit2'
                 label='No'
                 value={'false'}
-                onChange={props.handleChange}
               />
             </RadioButtonGroup>
             <ErrorMessage name='firstNaloxoneKit' component='div' />
@@ -305,22 +306,23 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
-            <RadioButtonGroup id='overdoseReversal'>
+            <RadioButtonGroup id='overdoseReversal'
+              value={values.overdoseReversal}
+              error={errors.overdoseReversal}
+              touched={touched.overdoseReversal}>
               <Field
                 component={RadioButton}
                 name='overdoseReversal'
-                id='overdoseReversal'
+                id='overdoseReversal1'
                 label='Yes'
                 value={'true'}
-                onChange={props.handleChange}
               />
               <Field
                 component={RadioButton}
                 name='overdoseReversal'
-                id='overdoseReversal'
+                id='overdoseReversal2'
                 label='No'
                 value={'false'}
-                onChange={props.handleChange}
               />
             </RadioButtonGroup>
             <ErrorMessage name='overdoseReversal' component='div' />
@@ -330,9 +332,9 @@ const NaloxoneForm = (props) => (
             <label htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
             <Field component='select' name='overdoseReversalKitType'>
               <option value='selectOptions'onChange={props.handleChange}>Select</option>
-              <option value='IM' onChange={this.handleChange}>IM</option>
-              <option value='E' onChange={this.handleChange}>E</option>
-              <option value='N' onChange={this.handleChange}>N</option>
+              <option value='IM'>IM</option>
+              <option value='E'>E</option>
+              <option value='N'>N</option>
             </Field>
             <ErrorMessage name='overdoseReversalKitType' component='div' />
           </div>
@@ -347,7 +349,7 @@ const NaloxoneForm = (props) => (
             <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
             <Field component='select' name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
-                <option key={idx} value={county} onChange={this.handleChange}>{county}</option>
+                <option key={idx} value={county}>{county}</option>
               )}
             </Field>
             <ErrorMessage name='overdoseReversalCounty' component='div' />
