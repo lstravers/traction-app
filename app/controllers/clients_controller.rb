@@ -21,11 +21,12 @@ class ClientsController < ApplicationController
 
     def create
         @client = params
-        #temporal to test without authentication
         @user_id = current_user.id
-        # @user_id = "6"
+        # @user_id = "6" only for local test
+        
+        @dateob= @client["date_of_birth"]+"/01/01"
         @client_c = ClientConfidential.new(first_name: @client["first_name"],
-            last_name: @client["last_name"], date_of_birth: @client["date_of_birth"], 
+            last_name: @client["last_name"], date_of_birth: @dateob, 
              )
         
         if @client_c.save
@@ -58,17 +59,16 @@ class ClientsController < ApplicationController
 
         @inventory = Inventory.find_by_serial_num(@serial)
 
+        if @inventory.update(user_id: @user_id, client_id: @client2.id, 
+            distributed_date: @client["distributed_date"])
 
-        # if @inventory.update(user_id: @user_id, client_id: @client2.id, 
-            # distributed_date: @client["distributed_date"])
-        #   else
+          else
             @inventory = Inventory.new(user_id: @user_id, client_id: @client2.id, 
                 distributed_date: @client["distributed_date"], kit_type: @client["kit_type"],
                 serial_num: @client["serial_num"] )
-           
             if @inventory.save
                 
-            # end 
+            end 
           end
 
         @client = Client.new(rubified_params)
