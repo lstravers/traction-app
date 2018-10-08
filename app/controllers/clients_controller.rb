@@ -26,7 +26,6 @@ class ClientsController < ApplicationController
         #temporal to test without authentication
         @user_id = current_user.id
         # @user_id = "6"
-        byebug
         @client_c = ClientConfidential.new(first_name: @client["first_name"],
             last_name: @client["last_name"], date_of_birth: @client["date_of_birth"], 
              )
