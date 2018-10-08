@@ -178,10 +178,11 @@ const NaloxoneForm = (props) => (
         }
         if (!values.dateOfBirth) {
           errors.dateOfBirth = 'Required'
+        } else if (values.dateOfBirth.length !== 4) {
+          errors.dateOfBirth = 'Required YYYY'
         }
         return errors
       }}
-
       onSubmit={(values, { setSubmitting }) => {
         console.log(values)
         console.log(values.firstNaloxoneKit)
