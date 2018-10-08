@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
 import NaloxoneForm from './NaloxoneForm'
-import request from 'superagent/superagent.js'
 
 class Scanner extends Component {
   constructor (props) {
@@ -10,13 +9,11 @@ class Scanner extends Component {
     this.state = {
       delay: 1000,
       results: [],
-      scanning: true,
-      value: ''
+      scanning: true
       // reversal: false
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
   handleScan (data) {
@@ -32,12 +29,6 @@ class Scanner extends Component {
     console.error(err)
   }
 
-  handleChange (event) {
-    console.log(event.target.value, 'event.target.value')
-    this.setState({ value: event.target.value })
-    
-  }
-
   handleSubmit () {
     if (this.state.results.length === 0) {
     } else {
@@ -50,18 +41,18 @@ class Scanner extends Component {
       <div>
         {this.state.scanning ? (
           <div className='scan-container'>
-            <div className='exit-button-div'><button className='exit-button'>X</button></div>
+            <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/'}>X</button></div>
             <QrReader
               delay={this.state.delay}
               onError={this.handleError}
               onScan={this.handleScan}
               style={{ width: '50%' }}
             />
-            <div className='serial-button-div'><button className='serial-button'>Enter Serial #</button></div>
+            <div className='serial-button-div'><button className='serial-button' onClick={() => window.location.href='/kitserials'}>Enter Serial #</button></div>
             <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
           </div>)
           : (
-            <NaloxoneForm results={this.state.results} handleChange={this.handleChange} />
+            <NaloxoneForm results={this.state.results} />
           )
         }
       </div>)
