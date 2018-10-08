@@ -23,13 +23,13 @@ class Header extends Component {
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
               <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' onClick={this.handleClick}>
+              <a role='button' className='navbar-burger burger is-active' aria-label='menu' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
               </a>
             </div>
-            <div id='navbar-main' className='navbar-menu'>
+            <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' href='#'>
     Home
@@ -37,7 +37,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
+            <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' href='#'>
     Scan QR Code
@@ -45,7 +45,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
+            <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' href='#'>
     Input Kit Serial Codes
@@ -53,7 +53,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
+            <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item'>
     Logout
