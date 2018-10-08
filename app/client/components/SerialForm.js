@@ -37,7 +37,7 @@ class SerialForm extends React.Component {
               this.setState({
                 results: results.concat([values])
               })
-              window.location.href = '/scanner'
+              window.location.href = '/qrscanner'
             }}
             validate={values => {
               let errors = {}
