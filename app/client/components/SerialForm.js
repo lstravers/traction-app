@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Input, Control, Label} from 'bloomer'
+import {Button, Control, Label} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import NaloxoneForm from './NaloxoneForm'
 
@@ -7,16 +7,23 @@ class SerialForm extends React.Component {
   constructor () {
     super()
     this.state = {
-      formCount: 3,
+      formCount: 1,
       inputtingSerials: true,
       results: []
     }
     this.addInputForm = this.addInputForm.bind(this)
+    this.deleteInputForm = this.deleteInputForm.bind(this)
   }
 
   addInputForm () {
     this.setState({
       formCount: this.state.formCount + 1
+    })
+  }
+
+  deleteInputForm () {
+    this.setState({
+      formCount: this.state.formCount - 1
     })
   }
 
@@ -35,14 +42,14 @@ class SerialForm extends React.Component {
               console.log(values)
               let results = this.state.results
               this.setState({
-                results: results.concat([values])
+                results: results.concat(values.serialNumber),
+                inputtingSerials: false
               })
-              window.location.href = '/scanner'
             }}
             validate={values => {
               let errors = {}
               if (!values.serialNumber) {
-                errors.serialNumber = 'Serial Number Required'
+                errors.serialNumber = 'Required'
               }
               return errors
             }}
@@ -53,11 +60,12 @@ class SerialForm extends React.Component {
                 {kits.map(i => (
                   <Control key={i}>
                     <Label htmlFor={`serialNumber[${i}]`}>Enter serial number</Label>
-                    <Field type='text' name={`serialNumber[${i}]`} component={Input} />
+                    <Field type='text' name={`serialNumber[${i}]`} />
                     <ErrorMessage name={`serialNumber[${i}]`} component='div' />
                   </Control>
                 ))}
-                <Button className='is-primary' type='button' onClick={this.addInputForm}>Add</Button>
+                <Button className='is-primary' type='button' onClick={this.addInputForm}>Add Input</Button>
+                <Button className='is-primary' type='button' onClick={this.deleteInputForm}>Delete Input</Button>
                 <Button className='is-primary button' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
             )}
