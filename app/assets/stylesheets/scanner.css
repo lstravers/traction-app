@@ -32,9 +32,36 @@ button {
 }
 
 .serial-button {
-    width: 325px;
+    width: 10%;
 }
 
 .done-button {
-    width: 300px;
+    width: 10%;
+}
+
+@media screen and (min-width: 798px) {
+    .scan-container {
+        /* max-width: 40%; */
+        margin: 0 auto;
+    }
+
+    button {
+        font-size: 2rem;
+        height: 100px;
+        background-color: lightseagreen;
+        border-radius: 20px;
+        color: white
+    }
+    
+    .exit-button {
+        width: 150px;
+    }
+    
+    .serial-button {
+        width: 325px;
+    }
+    
+    .done-button {
+        width: 300px;
+    }
 }
