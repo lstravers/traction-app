@@ -1,9 +1,7 @@
-
 class ClientsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     before_action :set_client, only: [:show, :edit, :destroy]
-    
 
     def info
         @clients = Client.all
@@ -30,7 +28,6 @@ class ClientsController < ApplicationController
             last_name: @client["last_name"], date_of_birth: @client["date_of_birth"], 
              )
         
-
         if @client_c.save
         end 
 
@@ -55,7 +52,8 @@ class ClientsController < ApplicationController
         if @reversal.save
           
         end 
-        # update/create inventory
+        
+      # update/create inventory
         @serial = @client["serial_num"]
 
         @inventory = Inventory.find_by_serial_num(@serial)
@@ -73,24 +71,34 @@ class ClientsController < ApplicationController
             # end 
           end
 
+        @client = Client.new(rubified_params)
+
+        if @client.save
+            render json: @client, status: :created, notice: "Your account was created successfully."
+        else
+            render json: @client.errors, status: :unprocessable_entity
+        end
     end
 
     def update
 
     end
-# @client = Client.new(client_params)
-        #create record for client confidential
-private
-    # def set_client
-    #     @client = Client.find(params[:id])
-    # end
 
-    # def rubified_params
-    #     new_params = {}
-    #     client_params.each do |k,v|
-    #         new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
-    #     end
-    #     new_params[:user_id] = current_user.id
-    #     return new_params
-    # end
+private
+    def set_client
+        @client = Client.find(params[:id])
+    end
+
+    def client_params
+        params.permit(:city, :county, :firstKit, :user_id)
+    end
+
+    def rubified_params
+        new_params = {}
+        client_params.each do |k,v|
+            new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
+        end
+        new_params[:user_id] = current_user.id
+        return new_params
+    end
 end
