@@ -21,8 +21,8 @@ class ClientsController < ApplicationController
 
     def create
         @client = params
-        @user_id = current_user.id
-        # @user_id = "6" only for local test
+         @user_id = current_user.id
+        # @user_id = "6" #only for local test
         
         @dateob= @client["date_of_birth"]+"/01/01"
         @client_c = ClientConfidential.new(first_name: @client["first_name"],
@@ -66,39 +66,39 @@ class ClientsController < ApplicationController
             @inventory = Inventory.new(user_id: @user_id, client_id: @client2.id, 
                 distributed_date: @client["distributed_date"], kit_type: @client["kit_type"],
                 serial_num: @client["serial_num"] )
-            if @inventory.save
-                
+            if @inventory.save  
             end 
-          end
-
-        @client = Client.new(rubified_params)
-
-        if @client.save
-            render json: @client, status: :created, notice: "Your account was created successfully."
-        else
-            render json: @client.errors, status: :unprocessable_entity
         end
     end
 
-    def update
+#         @client = Client.new(rubified_params)
 
-    end
+#         if @client.save
+#             render json: @client, status: :created, notice: "Your account was created successfully."
+#         else
+#             render json: @client.errors, status: :unprocessable_entity
+#         end
+#     end
 
-private
-    def set_client
-        @client = Client.find(params[:id])
-    end
+#     def update
 
-    def client_params
-        params.permit(:city, :county, :firstKit, :user_id)
-    end
+#     end
 
-    def rubified_params
-        new_params = {}
-        client_params.each do |k,v|
-            new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
-        end
-        new_params[:user_id] = current_user.id
-        return new_params
-    end
+# private
+#     def set_client
+#         @client = Client.find(params[:id])
+#     end
+
+#     def client_params
+#         params.permit(:city, :county, :firstKit, :user_id)
+#     end
+
+#     def rubified_params
+#         new_params = {}
+#         client_params.each do |k,v|
+#             new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
+#         end
+#         new_params[:user_id] = current_user.id
+#         return new_params
+#     end
 end
