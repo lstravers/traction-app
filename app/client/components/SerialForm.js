@@ -12,9 +12,6 @@ class SerialForm extends React.Component {
       results: []
     }
     this.addInputForm = this.addInputForm.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.onBlur = this.onBlur.bind(this)
   }
 
   addInputForm () {
@@ -32,14 +29,20 @@ class SerialForm extends React.Component {
       <div className='form-container'>
         {this.state.inputtingSerials
           ? (<Formik
-            initialValues={{ enterSerialNumber: kits.map(() => '1') }}
+            initialValues={{ serialNumber: kits.map(() => '') }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(false)
+              console.log(values)
+              let results = this.state.results
+              this.setState({
+                results: results.concat([values])
+              })
+              window.location.href = '/scanner'
             }}
             validate={values => {
               let errors = {}
-              if (!values.enterSerialNumber) {
-                errors.enterSerialNumber = 'Serial Number Required'
+              if (!values.serialNumber) {
+                errors.serialNumber = 'Serial Number Required'
               }
               return errors
             }}
@@ -49,8 +52,9 @@ class SerialForm extends React.Component {
               <Form>
                 {kits.map(i => (
                   <Control key={i}>
-                    <Label htmlFor={`enterSerialNumber[${i}]`}>Enter serial number</Label>
-                    <Field type='text' name={`enterSerialNumber[${i}]`} />
+                    <Label htmlFor={`serialNumber[${i}]`}>Enter serial number</Label>
+                    <Field type='text' name={`serialNumber[${i}]`} component={Input} />
+                    <ErrorMessage name={`serialNumber[${i}]`} component='div' />
                   </Control>
                 ))}
                 <Button className='is-primary' type='button' onClick={this.addInputForm}>Add</Button>
