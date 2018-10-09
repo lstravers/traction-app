@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.admin?
-      request.env['omniauth.origin'] || stored_location_for(resource) || home_index_path
-    else
       request.env['omniauth.origin'] || stored_location_for(resource) || home_admin_path
+    else
+      request.env['omniauth.origin'] || stored_location_for(resource) || home_index_path
     end
   end
  
