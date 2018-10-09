@@ -1,9 +1,10 @@
 class ReversalsController < ApplicationController
+    helper_method :sort_column, :sort_direction
 
     #before_action :verify_authentication
 
     def index
-        @reversal = Reversal.all
+        @reversal = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         #render json: @reversal
     end
 
@@ -54,8 +55,20 @@ class ReversalsController < ApplicationController
     private
 
     def reversal_params
-        params.require(:reversal).permit(:county, :town, :doses, :kit_type, :time_between )
+        params.require(:reversal).permit(:county, :town, :doses, :kit_type, :time_between)
         
+    end
+
+    def sort_column
+        sortable_columns.include?(params[:column]) ? params[:column] : "county"
+    end
+      
+    def sortable_columns
+        ["county", "town", "doses"]
+    end
+
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

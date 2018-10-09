@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>County</th>
-    <th>Town</th>
-    <th>Number of Doses</th>
+    <th><%= sort_link "county" %></th>
+    <th><%= sort_link "town" %></th>
+    <th>Number of <%= sort_link "doses" %></th>
     <th>Kit Type </th>
     <th>Time Between Doses (minutes) </th>
   </tr>
@@ -18,6 +18,8 @@
       <td><%= reversal.time_between %></td>
     </tr>
   <% end %>
-</table><br>
+</table>
+  <%= paginate @reversals %>
+  <%= page_entries_info @reversals %>
 
 <%= link_to 'Back', users_path %>
