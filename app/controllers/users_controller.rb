@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   #skip_before_action :authenticate_user! , only: [:create]
+  before_action :check_admin
   before_action :set_user, only: [:show, :update]
 
   def index
@@ -37,11 +38,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit({ roles: [] }, :email, :password, :password_confirmation)
-    end
-  end
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+  #     user_params.permit({ roles: [] }, :email, :password, :password_confirmation)
+  #   end
+  # end
 
   private
   def user_params
@@ -51,5 +52,8 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  def check_admin
+    redirect_to root_path unless current_user.admin?
+ end
 
 end
