@@ -3,7 +3,6 @@ import {Button, Control, Label} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 // import NaloxoneForm from './NaloxoneForm'
 
-
 class SerialForm extends React.Component {
   constructor () {
     super()
@@ -92,7 +91,6 @@ class SerialForm extends React.Component {
         </Formik>
       </div>
     )
-
   }
 }
 export default SerialForm
