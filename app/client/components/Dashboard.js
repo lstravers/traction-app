@@ -10,16 +10,11 @@ class Dashboard extends React.Component {
     window.localStorage.setItem('token', user.token)
     this.setState({currentUser: user})
   }
-  onLogout () {
-    window.localStorage.removeItem('username')
-    window.localStorage.removeItem('token')
-    this.setState({currentUser: false})
-  }
   render () {
     const { currentUser } = this.props
     return (
       <div className='Dashboard'>
-        <Header onLogout={this.onLogout} />
+        <Header />
         <div className='main'>
           <WelcomeView currentUser={currentUser} />
         </div>
