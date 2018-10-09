@@ -75,18 +75,23 @@ class SerialForm extends React.Component {
           handleChange
         >
           {({ isSubmitting }) => (
-            <Form>
-              {kits.map(i => (
-                <Control key={i}>
-                  <Label htmlFor={`serialNumber[${i}]`}>Enter serial number</Label>
-                  <Field type='text' name={`serialNumber[${i}]`} />
-                  <ErrorMessage name={`serialNumber[${i}]`} component='div' />
-                </Control>
-              ))}
-              <Button className='is-primary' type='button' onClick={this.addInputForm}>Add Input</Button>
-              <Button className='is-primary' type='button' onClick={this.deleteInputForm}>Delete Input</Button>
-              <Button className='is-primary button' type='submit' disabled={isSubmitting}>Submit</Button>
-            </Form>
+            <div>
+              <Form>
+                {kits.map(i => (
+                  <Control key={i}>
+                    <Label htmlFor={`serialNumber[${i}]`}>Enter serial number</Label>
+                    <Field type='text' name={`serialNumber[${i}]`} />
+                    <ErrorMessage name={`serialNumber[${i}]`} component='div' />
+                  </Control>
+                ))}
+                <Button className='is-primary' type='button' onClick={this.addInputForm}>Add Input</Button>
+                <Button className='is-primary' type='button' onClick={this.deleteInputForm}>Delete Input</Button>
+                <Button className='is-primary button' type='submit' disabled={isSubmitting}>Submit</Button>
+              </Form>
+              <div>
+                <Button className='is-primary' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+              </div>
+            </div>
           )}
         </Formik>
       </div>
