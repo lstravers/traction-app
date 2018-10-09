@@ -66,4 +66,3 @@ end
     time_between: Faker::Number.between(1, 10)
   )
 end
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

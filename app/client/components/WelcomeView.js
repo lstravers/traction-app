@@ -4,7 +4,7 @@ import { Title, Button } from 'bloomer'
 
 class WelcomeView extends React.Component {
   render () {
-    let {currentUser} = this.props
+    let { currentUser, setManualInput } = this.props
     return (
       <div>
         <Title> Welcome, {currentUser.first_name}!</Title>
