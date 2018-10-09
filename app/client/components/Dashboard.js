@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
     const { currentUser } = this.props
     return (
       <div className='Dashboard'>
-        <Header />
+        {/* <Header /> */}
         <div className='main'>
           <WelcomeView currentUser={currentUser} />
         </div>
