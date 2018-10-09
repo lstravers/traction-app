@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Title, Button } from 'bloomer'
+import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
 class Header extends Component {
@@ -31,7 +31,7 @@ class Header extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' href='#'>
+                <a className='navbar-item' href='/home'>
     Home
                 </a>
               </div>
@@ -39,7 +39,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' href='#'>
+                <a className='navbar-item' onClick={this.props.setQr}>
     Scan QR Code
                 </a>
               </div>
@@ -47,7 +47,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' href='#'>
+                <a className='navbar-item' onClick={this.props.setManualInput}>
     Input Kit Serial Codes
                 </a>
               </div>
@@ -55,7 +55,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item'>
+                <a className='navbar-item' href='/users/logout'>
     Logout
                 </a>
               </div>

@@ -3,8 +3,22 @@ import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
 import Header from './Header'
+import KitSerials from './KitSerials'
 
 class Dashboard extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      status: 'welcome'
+    }
+    this.setKitSerials = this.setKitSerials.bind(this)
+  }
+
+  setKitSerials () {
+    this.setState({
+      status: 'kitSerials'
+    })
+  }
   setCurrentUser (user) {
     window.localStorage.setItem('username', user.username)
     window.localStorage.setItem('token', user.token)
@@ -12,14 +26,21 @@ class Dashboard extends React.Component {
   }
   render () {
     const { currentUser } = this.props
-    return (
-      <div className='Dashboard'>
-        <Header />
-        <div className='main'>
-          <WelcomeView currentUser={currentUser} />
+    const { status } = this.state
+    if (status === 'welcome') {
+      return (
+        <div className='Dashboard'>
+          <Header />
+          <div className='main'>
+            <WelcomeView currentUser={currentUser} setManualInput={this.setManualInput} setKitSerials={this.setKitSerials} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else if (status === 'kitSerials') {
+      return (
+        <KitSerials />
+      )
+    }
   }
 }
 export default Dashboard
