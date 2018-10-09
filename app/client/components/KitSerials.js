@@ -7,10 +7,10 @@ import Header from './Header'
 import ThankYouPage from './ThankYouPage'
 
 class KitSerials extends React.Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = {
-      status: 'qr',
+      status: props.initialStatus || 'qr',
       results: [],
       scanning: true,
       inputtingSerials: false
@@ -21,6 +21,10 @@ class KitSerials extends React.Component {
     this.resultsConcat = this.resultsConcat.bind(this)
     this.setThankYou = this.setThankYou.bind(this)
   }
+
+  // componentDidMount () {
+  //    (window.location.href)
+  // }
 
   resultsConcat (values) {
     this.setState({
@@ -65,7 +69,7 @@ class KitSerials extends React.Component {
       return (
         <div>
           <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
-          <SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} />
+          <SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} />
         </div>
       )
     } else if (status === 'naloxoneForm') {
