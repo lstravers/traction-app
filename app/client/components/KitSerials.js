@@ -22,10 +22,6 @@ class KitSerials extends React.Component {
     this.setThankYou = this.setThankYou.bind(this)
   }
 
-  // componentDidMount () {
-  //    (window.location.href)
-  // }
-
   resultsConcat (values) {
     this.setState({
       results: this.state.results.concat(values)
