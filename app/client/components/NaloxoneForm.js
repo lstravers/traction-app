@@ -181,8 +181,8 @@ const NaloxoneForm = (props) => (
         }
         return errors
       }}
-      onSubmit={(event, values, { setSubmitting }) => {
-        event.preventDefault()
+      onSubmit={(values, { setSubmitting }) => {
+        //event.preventDefault()
         console.log(values)
         console.log(values.firstNaloxoneKit)
         console.log(values.kitType)
@@ -204,6 +204,7 @@ const NaloxoneForm = (props) => (
             'rdoses': values.numberOfDoses,
             'rtime_between': values.minutesBetweenDoses })
           .then(setSubmitting(false))
+          .then(() => { console.log('thanks'); props.setThankYou()})
       }
 
       }
@@ -364,7 +365,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div className='submit-button-div'>
-            <button type='submit' className='submit-button' onClick={props.setThankYou} disabled={isSubmitting}>
+            <button type='submit' className='submit-button' disabled={isSubmitting}>
         Submit
             </button>
           </div>
