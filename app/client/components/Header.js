@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Title, Button } from 'bloomer'
+import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
 class Header extends Component {
@@ -23,39 +23,39 @@ class Header extends Component {
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
               <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' onClick={this.handleClick}>
+              <a role='button' className='navbar-burger burger is-active' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
               </a>
             </div>
-            <div id='navbar-main' className='navbar-menu'>
+            <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' href='#'>
+                <a className='navbar-item' href='/home'>
     Home
                 </a>
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
-              <div className='navbar-start'>
-                <a className='navbar-item' href='#'>
+            <div id='navbar-main' className='navbar-menu is-active'>
+              <div>
+                <a className='navbar-item' onClick={this.props.setQr}>
     Scan QR Code
                 </a>
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
-              <div className='navbar-start'>
-                <a className='navbar-item' href='#'>
+            <div id='navbar-main' className='navbar-menu is-active'>
+              <div>
+                <a className='navbar-item' onClick={this.props.setManualInput}>
     Input Kit Serial Codes
                 </a>
               </div>
             </div>
 
-            <div id='navbar-main' className='navbar-menu'>
-              <div className='navbar-start'>
-                <a className='navbar-item'>
+            <div id='navbar-main' className='navbar-menu is-active'>
+              <div className='navbar-end'>
+                <a className='navbar-item' href='/users/logout'>
     Logout
                 </a>
               </div>
