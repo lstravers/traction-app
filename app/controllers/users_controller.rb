@@ -4,16 +4,18 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update]
 
   def index
-    if current_user.admin?
+    #if current_user.admin?
       @users = User.all
-    else
-      redirect_to root_path, alert: "Access denied"
+    #else
+      # redirect_to root_path, alert: "Access denied"
+    #end
   end
 
   def show
     @user = User.find(params[:id])
     #render json: @user
   end
+
   def edit
     @user = User.find(params[:id])
   end
