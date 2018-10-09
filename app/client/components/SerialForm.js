@@ -56,7 +56,7 @@ class SerialForm extends React.Component {
       kits.push(i)
     }
     return (
-      <div className='form-container'>
+      <div className='container'>
         <Formik
           initialValues={{ serialNumber: kits.map(() => '') }}
           onSubmit={(values, { setSubmitting }) => {
