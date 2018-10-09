@@ -21,8 +21,8 @@ class ClientsController < ApplicationController
 
     def create
         @client = params
-         #@user_id = current_user.id
-        @user_id = "6" #only for local test
+         @user_id = current_user.id
+        #@user_id = "6" #only for local test
         
     
         @dateob= @client["date_of_birth"]
