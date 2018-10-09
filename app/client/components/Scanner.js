@@ -35,7 +35,7 @@ class Scanner extends Component {
   render () {
     return (
       <div className='scan-container'>
-        <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/'}>X</button></div>
+        <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/home'}>X</button></div>
         <QrReader
           delay={this.state.delay}
           onError={this.handleError}
