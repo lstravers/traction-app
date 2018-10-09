@@ -4,6 +4,7 @@ import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
 import Header from './Header'
+import ThankYouPage from './ThankYouPage'
 
 class KitSerials extends React.Component {
   constructor () {
@@ -18,6 +19,7 @@ class KitSerials extends React.Component {
     this.setForm = this.setForm.bind(this)
     this.setQr = this.setQr.bind(this)
     this.resultsConcat = this.resultsConcat.bind(this)
+    this.setThankYou = this.setThankYou.bind(this)
   }
 
   resultsConcat (values) {
@@ -44,6 +46,12 @@ class KitSerials extends React.Component {
     })
   }
 
+  setThankYou () {
+    this.setState({
+      status: 'thankYou'
+    })
+  }
+
   render () {
     let status = this.state.status
     if (status === 'qr') {
@@ -64,7 +72,14 @@ class KitSerials extends React.Component {
       return (
         <div>
           <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
-          <NaloxoneForm results={this.state.results} />
+          <NaloxoneForm results={this.state.results} setThankYou={this.setThankYou} />
+        </div>
+      )
+    } else if (status === 'thankYou') {
+      return (
+        <div>
+          <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
+          <ThankYouPage setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
         </div>
       )
     }

@@ -181,7 +181,8 @@ const NaloxoneForm = (props) => (
         }
         return errors
       }}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(event, values, { setSubmitting }) => {
+        event.preventDefault()
         console.log(values)
         console.log(values.firstNaloxoneKit)
         console.log(values.kitType)
@@ -369,7 +370,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div className='submit-button-div'>
-            <button type='submit' className='submit-button' disabled={isSubmitting}>
+            <button type='submit' className='submit-button' onClick={props.setThankYou} disabled={isSubmitting}>
         Submit
             </button>
           </div>
