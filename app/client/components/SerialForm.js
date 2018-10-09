@@ -3,15 +3,20 @@ import {Button, Control, Label} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 // import NaloxoneForm from './NaloxoneForm'
 
+
 class SerialForm extends React.Component {
   constructor () {
     super()
     this.state = {
       formCount: 1,
+
       inputtingSerials: true
+
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.deleteInputForm = this.deleteInputForm.bind(this)
+    this.handleScan = this.handleScan.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   addInputForm () {
@@ -24,6 +29,26 @@ class SerialForm extends React.Component {
     this.setState({
       formCount: this.state.formCount - 1
     })
+  }
+
+  handleScan (data) {
+    let results = this.state.results
+    if (data) {
+      this.setState({
+        results: results.concat(data)
+      })
+    }
+  }
+
+  handleError (err) {
+    console.error(err)
+  }
+
+  handleSubmit () {
+    if (this.state.results.length === 0) {
+    } else {
+      this.setState(state => ({ scanning: !state.scanning }))
+    }
   }
 
   render () {
@@ -67,6 +92,7 @@ class SerialForm extends React.Component {
         </Formik>
       </div>
     )
+
   }
 }
 export default SerialForm
