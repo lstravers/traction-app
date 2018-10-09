@@ -178,8 +178,6 @@ const NaloxoneForm = (props) => (
         }
         if (!values.dateOfBirth) {
           errors.dateOfBirth = 'Required'
-        } else if (values.dateOfBirth.length !== 4) {
-          errors.dateOfBirth = 'Required YYYY'
         }
         return errors
       }}
@@ -189,22 +187,21 @@ const NaloxoneForm = (props) => (
         console.log(values.kitType)
         console.log(values.kitSerialNumber)
         return request.post(`${apiDomain}/clients`)
-          .send({
-            'client': {'first_name': values.firstName,
-              'last_name': values.lastName,
-              'date_of_birth': values.dateOfBirth,
-              'city': values.townCity,
-              'county': values.county,
-              'distributed_date': values.dateOfDistribution,
-              'kit_type': values.kitType,
-              'serial_num': values.kitSerialNumber,
-              'first_kit': values.firstNaloxoneKit,
-              'overdoseReversal': values.overdoseReversal,
-              'rkit_type': values.overdoseReversalKitType,
-              'rtown': values.overdoseReversalTownCity,
-              'rcounty': values.overdoseReversalCounty,
-              'rdoses': values.numberOfDoses,
-              'rtime_between': values.minutesBetweenDoses }})
+          .send({'first_name': values.firstName,
+            'last_name': values.lastName,
+            'date_of_birth': values.dateOfBirth,
+            'city': values.townCity,
+            'county': values.county,
+            'distributed_date': values.dateOfDistribution,
+            'kit_type': values.kitType,
+            'serial_num': values.kitSerialNumber,
+            'first_kit': values.firstNaloxoneKit,
+            'overdoseReversal': values.overdoseReversal,
+            'rkit_type': values.overdoseReversalKitType,
+            'rtown': values.overdoseReversalTownCity,
+            'rcounty': values.overdoseReversalCounty,
+            'rdoses': values.numberOfDoses,
+            'rtime_between': values.minutesBetweenDoses })
           .then(setSubmitting(false))
       }
 
