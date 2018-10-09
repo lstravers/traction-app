@@ -58,28 +58,32 @@ class ClientsController < ApplicationController
         end 
         
       # update/create inventory
-        @aserial = @client["serial_num"]
-        @aserial.each do |e|
-            @serial = e
-          
+        
+        
+            
+            @aserial = @client["serial_num"]
             @atype = @client["kit_type"]
-            @atype.each do |t|
+           
+            @aserial.zip @atype
+            @aserial.zip(@atype).each do |e, t|
                 @kit_t = t
+                @serial = e
 
                 @inventory = Inventory.find_by_serial_num(@serial)
 
-                if @inventory.update(user_id: @user_id, client_id: @client2.id, 
+                if @inventory 
+                    Inventory.update(user_id: @user_id, client_id: @client2.id, 
                     distributed_date: @client["distributed_date"])
 
                 else
                     @inventory = Inventory.new(user_id: @user_id, client_id: @client2.id, 
                         distributed_date: @client["distributed_date"], kit_type: @kit_t,
-                        serial_num: @client["serial_num"] )
+                        serial_num: @serial )
                     if @inventory.save  
                     end 
                 end
             end    
-        end
+        #end
     end
   
 end
