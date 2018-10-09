@@ -12,7 +12,6 @@ class Header extends Component {
   }
 
   handleClick () {
-    console.log('hey')
     this.setState(state => ({ expanded: !this.state.expanded }))
   }
 
