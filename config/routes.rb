@@ -11,6 +11,7 @@ Rails.application.routes.draw do
    get "qrscanner", to: "home#qrscanner"
    get "kitserials", to: "home#kitserials" 
   resources :home
+  get "admin", to: "home#admin"
   resources :inventories
   resources :users
   resources :reversals

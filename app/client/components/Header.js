@@ -39,7 +39,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={this.props.setQr}>
+                <a className='navbar-item' onClick={() => window.location.href='/kitserials'}>
     Scan QR Code
                 </a>
               </div>
@@ -47,7 +47,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={this.props.setManualInput}>
+                <a className='navbar-item' onClick={() => window.location.href='/kitserials?status=manual'}>
     Input Kit Serial Codes
                 </a>
               </div>
@@ -55,7 +55,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' href='/logout'>
+                <a className='navbar-item' onClick={() => window.location.href='/logout'}>
     Logout
                 </a>
               </div>
