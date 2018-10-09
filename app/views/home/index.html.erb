@@ -3,6 +3,21 @@
 </head>
 
 <%= react_component 'Dashboard', { currentUser: current_user } , :div %>
+<div class="user-panel">
+    <% if current_user.admin? %>
+        <p>Admin Panel</p>
+    <% else %>
+        <p>Volunteer Panel</p>
+    <% end %>
+
+    <ul>
+        <li><%= link_to "Inventory",  %></li>
+        <li><%= link_to "Inventory",  %></li>
+        <li><%= link_to "Inventory",  %></li>
+
+
+    </ul>
+</div>
 
 <%#= react_component 'SerialForm', { currentUser: current_user } , :div %>
 <%#= react_component 'Scanner' %>
