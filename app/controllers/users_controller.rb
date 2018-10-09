@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update]
 
   def index
-      @users = User.order("#{sort_column} #{sort_direction}")
+      @users = User.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
   end
 
   def show

@@ -5,7 +5,7 @@ class InventoriesController < ApplicationController
     def index
         # if admin show all records
         # if current_user.admin
-        @inventories = Inventory.order("#{sort_column} #{sort_direction}")
+        @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         # render json: @inventory
         # else
         # volunteer only show their own records
