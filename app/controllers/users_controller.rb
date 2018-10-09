@@ -6,11 +6,15 @@ class UsersController < ApplicationController
   def index
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     #if current_user.admin?
       @users = User.all
     #else
       # redirect_to root_path, alert: "Access denied"
     #end
+=======
+      @users = User.all
+>>>>>>> Stashed changes
 =======
       @users = User.all
 >>>>>>> Stashed changes
