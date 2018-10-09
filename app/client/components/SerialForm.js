@@ -69,7 +69,8 @@ class SerialForm extends React.Component {
                 <Button className='is-primary button' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
             )}
-          </Formik>)
+          </Formik>
+          )
           : <div>
         (
             <NaloxoneForm results={this.state.results} />
