@@ -22,9 +22,11 @@ class ClientsController < ApplicationController
     def create
         @client = params
          @user_id = current_user.id
-        # @user_id = "6" #only for local test
+        #@user_id = "6" #only for local test
         
-        @dateob= @client["date_of_birth"]+"/01/01"
+    
+        @dateob= @client["date_of_birth"]
+        @dateob = @dateob.to_s + "/01/01"
         @client_c = ClientConfidential.new(first_name: @client["first_name"],
             last_name: @client["last_name"], date_of_birth: @dateob, 
              )
@@ -55,50 +57,28 @@ class ClientsController < ApplicationController
         end 
         
       # update/create inventory
-        @serial = @client["serial_num"]
+        @aserial = @client["serial_num"]
+        @aserial.each do |e|
+            @serial = e
+          
+            @atype = @client["kit_type"]
+            @atype.each do |t|
+                @kit_t = t
 
-        @inventory = Inventory.find_by_serial_num(@serial)
+                @inventory = Inventory.find_by_serial_num(@serial)
 
-        if @inventory.update(user_id: @user_id, client_id: @client2.id, 
-            distributed_date: @client["distributed_date"])
+                if @inventory.update(user_id: @user_id, client_id: @client2.id, 
+                    distributed_date: @client["distributed_date"])
 
-          else
-            @inventory = Inventory.new(user_id: @user_id, client_id: @client2.id, 
-                distributed_date: @client["distributed_date"], kit_type: @client["kit_type"],
-                serial_num: @client["serial_num"] )
-            if @inventory.save  
-            end 
+                else
+                    @inventory = Inventory.new(user_id: @user_id, client_id: @client2.id, 
+                        distributed_date: @client["distributed_date"], kit_type: @kit_t,
+                        serial_num: @client["serial_num"] )
+                    if @inventory.save  
+                    end 
+                end
+            end    
         end
     end
-
-#         @client = Client.new(rubified_params)
-
-#         if @client.save
-#             render json: @client, status: :created, notice: "Your account was created successfully."
-#         else
-#             render json: @client.errors, status: :unprocessable_entity
-#         end
-#     end
-
-#     def update
-
-#     end
-
-# private
-#     def set_client
-#         @client = Client.find(params[:id])
-#     end
-
-#     def client_params
-#         params.permit(:city, :county, :firstKit, :user_id)
-#     end
-
-#     def rubified_params
-#         new_params = {}
-#         client_params.each do |k,v|
-#             new_params[k.to_s.gsub(/[[:upper:]]/, '_\0').downcase.to_sym] = v
-#         end
-#         new_params[:user_id] = current_user.id
-#         return new_params
-#     end
+  
 end
