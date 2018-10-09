@@ -31,7 +31,7 @@ class Header extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' href='/home'>
+                <a className='navbar-item' onClick={() => window.location.href = '/'}>
     Home
                 </a>
               </div>
@@ -55,7 +55,7 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' href='/users/logout'>
+                <a className='navbar-item' href='/logout'>
     Logout
                 </a>
               </div>
