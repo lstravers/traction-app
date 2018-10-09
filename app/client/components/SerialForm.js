@@ -1,7 +1,6 @@
 import React from 'react'
 import {Button, Control, Label} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-// import NaloxoneForm from './NaloxoneForm'
 
 class SerialForm extends React.Component {
   constructor () {
@@ -36,11 +35,10 @@ class SerialForm extends React.Component {
         <Formik
           initialValues={{ serialNumber: kits.map(() => '') }}
           validate={values => {
-            console.log('inside validate', values.serialNumber)
             let errors = {}
             errors.serialNumber = []
             for (let i = 0; i < values.serialNumber.length; i++) {
-              errors.serialNumber[i] = values.serialNumber[i] ? null : 'required'
+              errors.serialNumber[i] = values.serialNumber[i] ? null : 'Required'
             }
             if (errors.serialNumber.every(err => err === null)) {
               delete errors['serialNumber']
@@ -49,7 +47,6 @@ class SerialForm extends React.Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false)
-            console.log(values.serialNumber)
             this.props.resultsConcat(values.serialNumber)
             this.props.setForm()
           }}

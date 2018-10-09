@@ -1,6 +1,8 @@
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 </head>
+<%= react_component 'Header' %>
+
 <div class="admin-panel">
     <div class="header">Admin Panel</div>
     <div class="admin-nav">
@@ -9,8 +11,6 @@
             <li>Total <%= link_to "Reversals", reversals_path %>: <%= Reversal.all.count %></li>
             <li>Total <%= link_to "Inventory", inventories_path %>: <%= Inventory.all.count %></li>
             <li>Total <%= link_to "Volunteers", users_path %>: <%= User.all.count %></li>
-            <li></li>
-            <li><%= link_to "Log Out", "/logout" %></li>
         </ul>
     </div>
 </div>
