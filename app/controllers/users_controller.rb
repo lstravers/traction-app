@@ -1,19 +1,15 @@
 class UsersController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   #skip_before_action :authenticate_user! , only: [:create]
   before_action :set_user, only: [:show, :update]
 
   def index
-    #if current_user.admin?
-      @users = User.all
-    #else
-      # redirect_to root_path, alert: "Access denied"
-    #end
+      @users = User.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
-    #render json: @user
   end
 
   def edit
@@ -50,6 +46,18 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "last_name"
+  end
+  
+  def sortable_columns
+    ["first_name", "last_name", "email", "city", "county"]
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end
