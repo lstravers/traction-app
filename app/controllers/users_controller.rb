@@ -1,31 +1,15 @@
 class UsersController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   #skip_before_action :authenticate_user! , only: [:create]
   before_action :set_user, only: [:show, :update]
 
   def index
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    #if current_user.admin?
-      @users = User.all
-    #else
-      # redirect_to root_path, alert: "Access denied"
-    #end
-=======
-      @users = User.all
->>>>>>> Stashed changes
-=======
-      @users = User.all
->>>>>>> Stashed changes
-=======
-      @users = User.all
->>>>>>> Stashed changes
+      @users = User.order("#{sort_column} #{sort_direction}")
   end
 
   def show
     @user = User.find(params[:id])
-    #render json: @user
   end
 
   def edit
@@ -64,16 +48,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def sortable_columns
-    ["name", "price"]
-  end
-
   def sort_column
-    sortable_columns.include?(params[:column]) ? params[:column] : "name"
+    sortable_columns.include?(params[:column]) ? params[:column] : "last_name"
+  end
+  
+  def sortable_columns
+    ["first_name", "last_name", "email", "city", "county"]
   end
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-  
+
 end

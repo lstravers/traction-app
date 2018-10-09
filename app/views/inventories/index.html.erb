@@ -2,9 +2,9 @@
  <%= link_to 'Enter a New Kit', new_inventory_path %>
 <table>
   <tr>
-    <th>Serial Number</th>
-    <th>Kit Type</th>
-    <th>Expiration Date</th>
+    <th><%= sort_link "serial_number" %></th>
+    <th><%= sort_link "kit_type" %></th>
+    <th><%= sort_link "expiration_date" %></th>
     <th>Distributed Date </th>
     <th>Client ID </th>
     <th>User ID </th>

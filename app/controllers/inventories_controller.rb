@@ -1,10 +1,11 @@
 class InventoriesController < ApplicationController
-   # before_action :verify_authentication
+    helper_method :sort_column, :sort_direction
+    # before_action :verify_authentication
 
     def index
         # if admin show all records
         # if current_user.admin
-        @inventories = Inventory.all
+        @inventories = Inventory.order("#{sort_column} #{sort_direction}")
         # render json: @inventory
         # else
         # volunteer only show their own records
@@ -87,6 +88,18 @@ class InventoriesController < ApplicationController
     def inventory_params
         params.require(:inventory).permit(:user_id, :serial_num, :kit_type, :expiration_date, :distributed_date)
        
+    end
+
+    def sort_column
+        sortable_columns.include?(params[:column]) ? params[:column] : "kit_type"
+    end
+      
+    def sortable_columns
+        ["kit_type", "expiration_date", "serial_num"]
+    end
+
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end
