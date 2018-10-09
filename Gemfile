@@ -44,8 +44,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem "bulma-rails", "~> 0.7.1"
 gem 'bulma-extensions-rails', '~> 1.0', '>= 1.0.26'
 
-# Use ActiveAdmin
-gem 'activeadmin'
+# Use pg_search for displaying certain data
+gem 'pg_search'
+
+# Use kaminari for pagination
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
