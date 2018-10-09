@@ -3,8 +3,8 @@ import { Formik, Form, Field, ErrorMessage, isInteger } from 'formik'
 import moment from 'moment'
 import request from 'superagent'
 
-const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-// const apiDomain = 'http://localhost:3000'
+// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+const apiDomain = 'http://localhost:3000'
 const counties = [
   'Select',
   'Alamance',
@@ -176,17 +176,12 @@ const NaloxoneForm = (props) => (
         if (!values.lastName) {
           errors.lastName = 'Required'
         }
-        if (!values.dateOfBirth) {
+        if (!values.dateOfBirth || values.dateOfBirth.toString().length !== 4) {
           errors.dateOfBirth = 'Required'
         }
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
-        //event.preventDefault()
-        console.log(values)
-        console.log(values.firstNaloxoneKit)
-        console.log(values.kitType)
-        console.log(values.kitSerialNumber)
         return request.post(`${apiDomain}/clients`)
           .send({'first_name': values.firstName,
             'last_name': values.lastName,
@@ -204,7 +199,7 @@ const NaloxoneForm = (props) => (
             'rdoses': values.numberOfDoses,
             'rtime_between': values.minutesBetweenDoses })
           .then(setSubmitting(false))
-          .then(() => { console.log('thanks'); props.setThankYou()})
+          .then(() => props.setThankYou())
       }
 
       }
