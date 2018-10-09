@@ -1,11 +1,8 @@
 import React from 'react'
-// import {Button, Control, Label} from 'bloomer'
-// import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
-// import QrReader from 'react-qr-reader'
 
 class KitSerials extends React.Component {
   constructor () {
@@ -16,30 +13,26 @@ class KitSerials extends React.Component {
       scanning: true,
       inputtingSerials: false
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleScan = this.handleScan.bind(this)
-    this.setManual = this.setManual.bind(this)
+    this.setManualInput = this.setManualInput.bind(this)
+    this.setForm = this.setForm.bind(this)
+    this.resultsConcat = this.resultsConcat.bind(this)
   }
 
-  handleSubmit () {
-    if (this.state.results.length === 0) {
-    } else {
-      this.setState(state => ({ scanning: !state.scanning }))
-    }
+  resultsConcat (values) {
+    this.setState({
+      results: this.state.results.concat(values)
+    })
   }
 
-  handleScan (data) {
-    let results = this.state.results
-    if (data) {
-      this.setState({
-        results: results.concat(data)
-      })
-    }
-  }
-
-  setManual () {
+  setManualInput () {
     this.setState({
       status: 'manual'
+    })
+  }
+
+  setForm () {
+    this.setState({
+      status: 'naloxoneForm'
     })
   }
 
@@ -47,11 +40,11 @@ class KitSerials extends React.Component {
     let status = this.state.status
     if (status === 'qr') {
       return (
-        <Scanner handleSubmit={this.handleSubmit} handleScan={this.handleScan} setManual={this.setManual} />
+        <Scanner setManualInput={this.setManualInput} resultsConcat={this.resultsConcat} setForm={this.setForm} results={this.state.results} />
       )
     } else if (status === 'manual') {
       return (
-        <SerialForm />
+        <SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} />
       )
     } else if (status === 'naloxoneForm') {
       return (
