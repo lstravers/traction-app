@@ -189,7 +189,7 @@ const NaloxoneForm = (props) => (
         return request.post(`${apiDomain}/clients`)
           .send({'first_name': values.firstName,
             'last_name': values.lastName,
-            'date_of_birth': '01/01' + values.dateOfBirth,
+            'date_of_birth': values.dateOfBirth,
             'city': values.townCity,
             'county': values.county,
             'distributed_date': values.dateOfDistribution,
