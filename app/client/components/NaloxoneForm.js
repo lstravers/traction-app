@@ -182,6 +182,7 @@ const NaloxoneForm = (props) => (
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
+        //event.preventDefault()
         console.log(values)
         console.log(values.firstNaloxoneKit)
         console.log(values.kitType)
@@ -203,6 +204,7 @@ const NaloxoneForm = (props) => (
             'rdoses': values.numberOfDoses,
             'rtime_between': values.minutesBetweenDoses })
           .then(setSubmitting(false))
+          .then(() => { console.log('thanks'); props.setThankYou()})
       }
 
       }
@@ -277,12 +279,6 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
-            {/* <span className='firstNaloxoneKit'>
-              <input type='radio' name='firstNaloxoneKit' value='true' />
-              <label htmlFor='firstNaloxoneKit'>Yes</label>
-              <input type='radio' name='firstNaloxoneKit' value='false' />
-              <label htmlFor='firstNaloxoneKit'>No</label>
-            </span> */}
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}

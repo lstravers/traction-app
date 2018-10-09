@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update]
 
   def index
-    @user = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to root_path, alert: "Access denied"
   end
 
   def show
