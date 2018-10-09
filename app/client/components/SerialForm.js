@@ -8,14 +8,10 @@ class SerialForm extends React.Component {
     super()
     this.state = {
       formCount: 1,
-
       inputtingSerials: true
-
     }
     this.addInputForm = this.addInputForm.bind(this)
     this.deleteInputForm = this.deleteInputForm.bind(this)
-    this.handleScan = this.handleScan.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   addInputForm () {
@@ -30,26 +26,6 @@ class SerialForm extends React.Component {
     })
   }
 
-  handleScan (data) {
-    let results = this.state.results
-    if (data) {
-      this.setState({
-        results: results.concat(data)
-      })
-    }
-  }
-
-  handleError (err) {
-    console.error(err)
-  }
-
-  handleSubmit () {
-    if (this.state.results.length === 0) {
-    } else {
-      this.setState(state => ({ scanning: !state.scanning }))
-    }
-  }
-
   render () {
     const kits = []
     for (let i = 0; i < this.state.formCount; i++) {
@@ -59,20 +35,24 @@ class SerialForm extends React.Component {
       <div className='form-container'>
         <Formik
           initialValues={{ serialNumber: kits.map(() => '') }}
-          onSubmit={(values, { setSubmitting }) => {
-            setSubmitting(false)
-            console.log(values)
-            this.props.resultsConcat(values.serialNumber)
-            this.props.setForm()
-          }}
           validate={values => {
+            console.log('inside validate', values.serialNumber)
             let errors = {}
-            if (!values.serialNumber) {
-              errors.serialNumber = 'Required'
+            errors.serialNumber = []
+            for (let i = 0; i < values.serialNumber.length; i++) {
+              errors.serialNumber[i] = values.serialNumber[i] ? null : 'required'
+            }
+            if (errors.serialNumber.every(err => err === null)) {
+              delete errors['serialNumber']
             }
             return errors
           }}
-          handleChange
+          onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(false)
+            console.log(values.serialNumber)
+            this.props.resultsConcat(values.serialNumber)
+            this.props.setForm()
+          }}
         >
           {({ isSubmitting }) => (
             <div>
