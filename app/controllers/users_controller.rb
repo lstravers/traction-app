@@ -32,11 +32,12 @@ end
     if @user.save
       redirect_to users_path, notice: "Your account was created successfully."
     else
-      render json: @user.errors, status: :unprocessable_entity
+      redirect_to users_path, notice: "unprocessable_entity."
     end
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to users_path, notice: "Your account was updated successfully."
     else
@@ -58,7 +59,7 @@ end
 
   private
   def user_params
-    params.permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
+    params.require(:user).permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
   end
 
   def set_user
