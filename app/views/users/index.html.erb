@@ -1,7 +1,5 @@
 <h1>All Volunteers</h1>
-<%= link_to "Register a New Volunteer Account", new_user_registration_path %><br>
-<%= link_to "View Inventory", inventories_path %><br>
-<%= link_to "View All Reversals", reversals_path %><br>
+<%= link_to "Register a New Volunteer Account", users_path %><br>
 <table>
   <tr>
     <th>Date Authorized as Volunteer</th>
@@ -41,6 +39,7 @@
   <% end %>
 </table>
   <%= paginate @users %>
-  <%= page_entries_info @users %>
+  <%= page_entries_info @users %><br>
+  <%= link_to 'Back', admin_path %>
 
   

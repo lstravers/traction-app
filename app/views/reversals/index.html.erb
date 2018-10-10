@@ -9,7 +9,7 @@
     <th>Time Between Doses (minutes) </th>
   </tr>
  
-  <% @reversal.each do |reversal| %>
+  <% @reversals.each do |reversal| %>
     <tr>
       <td><%= reversal.county %></td>
       <td><%= reversal.town%></td>
@@ -20,6 +20,6 @@
   <% end %>
 </table>
   <%= paginate @reversals %>
-  <%= page_entries_info @reversals %>
+  <%= page_entries_info @reversals %><br>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', admin_path %>
