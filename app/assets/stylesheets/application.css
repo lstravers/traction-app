@@ -13,37 +13,71 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
 
- .main {
-   margin:  100px auto;
-   text-align: center;
+/* Universal Styles */
+ body {
+   background-color: #2374AB;
  }
 
- .flash {
-     animation: flash linear .5s 1;
- }
-
- @keyframes flash {
-     0% { opacity: 1; }
-     50% { opacity: .1; }
-     100% {opacity: 1; }
- }
- .container {
-  max-width: 90%;
-}
-
-.button {
+ .button {
   margin-right: 10px;
-  
+  margin-top: 10px;
+  width: 75%;  
 }
 
-img {
-  width: 200px;
+/* HeaderVolunteer , HeaderAdmin */
+ .header-logo {
+  width: 215px;
+  /* margin-top: 5px; */
+  margin-left: 10px;
+  margin-bottom: 0;
+  }
+
+.container {
+  max-width: 90%;
+  padding-top: 50px;
+  background-color: #fff;
+  height: 300px;
+  border-radius: 10%;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.login-container {
+  max-width: 90%;
+  padding-top: 50px;
+  background-color: #fff;
+  height: 300px;
+  border-radius: 10%;
+  margin: 100px auto;
+}
+
+.login-form {
+  max-width: 75%;
+  margin: auto;
+}
+login-img {
+  width: 100px; 
+}
+.main {
+  margin:  100px auto;
+  text-align: center;
+}
+
+.greeting {
+  font-family: "Open Sans";
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+/* Scanner */
+.flash {
+  animation: flash linear .5s 1;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .1; }
+  100% {opacity: 1; }
 }
 

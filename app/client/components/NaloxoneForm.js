@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Formik, Form, Field, ErrorMessage, isInteger } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import moment from 'moment'
 import request from 'superagent'
 
@@ -199,12 +199,13 @@ const NaloxoneForm = (props) => (
             'rdoses': values.numberOfDoses,
             'rtime_between': values.minutesBetweenDoses })
           .then(setSubmitting(false))
+          .then(() => props.resetForm())
           .then(() => props.setThankYou())
       }
 
       }
     >
-      {({ isSubmitting, values, errors, touched }) => (
+      {({ isSubmitting, values, errors, touched, handleReset }) => (
         <Form className='form'>
           <div className='form-instructions'><p>Please fill out the following form</p></div>
           <div>
