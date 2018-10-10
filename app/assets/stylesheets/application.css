@@ -29,35 +29,40 @@
 /* HeaderVolunteer , HeaderAdmin */
  .header-logo {
   width: 215px;
-  /* margin-top: 5px; */
   margin-left: 10px;
   margin-bottom: 0;
   }
 
-.container {
+.card-container {
   max-width: 90%;
   padding-top: 50px;
   background-color: #fff;
   height: 300px;
-  border-radius: 10%;
+  border-radius: 5%;
 }
 
 .login-container {
   max-width: 90%;
-  padding-top: 50px;
+  padding-top: 30px;
   background-color: #fff;
   height: 300px;
-  border-radius: 10%;
-  margin: 100px auto;
+  border-radius: 5%;
+  margin: 30px auto;
 }
 
 .login-form {
   max-width: 75%;
   margin: auto;
 }
-login-img {
-  width: 100px; 
+
+.login-image {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%; 
 }
+
 .main {
   margin:  100px auto;
   text-align: center;
@@ -68,6 +73,14 @@ login-img {
   margin-bottom: 5px;
   font-size: 30px;
   font-weight: 800;
+}
+
+.Card {
+  border-radius: 5px;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 80%;
+  background-color: white;
 }
 
 /* Scanner */

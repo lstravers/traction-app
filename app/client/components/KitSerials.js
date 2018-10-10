@@ -4,6 +4,7 @@ import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
 import ThankYouPage from './ThankYouPage'
+import Card from './Card'
 
 class KitSerials extends React.Component {
   constructor (props) {
@@ -69,13 +70,13 @@ class KitSerials extends React.Component {
     } else if (status === 'manual') {
       return (
         <div>
-          <SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} />
+          <Card><SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} /></Card>
         </div>
       )
     } else if (status === 'naloxoneForm') {
       return (
         <div>
-          <NaloxoneForm results={this.state.results} resetForm={this.resetForm} setThankYou={this.setThankYou} />
+          <Card><NaloxoneForm results={this.state.results} resetForm={this.resetForm} setThankYou={this.setThankYou} /></Card>
         </div>
       )
     } else if (status === 'thankYou') {

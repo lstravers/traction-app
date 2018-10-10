@@ -13,7 +13,7 @@ class SerialForm extends React.Component {
 
   render () {
     return (
-      <div className='container'>
+      <div>
         <Formik
           initialValues={{ serialNumbers: [''] }}
           validate={values => {

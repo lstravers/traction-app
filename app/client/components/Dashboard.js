@@ -2,6 +2,7 @@ import React from 'react'
 import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
+import Card from './Card'
 
 class Dashboard extends React.Component {
   setCurrentUser (user) {
@@ -14,7 +15,7 @@ class Dashboard extends React.Component {
     return (
       <div className='Dashboard'>
         <div className='main'>
-          <WelcomeView currentUser={currentUser} />
+          <Card><WelcomeView currentUser={currentUser} /></Card>
         </div>
       </div>
     )
