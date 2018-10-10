@@ -16,7 +16,13 @@
   </head>
 
   <body>
-  <%= react_component 'Header' %>
+  <% if current_user %>
+    <% if current_user.admin? %>
+      <%= react_component 'HeaderAdmin' %>
+    <% else %>
+      <%= react_component 'HeaderVolunteer' %>
+    <% end %>
+  <% end %>
   <%= yield %>
   </body>
 </html>

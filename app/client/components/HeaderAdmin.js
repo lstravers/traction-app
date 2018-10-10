@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
+import TractionLogo from 'images/traction-logo.svg'
+
 class HeaderAdmin extends Component {
   constructor () {
     super()
@@ -21,8 +23,7 @@ class HeaderAdmin extends Component {
         {this.state.expanded ? (
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/admin'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -77,8 +78,7 @@ class HeaderAdmin extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/admin'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />

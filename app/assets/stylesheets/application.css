@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
  .main {
-   margin: 500px auto;
+   margin:  100px auto;
    text-align: center;
  }
 
@@ -29,7 +30,6 @@
  }
  .container {
   max-width: 90%;
-  margin: 500px auto;
 }
 
 .button {
@@ -38,10 +38,10 @@
 }
 
 img {
-  width: 100px;
+  width: 200px;
 }
 
-.center{
+.center {
   display: block;
   margin-left: auto;
   margin-right: auto;
