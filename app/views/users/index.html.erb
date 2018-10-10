@@ -4,11 +4,6 @@
 </head>
 
 <h1>All Volunteers</h1>
-<ul>
- 
-  <li><%= link_to "View Inventory", inventories_path %></li>
-  <li><%= link_to "View All Reversals", reversals_path %></li>
-</ul>
 
 <%= form_tag users_path, method: :get do %>
 <%= select_tag :search_term_county, "<option>Alamance</option>
