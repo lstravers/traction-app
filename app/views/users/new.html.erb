@@ -7,7 +7,7 @@
 <h2>Please register for your new volunteer account.<h2>
 
 
-  <%= form_with url: users_path,  local:true do |f| %>
+ <%= form_with url: users_path,  local:true do |f| %>
   <%# <%= devise_error_messages! %> 
 
 <div class="field">
@@ -157,13 +157,13 @@
   <%= f.label :date_auth %><br />
     <%= f.date_field :date_auth %>
   </div>
-  <div class="field">
+  <%# <div class="field"> date internally managed
   <%= f.label :admin_auth %><br />
-    <%= f.date_field :admin_auth %>
-  </div>
+    <%# <%= f.date_field :admin_auth %> 
+  <%# </div> %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
