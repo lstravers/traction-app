@@ -41,7 +41,7 @@
   </div>
   <div class="field">
   <%= f.label :admin %><br />
-    <%= f.check_box :admin, {}, false %>
+    <%= f.check_box :admin, {}, true, false %>
   </div>
   <div class="field">
   <%= f.label :contact_type %><br />
@@ -51,10 +51,10 @@
   <%= f.label :date_auth %><br />
     <%= f.date_field :date_auth %>
   </div>
-  <div class="field">
-  <%= f.label :admin_auth %><br />
-    <%= f.date_field :admin_auth %>
-  </div>
+  <%# <div class="field"> %>
+  <%# <%= f.label :admin_auth %><br />
+    <%# <%= f.date_field :admin_auth %>
+  <%# </div> %>
 
   <div class="field">
     <%= f.label :email %><br />

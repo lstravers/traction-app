@@ -1,6 +1,7 @@
 class ReversalsController < ApplicationController
+    before_action :check_admin
     helper_method :sort_column, :sort_direction
-
+    
     #before_action :verify_authentication
 
     def index
@@ -70,5 +71,11 @@ class ReversalsController < ApplicationController
     def sort_direction
         %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
-
+    def check_admin
+        if current_user 
+        redirect_to root_path unless current_user.admin?
+        else
+            redirect_to root_path
+    end 
+    end
 end
