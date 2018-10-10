@@ -2,7 +2,6 @@ import React from 'react'
 import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
-import HeaderVolunteer from './HeaderVolunteer'
 
 class Dashboard extends React.Component {
   setCurrentUser (user) {

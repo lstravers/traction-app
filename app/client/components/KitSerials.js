@@ -3,7 +3,6 @@ import React from 'react'
 import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
-import HeaderVolunteer from './HeaderVolunteer'
 import ThankYouPage from './ThankYouPage'
 
 class KitSerials extends React.Component {
