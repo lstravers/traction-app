@@ -1,13 +1,16 @@
 <h1>Inventory Kit List</h1>
  <%= link_to 'Enter a New Kit', new_inventory_path %>
+
 <table>
   <tr>
-    <th><%= sort_link "serial_number" %></th>
+    <th><%= sort_link "serial_num", "Serial Number" %></th>
     <th><%= sort_link "kit_type" %></th>
     <th><%= sort_link "expiration_date" %></th>
-    <th>Distributed Date </th>
+    <th><%= sort_link "distributed_date" %></th>
+    <th><%= sort_link "county"%>
+    <th><%= sort_link "city"%>
     <th>Client ID </th>
-    <th>User ID </th>
+    <th>Volunteer Name</th>
   </tr>
  
   <% @inventories.each do |inventory| %>
@@ -17,7 +20,9 @@
       <td><%= inventory.expiration_date %></td>
       <td><%= inventory.distributed_date %></td>
       <td><%= inventory.client_id %></td>
-      <td><%= inventory.user_id %></td>
+      <td><%= inventory.user.county %></td>
+      <td><%= inventory.user.city %></td>
+      <td><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
       <td><%= link_to 'Update', edit_inventory_path(inventory) %></td>
     </tr>
   <% end %>

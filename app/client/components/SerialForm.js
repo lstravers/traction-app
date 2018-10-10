@@ -1,78 +1,65 @@
 import React from 'react'
 import {Button, Control, Label} from 'bloomer'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik'
 
 class SerialForm extends React.Component {
   constructor () {
     super()
     this.state = {
-      formCount: 1,
-      inputtingSerials: true
+      inputtingSerials: true,
+      serialNumbers: []
     }
-    this.addInputForm = this.addInputForm.bind(this)
-    this.deleteInputForm = this.deleteInputForm.bind(this)
-  }
-
-  addInputForm () {
-    this.setState({
-      formCount: this.state.formCount + 1
-    })
-  }
-
-  deleteInputForm () {
-    this.setState({
-      formCount: this.state.formCount - 1
-    })
   }
 
   render () {
-    const kits = []
-    for (let i = 0; i < this.state.formCount; i++) {
-      kits.push(i)
-    }
     return (
       <div className='container'>
         <Formik
-          initialValues={{ serialNumber: kits.map(() => '') }}
+          initialValues={{ serialNumbers: [''] }}
           validate={values => {
             let errors = {}
-            errors.serialNumber = []
-            for (let i = 0; i < values.serialNumber.length; i++) {
-              errors.serialNumber[i] = values.serialNumber[i] ? null : 'Required'
+            errors.serialNumbers = []
+            for (let i = 0; i < values.serialNumbers.length; i++) {
+              errors.serialNumbers[i] = values.serialNumbers[i] ? null : 'Required'
             }
-            if (errors.serialNumber.every(err => err === null)) {
-              delete errors['serialNumber']
+            if (errors.serialNumbers.every(err => err === null)) {
+              delete errors['serialNumbers']
             }
             return errors
           }}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false)
-            this.props.resultsConcat(values.serialNumber)
+            this.props.resultsConcat(values.serialNumbers)
             this.props.setForm()
           }}
         >
-          {({ isSubmitting }) => (
+          {({ values, isSubmitting }) => (
             <div>
               <Form>
-                {kits.map(i => (
-                  <Control key={i}>
-                    <Label htmlFor={`serialNumber[${i}]`}>Enter serial number</Label>
-                    <Field type='text' name={`serialNumber[${i}]`} />
-                    <ErrorMessage name={`serialNumber[${i}]`} component='div' />
-                  </Control>
-                ))}
-                <Button className='is-primary' type='button' onClick={this.addInputForm}>Add Input</Button>
-                <Button className='is-primary' type='button' onClick={this.deleteInputForm}>Delete Input</Button>
-                <Button className='is-primary button' type='submit' disabled={isSubmitting}>Submit</Button>
+                <FieldArray name='serialNumbers' render={arrayHelpers => (
+                  <React.Fragment>
+                    {values.serialNumbers.map((el, i) => (
+                      <Control key={i}>
+                        <Label htmlFor={`serialNumbers[${i}]`}>Enter serial number</Label>
+                        <Field type='text' name={`serialNumbers[${i}]`} />
+                        <ErrorMessage name={`serialNumbers[${i}]`} component='div' />
+                        <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
+                      </Control>
+                    ))}
+                    <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
+                  </React.Fragment>
+                )} />
+                <Button className='serial-form-button button' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
               <div>
-                <Button className='is-primary' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+                <Button className='serial-form-button button' type='button' onClick={this.props.setQr}>Scan QR code</Button>
               </div>
             </div>
-          )}
+          ) }
         </Formik>
       </div>
     )
   }
 }
+
 export default SerialForm
