@@ -127,6 +127,8 @@
     <th><%= sort_link "city" %></th>
     <th>State</th>
     <th>Zip</th>
+    <th>Deactivated</th>
+    <th></th>
   </tr>
  
   <% @users.each do |user| %>
@@ -145,9 +147,12 @@
       <td><%= user.city %></td>
       <td><%= user.state %></td>
       <td><%= user.zip %></td>
-      <td><%= link_to 'Update', edit_user_path(user) %></td>
+      <td><%= link_to_if user.deactivated?, "", deactive_user_path(user.id), method: :put, class: "fas fa-user-slash" do
+              link_to "", deactive_user_path(user.id), method: :put, class: "fas fa-user"
+              end %>
+      </td>
     </tr>
-  <% end %>
+    <% end %>
 </table>
   <%= paginate @users %>
   <%= page_entries_info @users %><br>

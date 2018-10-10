@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   #skip_before_action :authenticate_user! , only: [:create]
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: [:show, :update, :toggle_deactivated]
 
   def index
       if search_params[:search_term_county].present?
@@ -47,6 +47,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_deactivated
+    @user.deactivated = !@user.deactivated
+    @user.save!
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
@@ -71,4 +77,5 @@ class UsersController < ApplicationController
   def search_params
     params.permit(:search_term_county, :search_term_city, :search_term_last_name)
   end
+
 end
