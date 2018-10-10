@@ -9,8 +9,8 @@ class Scanner extends Component {
     this.state = {
       delay: 1000,
       results: [],
-      scanning: true
-      // reversal: false
+      scanning: true,
+      flash: false
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,8 +18,15 @@ class Scanner extends Component {
 
   handleScan (data) {
     if (data) {
-      this.props.resultsConcat(data)
+      this.state.results.concat(data)
     }
+    // if (data) {
+    //   setTimeout(() => {
+    //     this.setState({
+    //       flash: true
+    //     })
+    //   }, 1000)
+    // }
   }
 
   handleError (err) {
@@ -33,6 +40,8 @@ class Scanner extends Component {
   }
 
   render () {
+    let { flash } = this.state
+    const flashClass = flash ? `flash` : ''
     return (
       <div className='scan-container'>
         <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/home'}>X</button></div>
@@ -41,6 +50,7 @@ class Scanner extends Component {
           onError={this.handleError}
           onScan={this.handleScan}
           style={{ width: '50%' }}
+          className={`${flashClass}`}
         />
         <div className='serial-button-div'><button className='serial-button' onClick={this.props.setManualInput}>Enter Serial #</button></div>
         <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
