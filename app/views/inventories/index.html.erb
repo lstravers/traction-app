@@ -1,3 +1,8 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<meta name="viewport" content="initial-scale=1.0 width=device-width">
+</head>
+
 <h1>Inventory Kit List</h1>
  <%= link_to 'Enter a New Kit', new_inventory_path %>
 
@@ -7,9 +12,9 @@
     <th><%= sort_link "kit_type" %></th>
     <th><%= sort_link "expiration_date" %></th>
     <th><%= sort_link "distributed_date" %></th>
-    <th><%= sort_link "county"%>
-    <th><%= sort_link "city"%>
     <th>Client ID </th>
+    <th>County</th>
+    <th>City</th>
     <th>Volunteer Name</th>
   </tr>
  
@@ -20,8 +25,8 @@
       <td><%= inventory.expiration_date %></td>
       <td><%= inventory.distributed_date %></td>
       <td><%= inventory.client_id %></td>
-      <td><%= inventory.user.county %></td>
-      <td><%= inventory.user.city %></td>
+      <td><%= Client.find(inventory.client_id).county %></td>
+      <td><%= Client.find(inventory.client_id).city %></td>
       <td><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
       <td><%= link_to 'Update', edit_inventory_path(inventory) %></td>
     </tr>

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Button} from 'bloomer'
-import Header from './HeaderVolunteer'
 
 class ThankYouPage extends React.Component {
   render () {
