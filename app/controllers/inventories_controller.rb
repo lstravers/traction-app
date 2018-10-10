@@ -4,9 +4,15 @@ class InventoriesController < ApplicationController
     # before_action :verify_authentication
 
     def index
+
+        if search_params[:search_term].present?
+            @inventories = Inventory.search_by_expiration_date(search_params[:search_term]).order("created_at DESC").page(params[:page]).per(20)
+        else
+            @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        end
         # if admin show all records
         # if current_user.admin
-        @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        # @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         # render json: @inventory
         # else
         # volunteer only show their own records
@@ -17,7 +23,8 @@ class InventoriesController < ApplicationController
     def show
         @inventory = Inventory.find(params[:id])
         # render json: @inventory
-      end
+    end
+    
     # New
     
     def new
@@ -38,6 +45,7 @@ class InventoriesController < ApplicationController
     def create
 
             @inventory = Inventory.new(inventory_params)
+            @inventory[:distribution_date] = Date.today
         
             if @inventory.save
               redirect_to inventories_path, notice: 'Kit was successfully recorded.'
@@ -96,7 +104,7 @@ class InventoriesController < ApplicationController
     end
       
     def sortable_columns
-        ["kit_type", "expiration_date", "serial_num"]
+        ["kit_type", "expiration_date", "serial_num", "distributed_date"]
     end
 
     def sort_direction
@@ -109,4 +117,8 @@ class InventoriesController < ApplicationController
             redirect_to root_path
     end 
     end 
+    
+    def search_params
+        params.permit(:search_term)
+    end
 end

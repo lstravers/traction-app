@@ -1,21 +1,134 @@
 <h1>All Volunteers</h1>
-<%= link_to "Register a New Volunteer Account", users_path %><br>
+<ul>
+ 
+  <li><%= link_to "View Inventory", inventories_path %></li>
+  <li><%= link_to "View All Reversals", reversals_path %></li>
+</ul>
+
+<%= form_tag users_path, method: :get do %>
+<%= select_tag :search_term_county, "<option>Alamance</option>
+    <option>Alexander</option>
+    <option>Alleghany</option>
+    <option>Anson</option>
+    <option>Ashe</option>
+    <option>Avery</option>
+    <option>Beaufort</option>
+    <option>Bertie</option>
+    <option>Bladen</option>
+    <option>Brunswuick</option>
+    <option>Buncombe</option>
+    <option>Burke</option>
+    <option>Cabarrus</option>
+    <option>Caldwell</option>
+    <option>Camden</option>
+    <option>Carteret</option>
+    <option>Caswell</option>
+    <option>Catawba</option>
+    <option>Chatham</option>
+    <option>Cherokee</option>
+    <option>Chowan</option>
+    <option>Clay</option>
+    <option>Cleveland</option>
+    <option>Columbus</option>
+    <option>Craven</option>
+    <option>Cumberland</option>
+    <option>Currituck</option>
+    <option>Dare</option>
+    <option>Davidson</option>
+    <option>Davie</option>
+    <option>Duplin</option>
+    <option>Durham</option>
+    <option>Edgecombe</option>
+    <option>Forsyth</option>
+    <option>Franklin</option>
+    <option>Gaston</option>
+    <option>Gates</option>
+    <option>Graham</option>
+    <option>Granville</option>
+    <option>Greene</option>
+    <option>Guilford</option>
+    <option>Halifax</option>
+    <option>Harnett</option>
+    <option>Haywood</option>
+    <option>Henderson</option>
+    <option>Hertford</option>
+    <option>Hoke</option>
+    <option>Hyde</option>
+    <option>Iredell</option>
+    <option>Jackson</option>
+    <option>Johnston</option>
+    <option>Jones</option>
+    <option>Lee</option>
+    <option>Lenoir</option>
+    <option>Lincoln</option>
+    <option>McDowell</option>
+    <option>Macon</option>
+    <option>Madison</option>
+    <option>Martin</option>
+    <option>Mecklenburg</option>
+    <option>Mitchell</option>
+    <option>Montgomery</option>
+    <option>Moore</option>
+    <option>Nash</option>
+    <option>New Hanover</option>
+    <option>Northampton</option>
+    <option>Onslow</option>
+    <option>Orange</option>
+    <option>Pamlico</option>
+    <option>Pasquotank</option>
+    <option>Pender</option>
+    <option>Perquimans</option>
+    <option>Person</option>
+    <option>Pitt</option>
+    <option>Polk</option>
+    <option>Randolph</option>
+    <option>Richmond</option>
+    <option>Robeson</option>
+    <option>Rockingham</option>
+    <option>Rowan</option>
+    <option>Rutherford</option>
+    <option>Sampson</option>
+    <option>Scotland</option>
+    <option>Stanly</option>
+    <option>Stokes</option>
+    <option>Surry</option>
+    <option>Swain</option>
+    <option>Transylvania</option>
+    <option>Tyrrell</option>
+    <option>Union</option>
+    <option>Vance</option>
+    <option>Wake</option>
+    <option>Warren</option>
+    <option>Washington</option>
+    <option>Watauga</option>
+    <option>Wayne</option>
+    <option>Wilkes</option>
+    <option>Wilson</option>
+    <option>Yadkin</option>
+    <option>Yancey</option>", :include_blank => "Choose County" %>
+<%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Type a city name to search for here' %>
+<%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Type a volunteer last name to search for here' %>
+<%= submit_tag "Search"%>
+<% end %>
+
 <table>
   <tr>
-    <th>Date Authorized as Volunteer</th>
+    <th><%= sort_link "date_auth", "Date Authorized as Volunteer" %></th>
     <th><%= sort_link "first_name" %></th>
     <th><%= sort_link "last_name" %></th>
-    <th>Administrator</th>
-    <th>Date Authorized as Administrator</th>
-    <th><%= sort_link "email" %></th>
-    <th>Phone Number</th>
-    <th>Preferred Contact Method</th>
+    <th><%= sort_link "admin", "Administrator" %></th>
+    <th><%= sort_link "admin_auth", "Date Authorized as Administrator" %></th>
+    <th><%= sort_link "email", "Email Address" %></th>
+    <th><%= sort_link "phone", "Phone Number" %></th>
+    <th><%= sort_link "contact_type", "Preferred Contact Method" %></th>
     <th><%= sort_link "county" %></th>
-    <th>Address1</th>
-    <th>Address2</th>
+    <th><%= sort_link "address1", "Address 1" %></th>
+    <th><%= sort_link "address2", "Address 2" %></th>
     <th><%= sort_link "city" %></th>
-    <th>State</th>
-    <th>Zip</th>
+    <th><%= sort_link "state" %></th>
+    <th><%= sort_link "zip" %></th>
+    <th><%= sort_link "deactivated", "Active" %></th>
+    <th></th>
   </tr>
  
   <% @users.each do |user| %>
@@ -34,9 +147,12 @@
       <td><%= user.city %></td>
       <td><%= user.state %></td>
       <td><%= user.zip %></td>
-      <td><%= link_to 'Update', edit_user_path(user) %></td>
+      <td><%= link_to_if user.deactivated?, "", deactive_user_path(user.id), method: :put, class: "fas fa-user-slash" do
+              link_to "", deactive_user_path(user.id), method: :put, class: "fas fa-user"
+              end %>
+      </td>
     </tr>
-  <% end %>
+    <% end %>
 </table>
   <%= paginate @users %>
   <%= page_entries_info @users %><br>
