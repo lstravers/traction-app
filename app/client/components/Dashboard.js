@@ -2,7 +2,7 @@ import React from 'react'
 import 'bulma/css/bulma.css'
 
 import WelcomeView from './WelcomeView'
-import Header from './Header'
+import HeaderVolunteer from './HeaderVolunteer'
 
 class Dashboard extends React.Component {
   setCurrentUser (user) {
@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
     const { currentUser } = this.props
     return (
       <div className='Dashboard'>
-        {/* <Header /> */}
+        <HeaderVolunteer />
         <div className='main'>
           <WelcomeView currentUser={currentUser} />
         </div>
