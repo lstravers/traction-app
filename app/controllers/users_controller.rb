@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   end
   
   def sortable_columns
-    ["first_name", "last_name", "email", "city", "county"]
+    ["first_name", "last_name", "password", "email", "phone", "county", "address1", "address2", "city", "state", "zip", "admin", "contact_type", "date_auth", "admin_auth", "deactivated"]
   end
 
   def sort_direction

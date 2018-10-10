@@ -113,21 +113,21 @@
 
 <table>
   <tr>
-    <th>Date Authorized as Volunteer</th>
+    <th><%= sort_link "date_auth", "Date Authorized as Volunteer" %></th>
     <th><%= sort_link "first_name" %></th>
     <th><%= sort_link "last_name" %></th>
-    <th>Administrator</th>
-    <th>Date Authorized as Administrator</th>
-    <th><%= sort_link "email" %></th>
-    <th>Phone Number</th>
-    <th>Preferred Contact Method</th>
+    <th><%= sort_link "admin", "Administrator" %></th>
+    <th><%= sort_link "admin_auth", "Date Authorized as Administrator" %></th>
+    <th><%= sort_link "email", "Email Address" %></th>
+    <th><%= sort_link "phone", "Phone Number" %></th>
+    <th><%= sort_link "contact_type", "Preferred Contact Method" %></th>
     <th><%= sort_link "county" %></th>
-    <th>Address1</th>
-    <th>Address2</th>
+    <th><%= sort_link "address1", "Address 1" %></th>
+    <th><%= sort_link "address2", "Address 2" %></th>
     <th><%= sort_link "city" %></th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Deactivated</th>
+    <th><%= sort_link "state" %></th>
+    <th><%= sort_link "zip" %></th>
+    <th><%= sort_link "deactivated", "Active" %></th>
     <th></th>
   </tr>
  
