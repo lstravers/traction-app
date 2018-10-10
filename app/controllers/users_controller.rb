@@ -2,10 +2,18 @@ class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   #skip_before_action :authenticate_user! , only: [:create]
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: [:show, :update, :toggle_deactivated]
 
   def index
-      @users = User.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+      if search_params[:search_term_county].present?
+        @users = User.search_by_county(search_params[:search_term_county]).order("created_at DESC").page(params[:page]).per(20)
+      elsif search_params[:search_term_city].present?
+        @users = User.search_by_city(search_params[:search_term_city]).order("created_at DESC").page(params[:page]).per(20)        
+      elsif search_params[:search_term_date].present?
+        @users = User.search_by_last_name(search_params[:search_term_last_name]).order("created_at DESC").page(params[:page]).per(20)
+      else
+        @users = User.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+    end
   end
 
   def show
@@ -39,6 +47,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_deactivated
+    @user.deactivated = !@user.deactivated
+    @user.save!
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :password, :email, :phone, :county, :address1, :address2, :city, :state, :zip, :admin, :contact_type, :date_auth, :admin_auth)
@@ -53,11 +67,15 @@ class UsersController < ApplicationController
   end
   
   def sortable_columns
-    ["first_name", "last_name", "email", "city", "county"]
+    ["first_name", "last_name", "password", "email", "phone", "county", "address1", "address2", "city", "state", "zip", "admin", "contact_type", "date_auth", "admin_auth", "deactivated"]
   end
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def search_params
+    params.permit(:search_term_county, :search_term_city, :search_term_last_name)
   end
 
 end

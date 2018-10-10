@@ -9,11 +9,15 @@ Rails.application.routes.draw do
 
    # get "home", to: "home#home"
    get "qrscanner", to: "home#qrscanner"
-   get "kitserials", to: "home#kitserials" 
+   get "kitserials", to: "home#kitserials"
   resources :home
   get "admin", to: "home#admin"
   resources :inventories
-  resources :users
+  resources :users do
+    member do
+      put "deactive", to: "users#toggle_deactivated"
+    end
+  end
   resources :reversals
   # resource :session, only: [:new, :create, :destroy]
   resources :clients
