@@ -22,6 +22,10 @@ class KitSerials extends React.Component {
     this.setThankYou = this.setThankYou.bind(this)
   }
 
+  // updateResults () {
+
+  // }
+
   resultsConcat (values) {
     this.setState({
       results: this.state.results.concat(values)
