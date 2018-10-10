@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
-class Header extends Component {
+class HeaderAdmin extends Component {
   constructor () {
     super()
     this.state = {
@@ -21,8 +21,8 @@ class Header extends Component {
         {this.state.expanded ? (
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger is-active' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
+              <Title isSize={3} onClick={() => window.location.href = '/admin'}>Harm Reduction Tracker</Title>
+              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -30,7 +30,7 @@ class Header extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' onClick={() => window.location.href = '/'}>
+                <a className='navbar-item' onClick={() => window.location.href = '/admin'}>
     Home
                 </a>
               </div>
@@ -38,23 +38,37 @@ class Header extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href='/kitserials'}>
-    Scan QR Code
-                </a>
+                <a className='navbar-item' onClick={() => window.location.href = '/home'}>
+    Naloxone Distribution                </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href='/kitserials?status=manual'}>
-    Input Kit Serial Codes
+                <a className='navbar-item' onClick={() => window.location.href = '/reversals'}>
+    Total Reversals                </a>
+              </div>
+            </div>
+
+            <div id='navbar-main' className='navbar-menu is-active'>
+              <div>
+                <a className='navbar-item' onClick={() => window.location.href = '/inventories'}>
+    Inventory
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' onClick={() => window.location.href='/logout'}>
+                <a className='navbar-item' onClick={() => window.location.href = '/users'}>
+    Volunteers
+                </a>
+              </div>
+            </div>
+
+            <div id='navbar-main' className='navbar-menu is-active'>
+              <div className='navbar-end'>
+                <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
     Logout
                 </a>
               </div>
@@ -63,8 +77,8 @@ class Header extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+              <Title isSize={3} onClick={() => window.location.href = '/admin'}>Harm Reduction Tracker</Title>
+              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -77,4 +91,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default HeaderAdmin
