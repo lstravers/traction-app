@@ -49,9 +49,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def check_admin
+    if current_user 
     redirect_to root_path unless current_user.admin?
- end
-
+    else
+        redirect_to root_path
+  end 
+end 
   def sort_column
     sortable_columns.include?(params[:column]) ? params[:column] : "last_name"
   end
