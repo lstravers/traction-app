@@ -9,8 +9,8 @@ class Scanner extends Component {
     this.state = {
       delay: 1000,
       results: [],
-      scanning: true
-      // flash: false
+      scanning: true,
+      flash: false
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,9 +21,12 @@ class Scanner extends Component {
       this.props.resultsConcat(data)
     }
     if (data) {
+      this.setState({
+        flash: true
+      })
       setTimeout(() => {
         this.setState({
-          flash: true
+          flash: false
         })
       }, 1000)
     }

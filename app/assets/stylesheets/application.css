@@ -15,7 +15,7 @@
  */
 
  .flash {
-     animation: flash linear 1s 2;
+     animation: flash linear .5s 1;
  }
 
  @keyframes flash {
