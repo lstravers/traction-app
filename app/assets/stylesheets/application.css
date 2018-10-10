@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ .main {
+   margin:  100px auto;
+   text-align: center;
+ }
+
  .flash {
      animation: flash linear .5s 1;
  }
@@ -25,9 +30,20 @@
  }
  .container {
   max-width: 90%;
-  margin: 500px auto;
 }
 
 .button {
-  margin-right: 10px
+  margin-right: 10px;
+  
 }
+
+img {
+  width: 200px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
