@@ -61,4 +61,5 @@ class SerialForm extends React.Component {
     )
   }
 }
+
 export default SerialForm

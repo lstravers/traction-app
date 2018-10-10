@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
-// import NaloxoneForm from './NaloxoneForm'
 
 class Scanner extends Component {
   constructor (props) {
