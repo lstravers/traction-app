@@ -19,6 +19,7 @@ class KitSerials extends React.Component {
     this.setQr = this.setQr.bind(this)
     this.resultsConcat = this.resultsConcat.bind(this)
     this.setThankYou = this.setThankYou.bind(this)
+    this.resetForm = this.resetForm.bind(this)
   }
 
   resultsConcat (values) {
@@ -51,6 +52,12 @@ class KitSerials extends React.Component {
     })
   }
 
+  resetForm () {
+    this.setState({
+      results: []
+    })
+  }
+
   render () {
     let status = this.state.status
     if (status === 'qr') {
@@ -68,7 +75,7 @@ class KitSerials extends React.Component {
     } else if (status === 'naloxoneForm') {
       return (
         <div>
-          <NaloxoneForm results={this.state.results} setThankYou={this.setThankYou} />
+          <NaloxoneForm results={this.state.results} resetForm={this.resetForm} setThankYou={this.setThankYou} />
         </div>
       )
     } else if (status === 'thankYou') {
