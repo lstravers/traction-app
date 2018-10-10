@@ -23,7 +23,7 @@ class HeaderAdmin extends Component {
         {this.state.expanded ? (
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/'}><img src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -78,7 +78,7 @@ class HeaderAdmin extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/'}><img src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
