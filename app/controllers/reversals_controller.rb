@@ -4,7 +4,7 @@ class ReversalsController < ApplicationController
     #before_action :verify_authentication
 
     def index
-        @reversal = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        @reversals = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         #render json: @reversal
     end
 
