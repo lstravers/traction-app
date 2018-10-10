@@ -3,13 +3,12 @@
 </head>
 
 <div class="admin-panel">
-    <div class="header">Admin Panel</div>
-    <div class="admin-nav">
-        <ul>
-            <li><%= link_to "Naloxone Distribution", home_index_path %></li>
-            <li>Total <%= link_to "Reversals", reversals_path %>: <%= Reversal.all.count %></li>
-            <li>Total <%= link_to "Inventory", inventories_path %>: <%= Inventory.all.count %></li>
-            <li>Total <%= link_to "Volunteers", users_path %>: <%= User.all.count %></li>
-        </ul>
-    </div>
+        <p><b>Admin Panel</b></p>
+    <ul>
+        <li><%= link_to "Naloxone Distribution", home_index_path %></li>
+        <li><%= link_to "Reversals", reversals_path %></li>
+        <li><%= link_to "Inventory", inventories_path %></li>
+        <li><%= link_to "Volunteers", users_path %></li>
+        <li><%= link_to "Register a New Volunteer", new_user_path %></li>
+    </ul>
 </div>
