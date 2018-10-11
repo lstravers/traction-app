@@ -9,9 +9,9 @@
   <tr>
     <th><%= sort_link "county" %></th>
     <th><%= sort_link "town" %></th>
-    <th>Number of <%= sort_link "doses" %></th>
-    <th>Kit Type </th>
-    <th>Time Between Doses (minutes) </th>
+    <th><%= sort_link "doses", "Number of Doses" %></th>
+    <th><%= sort_link "kit_type" %></th>
+    <th><%= sort_link "time_between", "Time Between Doses (minutes)" %></th>
   </tr>
  
   <% @reversals.each do |reversal| %>
