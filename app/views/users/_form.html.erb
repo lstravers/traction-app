@@ -1,12 +1,23 @@
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-<meta name="viewport" content="initial-scale=1.0 width=device-width">
-</head>
-
-<h1>All Volunteers</h1>
-
-<%= form_tag users_path, method: :get do %>
-<%= select_tag :search_term_county, "<option>Alamance</option>
+<%= form_with model: @user, local: true do |f| %>  
+  <div class="field">
+    <%= f.label :deactivated %><br />
+    <%= f.check_box :deactivated, {}, true, false %>
+  </div>
+<div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+<div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.phone_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :county %><br />
+    <%= select_tag :county, "<option>Alamance</option>
     <option>Alexander</option>
     <option>Alleghany</option>
     <option>Anson</option>
@@ -106,60 +117,64 @@
     <option>Wilson</option>
     <option>Yadkin</option>
     <option>Yancey</option>", :include_blank => "Choose County" %>
-<%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Type a city name to search for here' %>
-<%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Type a volunteer last name to search for here' %>
-<%= submit_tag "Search"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :address1 %><br />
+    <%= f.text_field :address1 %>
+  </div>
+  <div class="field">
+    <%= f.label :address2 %><br />
+    <%= f.text_field :address2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin, {}, true, false %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_type %><br />
+    <%= f.text_field :contact_type %>
+  </div>
+  <div class="field">
+    <%= f.label :date_auth %><br />
+    <%= f.date_field :date_auth %>
+  </div>
+  <% unless @user.admin_auth %>
+  <div class="field">
+    <%= f.label :admin_auth %><br />
+    <%= f.date_field :admin_auth %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <% unless @user.id %>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
 <% end %>
-
-<table>
-  <tr>
-    <th><%= sort_link "first_name" %></th>
-    <th><%= sort_link "last_name" %></th>
-    <th><%= sort_link "admin"%></th>
-    <th><%= sort_link "admin_auth", "Admin Date" %></th>
-    <th><%= sort_link "email"%></th>
-    <th><%= sort_link "phone"%></th>
-    <th><%= sort_link "contact_type", "Contact Method" %></th>
-    <th><%= sort_link "county" %></th>
-    <th><%= sort_link "address1"%></th>
-    <th><%= sort_link "address2"%></th>
-    <th><%= sort_link "city" %></th>
-    <th><%= sort_link "state" %></th>
-    <th><%= sort_link "zip" %></th>
-    <th><%= sort_link "date_auth", "Date Volunteer" %></th>
-    <th><%= sort_link "deactivated", "Active" %></th>
-    <th></th>
-  </tr>
- 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.first_name%></td>
-      <td><%= user.last_name %></td>
-      <td><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
-          link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
-          end %>
-      </td>
-      <td><%= user.admin_auth %></td>
-      <td><%= user.email %></td>
-      <td><%= user.phone %></td>
-      <td><%= user.contact_type %></td>
-      <td><%= user.county %></td>
-      <td><%= user.address1 %></td>
-      <td><%= user.address2 %></td>
-      <td><%= user.city %></td>
-      <td><%= user.state %></td>
-      <td><%= user.zip %></td>
-      <td><%= user.date_auth %></td>
-      <td><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
-              link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
-              end %>
-      </td>
-      <td><%= link_to 'Update', edit_user_path(user) %></td>
-    </tr>
-    <% end %>
-</table>
-  <%= paginate @users %>
-  <%= page_entries_info @users %><br>
-  <%= link_to 'Back', admin_path %>
-
-  

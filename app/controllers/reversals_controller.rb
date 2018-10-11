@@ -65,7 +65,7 @@ class ReversalsController < ApplicationController
     end
       
     def sortable_columns
-        ["county", "town", "doses"]
+        ["county", "town", "doses", "kit_type", "time_between"]
     end
 
     def sort_direction
