@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
 
 /* Universal Styles */
@@ -21,58 +22,13 @@
  }
 
  .button {
-  margin-right: 10px;
+  font-family: Roboto;
   margin-top: 10px;
-  width: 75%;  
+  width: 100%;  
 }
 
-/* HeaderVolunteer , HeaderAdmin */
- .header-logo {
-  width: 215px;
-  margin-left: 10px;
-  margin-bottom: 0;
-  }
-
-.card-container {
-  max-width: 90%;
-  padding-top: 50px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 5%;
-}
-
-.login-container {
-  max-width: 90%;
-  padding-top: 30px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 5%;
-  margin: 30px auto;
-}
-
-.login-form {
-  max-width: 75%;
-  margin: auto;
-}
-
-.login-image {
-  display: block;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 75%; 
-}
-
-.main {
-  margin:  100px auto;
-  text-align: center;
-}
-
-.greeting {
-  font-family: "Open Sans";
-  margin-bottom: 5px;
-  font-size: 30px;
-  font-weight: 800;
+p {
+  font-family: Roboto;
 }
 
 .Card {
@@ -81,6 +37,46 @@
   margin: 2rem auto;
   width: 80%;
   background-color: white;
+}
+
+/* HeaderVolunteer , HeaderAdmin */
+ .header-logo {
+  width: 12rem;
+  margin-left: .5rem;
+  margin-bottom: 0;
+  }
+
+
+/* Login Page */
+
+/* .login-container {
+  margin-top: 50px;
+} */
+
+.login-image {
+  display: block;
+  margin-top: 3.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%; 
+}
+
+/* WelcomeView */
+
+.container-content{
+  text-align: center; 
+
+}
+
+.Card-container {
+  margin-top: 8rem;
+}
+
+.greeting {
+  font-family: "Open Sans";
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 /* Scanner */
