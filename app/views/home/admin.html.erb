@@ -7,7 +7,7 @@
     <div class="header">Admin <i class="fas fa-user-plus"></i> Panel</div>
     <div class="admin-nav">
         <ul>
-            <li><%= link_to "Naloxone Distribution", home_index_path %></li>
+            <li><i class="fas fa-hands-helping"></i> <%= link_to "Naloxone Distribution", home_index_path %></li>
             <li>Total <i class="fas fa-heartbeat"></i> <%= link_to "Reversals", reversals_path %>: <%= Reversal.all.count %></li>
             <li>Total <i class="fas fa-medkit"></i> <%= link_to "Inventory", inventories_path %>: <%= Inventory.all.count %></li>
             <li>Total <i class="far fa-user"></i> <%= link_to "Volunteers", users_path %>: <%= User.all.count %></li>

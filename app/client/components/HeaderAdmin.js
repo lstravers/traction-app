@@ -32,7 +32,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' onClick={() => window.location.href = '/admin'}>
-    Home
+    <i class="fas fa-home"></i> | Home
                 </a>
               </div>
             </div>
@@ -40,21 +40,22 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/home'}>
-    Naloxone Distribution                </a>
+    <i class="fas fa-hands-helping"></i> | Naloxone Distribution                </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/reversals'}>
-    Total Reversals                </a>
+    <i class="fas fa-heartbeat"></i> | Total Reversals
+                </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/inventories'}>
-    Inventory
+    <i class="fas fa-medkit"></i> | Inventory
                 </a>
               </div>
             </div>
@@ -62,7 +63,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/users'}>
-    Volunteers
+    <i class="fas fa-user"></i> | Volunteers
                 </a>
               </div>
             </div>
@@ -70,7 +71,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-    Logout
+    <i class="fas fa-sign-out-alt"></i> | Logout
                 </a>
               </div>
             </div>
