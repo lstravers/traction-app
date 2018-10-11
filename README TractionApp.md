@@ -1,9 +1,9 @@
-# How to Use the Harm Reduction Tracker System
+# How to Use the Traction Application
 
-**Login Volunteer/Administrator**
+**Login User (Volunteer)**
 POST /users
 
-The request body:
+Request body:
 ```
 {
 	"user":
@@ -13,26 +13,50 @@ The request body:
     	}
 }
 ```
-The response:
+Response:
 ```
 {
     "id": 1,
     "email": "email@domain.com",
-    "password_digest": "$2a$11$T4lMD5zWF23B3WuFEREjgOrdr8mloT99TD8BIO6fQ4HLN0PFb2hGS",
-    "auth_token": "MLzKW8Nzwhf4ugNc5ZgGmm2G",
+    "password_digest": "$2a$11$6srJu7eY1cS0lJeImNTQSuYetSbsY.jvEc4ET30Ws37WVjRlyHWRO",
+    "auth_token": "NC9hSMqTnsQmcebKoGFfHqpS",
     "admin": false
+}
+```
+
+**Login User (Administrator)**
+POST /users
+
+Request body:
+```
+{
+	"user":
+		{
+        "email": "email@domain.com",
+        "password": "password"
+    	}
+}
+```
+Response:
+```
+{
+    "id": 1,
+    "email": "email@domain.com",
+    "password_digest": "$2a$11$oXiCzCdoTo8ZtZol9i2M.OvVK51xbLQf4ugC3fHgTq/EW8QowpqoC",
+    "auth_token": "hZxAq5xNmB21EdGp7RgLz48H",
+    "admin": true
 }
 ```
 
 **Forgot Your Password?**
 POST /users/password/new
 
-The request body:
+Request body:
 ```
 {
 	"user":
 		{
-        "email": "email@domain.com",
+        "email": "email@domain.com"
     	}
 }
 ```
@@ -40,9 +64,9 @@ The request body:
 The response is sent as a mailer function to the user's stored email account.
 
 **Scan QR Code**
-POST /qrscanner
+POST /kitserials
 
-The request body:
+Request body:
 ```
 {
             'client': {'first_name': values.firstName,
@@ -62,7 +86,7 @@ The request body:
               'rtime_between': values.minutesBetweenDoses }}
 ```
 
-The response:
+Response:
 ```
 {
             'client': {'first_name': values.firstName,
@@ -82,74 +106,93 @@ The response:
               'rtime_between': values.minutesBetweenDoses }}
 ```
 
-**Enter Serial # (from Scan QR Code Screen)**
-POST /kitserials
-The request body:
+**Input Kit Serial Codes #**
+POST /kitserials?status=manual
+Request body:
 ```
-FRONTEND
+ 
 ```
-The response:
-```
-FRONTEND CODE
+Response:
 ```
 
-**Input Kit Serial Codes**
-POST /qrscanner
-
-The request body:
-```
-FRONTEND CODE
 ```
 
-The response:
+**Form Submission**
+POST /kitserials?status=manual
+
+Request body:
 ```
-FRONTEND CODE
+{ firstName: '',
+        lastName: '',
+        dateOfBirth: '',
+        townCity: '',
+        county: '',
+        dateOfDistribution: moment().format('YYYY-MM-D'),
+        numberOfKits: props.results.length,
+        kitType: props.results.map(() => 'IM'),
+        kitSerialNumber: props.results,
+        firstNaloxoneKit: '',
+        overdoseReversal: '',
+        overdoseReversalKitType: '',
+        overdoseReversalTownCity: '',
+        overdoseReversalCounty: '',
+        numberOfDoses: '',
+        minutesBetweenDoses: '' }
+```
+Response:
+```
+{
+	firstName: 'First',
+	lastName: 'Last',
+	dateOfBirth: '2018-10-10',
+	townCity: 'City',
+	county: 'County',
+	dateOfDistribution: moment().format('YYYY-MM-D'),
+	numberOfKits: props.results.length,
+	kitType: props.results.map(() => 'IM'),
+	kitSerialNumber: props.results,
+	firstNaloxoneKit: true,
+	overdoseReversal: true,
+	overdoseReversalKitType: 'IM',
+	overdoseReversalTownCity: 'City',
+	overdoseReversalCounty: 'County',
+	numberOfDoses: '2',
+	minutesBetweenDoses: '2'
+}
 ```
 
-**Submit Kit Serial Numbers**
-POST /kitserials
-
-The request body:
-```
-FRONTEND CODE
-```
-
-The response:
-```
-FRONTEND CODE
-```
 
 # ADMINISTRATOR-ONLY FUNCTIONS
 
-**Register a New Volunteer Account**
-POST /user/sign_up
+**Register New Volunteer**
+POST /
 
-The request body:
+Request body:
 ```
 {
 	"user":
 		{
-        "first_name": "test",
-        "last_name": "Red Genesis",
-        "phone": "919-123-1234",
-        "county": "Orange",
-        "address1": "101 Address Lane",
-        "adress2": "PO Box 1234",
-        "city": "North Jefferson",
-        "state": "MT",
-        "zip": "37140-0430",
-        "admin": true,
-        "contact_type": "mobile",
-        "date_auth": "2018-10-10",
-        "admin_auth": "2018-10-10",
-        "email": "edwin.lebsack@email.com",
-        "password": "password",
-        "password_confirmation": "password"
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "county": "",
+        "address1": "",
+        "adress2": "",
+        "city": "",
+        "state": "",
+        "zip": "",
+        "admin": ,
+        "contact_type": "",
+        "date_auth": "",
+        "admin_auth": "",
+        "email": "",
+        "password": "",
+        "password_confirmation": ""
     	}
 }
 ```
 
-The response:
+Response:
 ```
 {
         "user_id": 1,
@@ -176,25 +219,31 @@ The response:
 }
 ```
 
-**View Inventory**
-GET /inventories
-
-The request body:
-```
-
-```
-
-The response:
-```
-
-```
 
 # Endpoints
+**Naloxone Distribution**
+GET /home
+
+**Reversals**
+GET /reversals
+
+**Inventory**
+GET /inventories
+
 **Update Inventory**
 GET /inventories/1/edit
 
-**View All Reversals**
-GET /reversals
+**Volunteers**
+GET /users
+
+**Update Volunteer**
+GET /users/4/edit
+
+
+**Register Volunteer**
+GET /users/new
+
+
 
 
 
