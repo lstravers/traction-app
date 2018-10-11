@@ -94,3 +94,11 @@
   100% {opacity: 1; }
 }
 
+.scanner {
+  width: 100%;
+}
+
+.input-field {
+  margin-left: 25px;
+}
+

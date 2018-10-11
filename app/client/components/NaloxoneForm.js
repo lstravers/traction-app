@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
@@ -361,9 +362,9 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div className='submit-button-div'>
-            <button type='submit' className='submit-button' disabled={isSubmitting}>
+            <Button className='is-danger'><button type='submit' className='submit-button' disabled={isSubmitting}>
         Submit
-            </button>
+            </button></Button>
           </div>
         </Form>
       )}

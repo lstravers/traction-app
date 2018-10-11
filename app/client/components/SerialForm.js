@@ -39,20 +39,20 @@ class SerialForm extends React.Component {
                 <FieldArray name='serialNumbers' render={arrayHelpers => (
                   <React.Fragment>
                     {values.serialNumbers.map((el, i) => (
-                      <Control key={i}>
+                      <Control className='input-field' key={i}>
                         <Label htmlFor={`serialNumbers[${i}]`}>Enter serial number</Label>
                         <Field type='text' name={`serialNumbers[${i}]`} />
                         <ErrorMessage name={`serialNumbers[${i}]`} component='div' />
-                        <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
+                        <Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
                       </Control>
                     ))}
-                    <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
+                    <Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
                   </React.Fragment>
                 )} />
-                <Button className='serial-form-button button' type='submit' disabled={isSubmitting}>Submit</Button>
+                <Button className='serial-form-button button is-danger' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
               <div>
-                <Button className='serial-form-button button' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+                <Button className='serial-form-button button is-danger' type='button' onClick={this.props.setQr}>Scan QR code</Button>
               </div>
             </div>
           ) }

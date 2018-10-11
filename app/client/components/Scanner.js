@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
+import { Button } from 'bloomer'
 
 class Scanner extends Component {
   constructor (props) {
@@ -45,19 +46,19 @@ class Scanner extends Component {
     let { flash } = this.state
     const flashClass = flash ? `flash` : ''
     return (
-      <div className='scan-container'>
+      <React.Fragment>
         <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/home'}>X</button></div>
         <div className={`${flashClass}`}>
           <QrReader
             delay={this.state.delay}
             onError={this.handleError}
             onScan={this.handleScan}
-            style={{ width: '50%' }}
+            style={{ width: '100%' }}
           />
         </div>
-        <div className='serial-button-div'><button className='serial-button' onClick={this.props.setManualInput}>Enter Serial #</button></div>
-        <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
-      </div>)
+        <div className='serial-button-div'><Button className='serial-button is-danger' onClick={this.props.setManualInput}>Enter Serial #</Button></div>
+        <div className='done-button-div'><Button className='done-button is-danger' onClick={this.handleSubmit}>Done</Button></div>
+      </React.Fragment>)
   }
 }
 
