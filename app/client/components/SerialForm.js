@@ -43,7 +43,7 @@ class SerialForm extends React.Component {
                         <Label htmlFor={`serialNumbers[${i}]`}>Enter serial number</Label>
                         <Field type='text' name={`serialNumbers[${i}]`} />
                         <ErrorMessage name={`serialNumbers[${i}]`} component='div' />
-                        <Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
+                        <div><Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button></div>
                       </Control>
                     ))}
                     <Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
