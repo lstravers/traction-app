@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:700,900');
 
 /* Universal Styles */
  body {
@@ -81,3 +82,41 @@ login-img {
   100% {opacity: 1; }
 }
 
+
+/* Admin pages */
+
+.admin-container {
+  max-width: 90%;
+  margin: 20px;
+}
+
+.admin-header {
+  width: 100%;
+  background-color: #fff9de;
+  /* border-radius: 10px 10px 0 0; */
+  height: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #2374AB;
+}
+
+.admin-panel {
+  width: 100%;
+  background-color: #fff;
+  height: 300px;
+  border-bottom: 1px solid #2374AB;
+  border-radius: 0 0 5% 5%;
+  padding: 15px;
+}
+
+.ap-ul {
+  margin-top: 10px;
+}
+
+.li-ndistro {
+  margin-bottom: 15px;
+}
+
+.li-newvol {
+  margin-top: 15px;
+}
