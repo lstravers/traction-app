@@ -25,6 +25,12 @@
   font-family: Roboto;
 }
 
+.center-justify {
+  text-align: left;
+  margin: 0 auto;
+  width: 18em;
+}
+
  .button {
   font-family: Roboto;
   margin-top: 10px;
@@ -70,7 +76,6 @@
 
 .container-content{
   text-align: center; 
-
 }
 
 .Card-container {
@@ -78,6 +83,7 @@
 }
 
 .greeting {
+  text-align: center;
   font-family: "Open Sans";
   margin-bottom: .5rem;
   font-size: 2rem;
