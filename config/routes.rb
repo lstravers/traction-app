@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  
-
   devise_for :users, skip: [:sessions, :registrations]
   as :user do
     get '/', to: 'devise/sessions#new', as: :new_user_session
@@ -16,11 +14,9 @@ Rails.application.routes.draw do
   resources :home
   get "admin", to: "home#admin"
   resources :inventories
-  resources :users do
-    member do
-      put "deactive", to: "users#toggle_deactivated"
-    end
-  end
+  resources :users
+  put "deactive", to: "users#toggle_deactivated", as: :deactive_user
+  put "elevate", to: "users#toggle_admin", as: :elevate_user
   resources :reversals
   # resource :session, only: [:new, :create, :destroy]
   resources :clients
