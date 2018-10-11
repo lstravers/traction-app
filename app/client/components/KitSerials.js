@@ -63,25 +63,25 @@ class KitSerials extends React.Component {
     let status = this.state.status
     if (status === 'qr') {
       return (
-        <div className='main'>
+        <div className='scanner-container'>
           <Card><Scanner setManualInput={this.setManualInput} resultsConcat={this.resultsConcat} setForm={this.setForm} results={this.state.results} /></Card>
         </div>
       )
     } else if (status === 'manual') {
       return (
-        <div className='main'>
+        <div>
           <Card><SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} /></Card>
         </div>
       )
     } else if (status === 'naloxoneForm') {
       return (
-        <div className='main'>
+        <div>
           <Card><NaloxoneForm results={this.state.results} resetForm={this.resetForm} setThankYou={this.setThankYou} /></Card>
         </div>
       )
     } else if (status === 'thankYou') {
       return (
-        <div className='main'>
+        <div>
           <Card><ThankYouPage setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} /></Card>
         </div>
       )

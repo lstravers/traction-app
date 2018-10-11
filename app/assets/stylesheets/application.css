@@ -16,10 +16,14 @@
 
  @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
 
-/* Universal Styles */
+/* Universal */
  body {
    background-color: #2374AB;
  }
+
+ p {
+  font-family: Roboto;
+}
 
  .button {
   font-family: Roboto;
@@ -27,16 +31,16 @@
   width: 100%;  
 }
 
-p {
-  font-family: Roboto;
-}
-
 .Card {
   border-radius: 5px;
   padding: 1rem .5rem;
   margin: 2rem auto;
-  width: 80%;
+  width: 90%;
   background-color: white;
+}
+
+.pipe {
+  color: #FF8484;
 }
 
 /* HeaderVolunteer , HeaderAdmin */
@@ -46,16 +50,17 @@ p {
   margin-bottom: 0;
   }
 
+  .navbar-burger {
+    background-color: transparent;
+    color: #2374AB;
+  }
 
 /* Login Page */
 
-/* .login-container {
-  margin-top: 50px;
-} */
 
 .login-image {
   display: block;
-  margin-top: 3.5rem;
+  margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 75%; 
@@ -69,7 +74,7 @@ p {
 }
 
 .Card-container {
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 
 .greeting {
@@ -80,6 +85,11 @@ p {
 }
 
 /* Scanner */
+.delete-button-container {
+  text-align: right;
+  margin-bottom: .5rem;
+}
+
 .flash {
   animation: flash linear .5s 1;
 }
@@ -90,10 +100,9 @@ p {
   100% {opacity: 1; }
 }
 
-.scanner {
-  width: 100%;
+.scanner-container {
+  margin-top: 5rem; 
 }
-
 .input-field {
   margin-left: 25px;
 }

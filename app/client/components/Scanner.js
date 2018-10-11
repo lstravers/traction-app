@@ -14,6 +14,7 @@ class Scanner extends Component {
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.escapePatch = this.escapePatch.bind(this)
   }
 
   handleScan (data) {
@@ -42,12 +43,16 @@ class Scanner extends Component {
     }
   }
 
+  escapePatch () {
+    window.location.href = '/home'
+  }
+
   render () {
     let { flash } = this.state
     const flashClass = flash ? `flash` : ''
     return (
       <React.Fragment>
-        <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/home'}>X</button></div>
+        <div className='delete-button-container'><a onClick={this.escapePatch} ><i class='fas fa-times-circle has-text-danger' /></a></div>
         <div className={`${flashClass}`}>
           <QrReader
             delay={this.state.delay}
@@ -56,8 +61,12 @@ class Scanner extends Component {
             style={{ width: '100%' }}
           />
         </div>
-        <div className='serial-button-div'><Button className='serial-button is-danger' onClick={this.props.setManualInput}>Enter Serial #</Button></div>
-        <div className='done-button-div'><Button className='done-button is-danger' onClick={this.handleSubmit}>Done</Button></div>
+        <div>
+          <Button className='button is-danger' onClick={this.props.setManualInput}>Enter Kit Serial Number</Button>
+        </div>
+        <div>
+          <Button className='button is-danger' onClick={this.handleSubmit}>Done</Button>
+        </div>
       </React.Fragment>)
   }
 }
