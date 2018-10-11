@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: [:sessions]
+  
+  devise_for :users, skip: [:sessions, :registrations]
   as :user do
     get '/', to: 'devise/sessions#new', as: :new_user_session
     post '/', to: 'devise/sessions#create', as: :user_session
@@ -7,13 +8,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # get "home", to: "home#home"
+   # get "home", to: "home#home"
    get "qrscanner", to: "home#qrscanner"
-   get "kitserials", to: "home#kitserials" 
+   get "kitserials", to: "home#kitserials"
   resources :home
   get "admin", to: "home#admin"
   resources :inventories
   resources :users
+  put "deactive", to: "users#toggle_deactivated", as: :deactive_user
+  put "elevate", to: "users#toggle_admin", as: :elevate_user
   resources :reversals
   # resource :session, only: [:new, :create, :destroy]
   resources :clients
