@@ -1,15 +1,20 @@
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<meta name="viewport" content="initial-scale=1.0 width=device-width">
+</head>
+
 <h1>All Reversals</h1>
 
 <table>
   <tr>
     <th><%= sort_link "county" %></th>
     <th><%= sort_link "town" %></th>
-    <th>Number of <%= sort_link "doses" %></th>
-    <th>Kit Type </th>
-    <th>Time Between Doses (minutes) </th>
+    <th><%= sort_link "doses", "Number of Doses" %></th>
+    <th><%= sort_link "kit_type" %></th>
+    <th><%= sort_link "time_between", "Time Between Doses (minutes)" %></th>
   </tr>
  
-  <% @reversal.each do |reversal| %>
+  <% @reversals.each do |reversal| %>
     <tr>
       <td><%= reversal.county %></td>
       <td><%= reversal.town%></td>
@@ -20,6 +25,6 @@
   <% end %>
 </table>
   <%= paginate @reversals %>
-  <%= page_entries_info @reversals %>
+  <%= page_entries_info @reversals %><br>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', admin_path %>

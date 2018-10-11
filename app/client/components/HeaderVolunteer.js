@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { Title } from 'bloomer'
+// import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
-class Header extends Component {
+import TractionLogo from 'images/traction-logo.svg'
+
+class HeaderVolunteer extends Component {
   constructor () {
     super()
     this.state = {
@@ -21,8 +23,8 @@ class Header extends Component {
         {this.state.expanded ? (
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
-              <a role='button' className='navbar-burger burger is-active' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>
+              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -30,32 +32,32 @@ class Header extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' onClick={() => window.location.href = '/'}>
-    Home
+                <a className='navbar-item' onClick={() => window.location.href = '/home'}>
+    <i class="fas fa-home"></i> | Home
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href='/kitserials'}>
-    Scan QR Code
+                <a className='navbar-item' onClick={() => window.location.href = '/kitserials'}>
+    <i class="fas fa-qrcode"></i> | Scan QR Code
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href='/kitserials?status=manual'}>
-    Input Kit Serial Codes
+                <a className='navbar-item' onClick={() => window.location.href = '/kitserials?status=manual'}>
+    <i class="fas fa-medkit"></i> | Input Kit Serial Codes
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' onClick={() => window.location.href='/logout'}>
-    Logout
+                <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
+    <i class="fas fa-sign-out-alt"></i> | Logout
                 </a>
               </div>
             </div>
@@ -63,7 +65,7 @@ class Header extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <Title isSize={3} onClick={() => window.location.href = '/'}>Harm Reduction Tracker</Title>
+              <a onClick={() => window.location.href = '/home'}><img className='header-logo'src={TractionLogo} /></a>
               <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -77,4 +79,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default HeaderVolunteer

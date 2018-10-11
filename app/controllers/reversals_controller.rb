@@ -1,10 +1,11 @@
 class ReversalsController < ApplicationController
+    before_action :check_admin
     helper_method :sort_column, :sort_direction
-
+    
     #before_action :verify_authentication
 
     def index
-        @reversal = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        @reversals = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         #render json: @reversal
     end
 
@@ -64,11 +65,17 @@ class ReversalsController < ApplicationController
     end
       
     def sortable_columns
-        ["county", "town", "doses"]
+        ["county", "town", "doses", "kit_type", "time_between"]
     end
 
     def sort_direction
         %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
-
+    def check_admin
+        if current_user 
+        redirect_to root_path unless current_user.admin?
+        else
+            redirect_to root_path
+    end 
+    end
 end

@@ -3,7 +3,6 @@ import React from 'react'
 import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
-import Header from './Header'
 import ThankYouPage from './ThankYouPage'
 
 class KitSerials extends React.Component {
@@ -20,11 +19,8 @@ class KitSerials extends React.Component {
     this.setQr = this.setQr.bind(this)
     this.resultsConcat = this.resultsConcat.bind(this)
     this.setThankYou = this.setThankYou.bind(this)
+    this.resetForm = this.resetForm.bind(this)
   }
-
-  // componentDidMount () {
-  //    (window.location.href)
-  // }
 
   resultsConcat (values) {
     this.setState({
@@ -56,33 +52,35 @@ class KitSerials extends React.Component {
     })
   }
 
+  resetForm () {
+    this.setState({
+      results: []
+    })
+  }
+
   render () {
     let status = this.state.status
     if (status === 'qr') {
       return (
         <div>
-          <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
           <Scanner setManualInput={this.setManualInput} resultsConcat={this.resultsConcat} setForm={this.setForm} results={this.state.results} />
         </div>
       )
     } else if (status === 'manual') {
       return (
         <div>
-          <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
           <SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} />
         </div>
       )
     } else if (status === 'naloxoneForm') {
       return (
         <div>
-          <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
-          <NaloxoneForm results={this.state.results} setThankYou={this.setThankYou} />
+          <NaloxoneForm results={this.state.results} resetForm={this.resetForm} setThankYou={this.setThankYou} />
         </div>
       )
     } else if (status === 'thankYou') {
       return (
         <div>
-          <Header setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
           <ThankYouPage setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} />
         </div>
       )
