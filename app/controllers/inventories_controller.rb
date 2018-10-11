@@ -104,7 +104,7 @@ class InventoriesController < ApplicationController
     end
       
     def sortable_columns
-        ["kit_type", "expiration_date", "serial_num", "distributed_date", "city", "county"]
+        ["kit_type", "expiration_date", "serial_num", "distributed_date"]
     end
 
     def sort_direction
