@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Select, Button } from 'bloomer'
 import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
@@ -212,19 +213,19 @@ const NaloxoneForm = (props) => (
           <div>
             <label className='label' htmlFor='firstName'>First Name</label>
             <Field className='input' type='text' name='firstName' />
-            <ErrorMessage className='has-tex-danger' name='firstName' component='div' />
+            <ErrorMessage className='has-text-danger' name='firstName' component='div' />
           </div>
 
           <div>
             <label className='label' htmlFor='lastName'>Last Name</label>
             <Field className='input' type='text' name='lastName' />
-            <ErrorMessage classame='has-text-danger' name='lastName' component='div' />
+            <ErrorMessage className='has-text-danger' name='lastName' component='div' />
           </div>
 
           <div>
             <label className='label' htmlFor='dateOfBirth'>Year Of Birth</label>
             <Field className='input' type='number' name='dateOfBirth' placeholder='YYYY' />
-            <ErrorMessage className='has-text=-danger' name='dateOfBirth' component='div' />
+            <ErrorMessage className='has-text-danger' name='dateOfBirth' component='div' />
           </div>
 
           <div>
@@ -235,7 +236,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='county'>County</label>
-            <Field className='input'component='select' name='county'>
+            <Field component={Select} name='county'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
@@ -264,7 +265,7 @@ const NaloxoneForm = (props) => (
                   <ErrorMessage className='has-text-danger' name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
                 <label className='label' htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
-                <Field component='select' name={`kitType[${idx}]`}>
+                <Field component={Select} name={`kitType[${idx}]`}>
                   <option>IM</option>
                   <option>E</option>
                   <option>N</option>
@@ -324,8 +325,8 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
-            <Field className='select' component='select' name='overdoseReversalKitType'>
-              <option className='option' value='selectOptions'onChange={props.handleChange}>Select</option>
+            <Field component={Select} name='overdoseReversalKitType'>
+              <option className='option' value='selectOptions' >Select</option>
               <option value='IM'>IM</option>
               <option value='E'>E</option>
               <option value='N'>N</option>
@@ -341,7 +342,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
-            <Field component='select' name='overdoseReversalCounty'>
+            <Field component={Select} name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
@@ -361,6 +362,8 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Kit Serial Number</Button>
           <div>
             <button className='button is-danger' type='submit' disabled={isSubmitting} >
         Submit
