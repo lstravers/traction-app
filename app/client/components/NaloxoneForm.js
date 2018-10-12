@@ -16,7 +16,7 @@ const counties = [
   'Beaufort',
   'Bertie',
   'Bladen',
-  'Brunswuick',
+  'Brunswick',
   'Buncombe',
   'Burke',
   'Cabarrus',
