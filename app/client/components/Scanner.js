@@ -55,7 +55,7 @@ class Scanner extends Component {
             style={{ width: '50%' }}
           />
         </div>
-        <div className='serial-button-div'><button className='serial-button' onClick={this.props.setManualInput}>Enter Serial #</button></div>
+        <div className='serial-button-div'><button className='serial-button' onClick={this.props.setManualInput}>Input Kit Serial Codes</button></div>
         <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
         <div className='kit-count'>Kits Scanned: {this.props.results.length}</div>
       </div>)
