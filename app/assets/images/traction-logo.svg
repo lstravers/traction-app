@@ -11,7 +11,10 @@
 	.st5{fill:#F48385;}
 	.st6{fill:#2374AC;}
 	.st7{fill:#58C3B8;}
-	.st8{fill:#FEF8DF;}
+	.st8{fill:#FEF8DF;}    
+	@font-face {
+      src: url('https://fonts.googleapis.com/css?family=Open+Sans:800i');
+    }
 </style>
 <text transform="matrix(1 0 0 1 92.7738 86.7182)"><tspan x="0" y="0" class="st0 st1 st2 st3">tr</tspan><tspan x="67" y="0" class="st0 st1 st2 st4">a</tspan><tspan x="111.3" y="0" class="st0 st1 st2">c</tspan><tspan x="152.1" y="0" class="st0 st1 st2 st3">ti</tspan><tspan x="210.7" y="0" class="st0 st1 st2 st4">on</tspan></text>
 <g id="XMLID_1_">
