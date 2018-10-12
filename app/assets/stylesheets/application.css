@@ -13,71 +13,83 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
 
 /* Universal Styles */
- body {
-   background-color: #2374AB;
- }
+body {
+    background-color: #2374AB;
+}
 
- .button {
-  margin-right: 10px;
-  margin-top: 10px;
-  width: 75%;  
+.button {
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 75%;
 }
 
 /* HeaderVolunteer , HeaderAdmin */
- .header-logo {
-  width: 215px;
-  /* margin-top: 5px; */
-  margin-left: 10px;
-  margin-bottom: 0;
-  }
+.header-logo {
+    width: 215px;
+    /* margin-top: 5px; */
+    margin-left: 10px;
+    margin-bottom: 0;
+}
 
 .container {
-  max-width: 90%;
-  padding-top: 50px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 10%;
+    max-width: 90%;
+    padding-top: 50px;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 10%;
 }
 
 .login-container {
-  max-width: 90%;
-  padding-top: 50px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 10%;
-  margin: 100px auto;
+    max-width: 90%;
+    padding-top: 50px;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 10%;
+    margin: 100px auto;
 }
 
 .login-form {
-  max-width: 75%;
-  margin: auto;
+    max-width: 75%;
+    margin: auto;
 }
+
 login-img {
-  width: 100px; 
+    width: 100px;
 }
+
 .main {
-  margin:  100px auto;
-  text-align: center;
+    margin: 100px auto;
+    text-align: center;
 }
 
 .greeting {
-  font-family: "Open Sans";
-  margin-bottom: 5px;
-  font-size: 30px;
-  font-weight: 800;
+    font-family: "Open Sans";
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 800;
 }
 
 /* Scanner */
 .flash {
-  animation: flash linear .5s 1;
+    animation: flash linear .5s 1;
 }
 
 @keyframes flash {
-  0% { opacity: 1; }
-  50% { opacity: .1; }
-  100% {opacity: 1; }
-}
+    0% {
+        background-color: green;
+        opacity: .1;
+    }
 
+    50% {
+        background-color: green;
+        opacity: 1;
+    }
+
+    100% {
+        background-color: green;
+        opacity: .1;
+    }
+}
