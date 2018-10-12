@@ -1,180 +1,198 @@
 <%= form_with model: @user, local: true do |f| %>  
-  <div class="field">
-    <%= f.label :deactivated %><br />
-    <%= f.check_box :deactivated, {}, true, false %>
+  <div class="form-field-box">
+    <div class="field">
+      <%= f.label :deactivated? %><br />
+      <%= f.check_box :deactivated, {}, true, false %>
+    </div>
+    <div class="field">
+      <%= f.label :admin? %><br />
+      <%= f.check_box :admin, {}, true, false %>
   </div>
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
   </div>
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.phone_field :phone %>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.phone_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+      <div class="field">
+      <%= f.label :contact_type %><br />
+      <%= f.select(:contact_type, ['Text',
+          'Phone',
+          'Email'], :include_blank => "Choose Method") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :county %><br />
-    <%= select_tag :county, "<option>Alamance</option>
-    <option>Alexander</option>
-    <option>Alleghany</option>
-    <option>Anson</option>
-    <option>Ashe</option>
-    <option>Avery</option>
-    <option>Beaufort</option>
-    <option>Bertie</option>
-    <option>Bladen</option>
-    <option>Brunswuick</option>
-    <option>Buncombe</option>
-    <option>Burke</option>
-    <option>Cabarrus</option>
-    <option>Caldwell</option>
-    <option>Camden</option>
-    <option>Carteret</option>
-    <option>Caswell</option>
-    <option>Catawba</option>
-    <option>Chatham</option>
-    <option>Cherokee</option>
-    <option>Chowan</option>
-    <option>Clay</option>
-    <option>Cleveland</option>
-    <option>Columbus</option>
-    <option>Craven</option>
-    <option>Cumberland</option>
-    <option>Currituck</option>
-    <option>Dare</option>
-    <option>Davidson</option>
-    <option>Davie</option>
-    <option>Duplin</option>
-    <option>Durham</option>
-    <option>Edgecombe</option>
-    <option>Forsyth</option>
-    <option>Franklin</option>
-    <option>Gaston</option>
-    <option>Gates</option>
-    <option>Graham</option>
-    <option>Granville</option>
-    <option>Greene</option>
-    <option>Guilford</option>
-    <option>Halifax</option>
-    <option>Harnett</option>
-    <option>Haywood</option>
-    <option>Henderson</option>
-    <option>Hertford</option>
-    <option>Hoke</option>
-    <option>Hyde</option>
-    <option>Iredell</option>
-    <option>Jackson</option>
-    <option>Johnston</option>
-    <option>Jones</option>
-    <option>Lee</option>
-    <option>Lenoir</option>
-    <option>Lincoln</option>
-    <option>McDowell</option>
-    <option>Macon</option>
-    <option>Madison</option>
-    <option>Martin</option>
-    <option>Mecklenburg</option>
-    <option>Mitchell</option>
-    <option>Montgomery</option>
-    <option>Moore</option>
-    <option>Nash</option>
-    <option>New Hanover</option>
-    <option>Northampton</option>
-    <option>Onslow</option>
-    <option>Orange</option>
-    <option>Pamlico</option>
-    <option>Pasquotank</option>
-    <option>Pender</option>
-    <option>Perquimans</option>
-    <option>Person</option>
-    <option>Pitt</option>
-    <option>Polk</option>
-    <option>Randolph</option>
-    <option>Richmond</option>
-    <option>Robeson</option>
-    <option>Rockingham</option>
-    <option>Rowan</option>
-    <option>Rutherford</option>
-    <option>Sampson</option>
-    <option>Scotland</option>
-    <option>Stanly</option>
-    <option>Stokes</option>
-    <option>Surry</option>
-    <option>Swain</option>
-    <option>Transylvania</option>
-    <option>Tyrrell</option>
-    <option>Union</option>
-    <option>Vance</option>
-    <option>Wake</option>
-    <option>Warren</option>
-    <option>Washington</option>
-    <option>Watauga</option>
-    <option>Wayne</option>
-    <option>Wilkes</option>
-    <option>Wilson</option>
-    <option>Yadkin</option>
-    <option>Yancey</option>", :include_blank => "Choose County" %>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :address1 %><br />
+      <%= f.text_field :address1 %>
+    </div>
+    <div class="field">
+      <%= f.label :address2 %><br />
+      <%= f.text_field :address2 %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :address1 %><br />
-    <%= f.text_field :address1 %>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :state %><br />
+      <%= f.text_field :state, maxlength: 2 %>
+    </div>
+    <div class="field">
+      <%= f.label :zip %><br />
+      <%= f.text_field :zip, maxlength: 12 %>
+    </div>
+    <div class="field">
+      <%= f.label :county %><br />
+      <%= f.select(:county, [
+        'Select',
+        'Alamance',
+        'Alexander',
+        'Alleghany',
+        'Anson',
+        'Ashe',
+        'Avery',
+        'Beaufort',
+        'Bertie',
+        'Bladen',
+        'Brunswick',
+        'Buncombe',
+        'Burke',
+        'Cabarrus',
+        'Caldwell',
+        'Camden',
+        'Carteret',
+        'Caswell',
+        'Catawba',
+        'Chatham',
+        'Cherokee',
+        'Chowan',
+        'Clay',
+        'Cleveland',
+        'Columbus',
+        'Craven',
+        'Cumberland',
+        'Currituck',
+        'Dare',
+        'Davidson',
+        'Davie',
+        'Duplin',
+        'Durham',
+        'Edgecombe',
+        'Forsyth',
+        'Franklin',
+        'Gaston',
+        'Gates',
+        'Graham',
+        'Granville',
+        'Greene',
+        'Guilford',
+        'Halifax',
+        'Harnett',
+        'Haywood',
+        'Henderson',
+        'Hertford',
+        'Hoke',
+        'Hyde',
+        'Iredell',
+        'Jackson',
+        'Johnston',
+        'Jones',
+        'Lee',
+        'Lenoir',
+        'Lincoln',
+        'McDowell',
+        'Macon',
+        'Madison',
+        'Martin',
+        'Mecklenburg',
+        'Mitchell',
+        'Montgomery',
+        'Moore',
+        'Nash',
+        'New Hanover',
+        'Northampton',
+        'Onslow',
+        'Orange',
+        'Pamlico',
+        'Pasquotank',
+        'Pender',
+        'Perquimans',
+        'Person',
+        'Pitt',
+        'Polk',
+        'Randolph',
+        'Richmond',
+        'Robeson',
+        'Rockingham',
+        'Rowan',
+        'Rutherford',
+        'Sampson',
+        'Scotland',
+        'Stanly',
+        'Stokes',
+        'Surry',
+        'Swain',
+        'Transylvania',
+        'Tyrrell',
+        'Union',
+        'Vance',
+        'Wake',
+        'Warren',
+        'Washington',
+        'Watauga',
+        'Wayne',
+        'Wilkes',
+        'Wilson',
+        'Yadkin',
+        'Yancey'
+        ], :include_blank => "Choose County" )%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :address2 %><br />
-    <%= f.text_field :address2 %>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :date_auth %><br />
+      <%= f.date_field :date_auth %>
+    </div>
+    <% unless @user.admin_auth %>
+    <div class="field">
+      <%= f.label :admin_auth %><br />
+      <%= f.date_field :admin_auth %>
+    </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+  <div class="form-field-box ffb-col">
+    <% unless @user.id %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :admin %><br />
-    <%= f.check_box :admin, {}, true, false %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_type %><br />
-    <%= f.text_field :contact_type %>
-  </div>
-  <div class="field">
-    <%= f.label :date_auth %><br />
-    <%= f.date_field :date_auth %>
-  </div>
-  <% unless @user.admin_auth %>
-  <div class="field">
-    <%= f.label :admin_auth %><br />
-    <%= f.date_field :admin_auth %>
-  </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <% unless @user.id %>
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <% end %>
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
-<% end %>
+  <% end %>

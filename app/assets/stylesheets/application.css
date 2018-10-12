@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto');
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:700,900');
 
 /* Universal Styles */
 body {
@@ -92,4 +93,128 @@ login-img {
         background-color: green;
         opacity: .1;
     }
+}
+/* Admin pages */
+
+.admin-container {
+  max-width: 95%;
+  margin: 20px;
+}
+
+.admin-header {
+  width: 100%;
+  background-color: #fff9de;
+  height: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #2374AB;
+}
+
+.admin-panel {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #2374AB;
+  border-radius: 0 0 5% 5%;
+  padding: 15px;
+}
+
+.ap-ul {
+  margin-top: 10px;
+}
+
+.li-ndistro {
+  margin-bottom: 15px;
+}
+
+.li-newvol {
+  margin-top: 15px;
+}
+
+.search-container {
+  width: 100%;
+}
+
+.page-index {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+}
+
+.pagination {
+  justify-content: space-evenly;
+}
+
+/* Admin view - User pages */
+
+.volunteer-index-table {
+  width: 100%;
+  font-size: .9rem;
+}
+
+.volunteer-index-table th,
+.volunteer-index-table td {
+  text-align: center;
+}
+
+.volunteer-index-table tr:nth-child(even) {
+  background-color: #fff9de;
+}
+
+/* Admin view - Inventory pages */
+
+.inventory-index-table {
+  width: 100%;
+  font-size: .9rem;
+}
+
+.inventory-index-table th,
+.inventory-index-table td {
+  text-align: center;
+}
+
+.inventory-index-table tr:nth-child(even) {
+  background-color: #fff9de;
+}
+
+/* Admin view - Reversal pages */
+
+.reversal-index-table {
+  width: 100%;
+  font-size: .9rem;
+}
+
+.reversal-index-table th,
+.reversal-index-table td {
+  text-align: center;
+}
+
+.reversal-index-table tr:nth-child(even) {
+  background-color: #fff9de;
+}
+
+/* Admin view - user form */
+
+.form-field-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.form-field-box .field {
+  margin: 15px;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+  .tbl-desktop {
+    display: none;
+  }
+
+  .ffb-col {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
