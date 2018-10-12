@@ -6,7 +6,7 @@
             <ul class="ap-ul">
                 <li class="li-ndistro"><i class="fas fa-hands-helping"></i> <%= link_to "Naloxone Distribution", home_index_path %></li>
                 <li>Total <i class="fas fa-heartbeat"></i> <%= link_to "Reversals", reversals_path %>: <%= Reversal.all.count %></li>
-                <li>Total <i class="fas fa-medkit"></i> <%= link_to "Inventory", inventories_path %>: <%= Inventory.all.count %></li>
+                <li>Total <i class="fas fa-medkit"></i> <%= link_to "Distributed Naloxone Kits", inventories_path %>: <%= Inventory.all.count %></li>
                 <li>Total <i class="far fa-user"></i> <%= link_to "Volunteers", users_path %>: <%= User.all.count %></li>
                 <li class="li-newvol"><%= link_to "Register a New Volunteer", new_user_path %></li>
             </ul>

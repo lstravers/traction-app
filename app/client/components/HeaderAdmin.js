@@ -55,7 +55,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/inventories'}>
-    <i className="fas fa-medkit"></i> | Inventory
+    <i className="fas fa-medkit"></i> | Distributed Naloxone Kits
                 </a>
               </div>
             </div>
