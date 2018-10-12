@@ -4,8 +4,9 @@ import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
-// const apiDomain = 'http://harm-reduction-tracker.herokuapp.com'
-const apiDomain = 'http://localhost:3000'
+const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+// const apiDomain = 'http://localhost:3000'
+
 const counties = [
   'Select',
   'Alamance',
