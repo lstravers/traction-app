@@ -4,8 +4,8 @@ import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
-const apiDomain = 'http://harm-reduction-tracker.herokuapp.com'
-// const apiDomain = 'http://localhost:3000'
+// const apiDomain = 'http://harm-reduction-tracker.herokuapp.com'
+const apiDomain = 'http://localhost:3000'
 const counties = [
   'Select',
   'Alamance',
@@ -362,9 +362,9 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div className='submit-button-div'>
-            <Button className='is-danger'><button type='submit' className='submit-button' disabled={isSubmitting}>
+            <button type='submit' className='submit-button' disabled={isSubmitting}>
         Submit
-            </button></Button>
+            </button>
           </div>
         </Form>
       )}
