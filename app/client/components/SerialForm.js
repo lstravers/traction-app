@@ -40,10 +40,12 @@ class SerialForm extends React.Component {
                   <React.Fragment>
                     {values.serialNumbers.map((el, i) => (
                       <Control className='input-field' key={i}>
-                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>Enter Serial Number</Label>
+                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>Enter Serial Number
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a onClick={() => arrayHelpers.remove([i])}><i class='fas fa-times-circle has-text-danger align' /></a></Label>
                         <Field className='input' type='text' name={`serialNumbers[${i}]`} />
                         <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
-                        <Button className='button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
                       </Control>
                     ))}
                     <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>

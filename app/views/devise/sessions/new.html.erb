@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 </head>
 
-<%= image_tag "traction-logo-white-01.png", class: "login-image" %>
+<%= image_tag "traction-logo-white.svg", class: "login-image" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="login-container">
@@ -28,7 +28,11 @@
       <div>
         <%= f.submit "Log in", class:"button is-danger"%>
       </div>
-      <%= render "devise/shared/links" %>
+
+      <div class="password-reset">
+        <%= render "devise/shared/links"%>
+      </div>
+
       </div>
   </div>
 <% end %>
