@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Title } from 'bloomer'
 import 'bulma/css/bulma.css'
 
 import TractionLogo from 'images/traction-logo.svg'
@@ -23,7 +22,8 @@ class HeaderAdmin extends Component {
         {this.state.expanded ? (
           <nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-active is-large' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
+              <a onClick={() => (window.location.href = '/')}><img className='header-logo' src={TractionLogo} /></a>
+              <a role='button' className='navbar-burger burger is-active is-danger' aria-label='menu is-active' aria-expanded='false' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
@@ -31,7 +31,7 @@ class HeaderAdmin extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' onClick={() => window.location.href = '/admin'}>
+                <a className='navbar-item' onClick={() => (window.location.href = '/admin')}>
                   <i className='fas fa-home' /> | Home
                 </a>
               </div>
@@ -39,39 +39,39 @@ class HeaderAdmin extends Component {
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href = '/home'}>
+                <a className='navbar-item' onClick={() => (window.location.href = '/home')}>
                   <i className='fas fa-hands-helping' /> | Naloxone Distribution                </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href = '/reversals'}>
-                  <i className='fas fa-heartbeat' /> | Total Reversals
+                <a className='navbar-item' onClick={() => (window.location.href = '/reversals')}>
+                  <i className='fas fa-heartbeat' /><span className='pipe'> | </span>Total Reversals
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href = '/inventories'}>
-                  <i className='fas fa-medkit' /> | Inventory
+                <a className='navbar-item' onClick={() => (window.location.href = '/inventories')}>
+                  <i className='fas fa-medkit' /><span className='pipe'> | </span>Inventory
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' onClick={() => window.location.href = '/users'}>
-                  <i className='fas fa-user' /> | Volunteers
+                <a className='navbar-item' onClick={() => (window.location.href = '/users')}>
+                  <i className='fas fa-user' /><span className='pipe'> | </span>Volunteers
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-                  <i className='fas fa-sign-out-alt' /> | Logout
+                <a className='navbar-item' onClick={() => (window.location.href = '/logout')}>
+                  <i className='fas fa-sign-out-alt' /><span className='pipe'> | </span>Logout
                 </a>
               </div>
             </div>
@@ -79,7 +79,7 @@ class HeaderAdmin extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>
+              <a onClick={() => (window.location.href = '/')}><img className='header-logo' src={TractionLogo} /></a>
               <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />

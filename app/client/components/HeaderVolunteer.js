@@ -32,32 +32,32 @@ class HeaderVolunteer extends Component {
             </div>
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
-                <a className='navbar-item' onClick={() => window.location.href = '/home'}>
-                  <i className='fas fa-home' /> | Home
+                <a className='navbar-item' onClick={() => (window.location.href = '/home')}>
+                  <i className='fas fa-home' /><span className='pipe'> | </span>Home
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href = '/kitserials'}>
-                  <i className='fas fa-qrcode' /> | Scan QR Code
+                <a className='navbar-item' onClick={() => (window.location.href = '/kitserials')}>
+                  <i className='fas fa-qrcode' /><span className='pipe'> | </span>Scan QR Code
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
-                <a className='navbar-item' onClick={() => window.location.href = '/kitserials?status=manual'}>
-                  <i className='fas fa-medkit' /> | Input Kit Serial Codes
+                <a className='navbar-item' onClick={() => (window.location.href = '/kitserials?status=manual')}>
+                  <i className='fas fa-medkit' /><span className='pipe'> | </span>Input Kit Serial Codes
                 </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
-                <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-                  <i className='fas fa-sign-out-alt' /> | Logout
+                <a className='navbar-item' onClick={() => (window.location.href = '/logout')}>
+                  <i className='fas fa-sign-out-alt' /><span className='pipe'> | </span>Logout
                 </a>
               </div>
             </div>
@@ -65,7 +65,7 @@ class HeaderVolunteer extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/home'}><img className='header-logo'src={TractionLogo} /></a>
+              <a onClick={() => (window.location.href = '/home')}><img className='header-logo'src={TractionLogo} /></a>
               <div className='navbar-burger burger is-danger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
