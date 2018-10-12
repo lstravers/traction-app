@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:700,900');
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:400,700,900');
 
 /* Universal */
  body {
@@ -23,12 +23,13 @@
 
  p {
   font-family: Roboto;
+  font-weight: 400;
 }
 
 .center-justify {
   text-align: left;
   margin: 0 auto;
-  width: 18em;
+  width: 19em;
 }
 
  .button {
@@ -62,6 +63,10 @@
     color: #2374AB;
   }
 
+  a.navbar-burger.is-active {
+    color: #ff3860;
+  }
+
 /* Login Page */
 
 
@@ -93,7 +98,7 @@
   font-family: "Open Sans";
   margin-bottom: .5rem;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 /* Scanner */
@@ -151,6 +156,9 @@ fieldset {
   border-style: none;
 }
 
+.select{
+  margin-bottom: .5rem;
+}
 /* Admin pages */
 
 .admin-container {
