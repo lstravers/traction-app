@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
-// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+// const apiDomain = 'http://harm-reduction-tracker.herokuapp.com'
 const apiDomain = 'http://localhost:3000'
 const counties = [
   'Select',
@@ -16,7 +17,7 @@ const counties = [
   'Beaufort',
   'Bertie',
   'Bladen',
-  'Brunswuick',
+  'Brunswick',
   'Buncombe',
   'Burke',
   'Cabarrus',

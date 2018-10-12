@@ -1,0 +1,198 @@
+<%= form_with model: @user, local: true do |f| %>  
+  <div class="form-field-box">
+    <div class="field">
+      <%= f.label :deactivated? %><br />
+      <%= f.check_box :deactivated, {}, true, false %>
+    </div>
+    <div class="field">
+      <%= f.label :admin? %><br />
+      <%= f.check_box :admin, {}, true, false %>
+  </div>
+  </div>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :phone %><br />
+      <%= f.phone_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+      <div class="field">
+      <%= f.label :contact_type %><br />
+      <%= f.select(:contact_type, ['Text',
+          'Phone',
+          'Email'], :include_blank => "Choose Method") %>
+    </div>
+  </div>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :address1 %><br />
+      <%= f.text_field :address1 %>
+    </div>
+    <div class="field">
+      <%= f.label :address2 %><br />
+      <%= f.text_field :address2 %>
+    </div>
+  </div>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :city %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :state %><br />
+      <%= f.text_field :state, maxlength: 2 %>
+    </div>
+    <div class="field">
+      <%= f.label :zip %><br />
+      <%= f.text_field :zip, maxlength: 12 %>
+    </div>
+    <div class="field">
+      <%= f.label :county %><br />
+      <%= f.select(:county, [
+        'Select',
+        'Alamance',
+        'Alexander',
+        'Alleghany',
+        'Anson',
+        'Ashe',
+        'Avery',
+        'Beaufort',
+        'Bertie',
+        'Bladen',
+        'Brunswick',
+        'Buncombe',
+        'Burke',
+        'Cabarrus',
+        'Caldwell',
+        'Camden',
+        'Carteret',
+        'Caswell',
+        'Catawba',
+        'Chatham',
+        'Cherokee',
+        'Chowan',
+        'Clay',
+        'Cleveland',
+        'Columbus',
+        'Craven',
+        'Cumberland',
+        'Currituck',
+        'Dare',
+        'Davidson',
+        'Davie',
+        'Duplin',
+        'Durham',
+        'Edgecombe',
+        'Forsyth',
+        'Franklin',
+        'Gaston',
+        'Gates',
+        'Graham',
+        'Granville',
+        'Greene',
+        'Guilford',
+        'Halifax',
+        'Harnett',
+        'Haywood',
+        'Henderson',
+        'Hertford',
+        'Hoke',
+        'Hyde',
+        'Iredell',
+        'Jackson',
+        'Johnston',
+        'Jones',
+        'Lee',
+        'Lenoir',
+        'Lincoln',
+        'McDowell',
+        'Macon',
+        'Madison',
+        'Martin',
+        'Mecklenburg',
+        'Mitchell',
+        'Montgomery',
+        'Moore',
+        'Nash',
+        'New Hanover',
+        'Northampton',
+        'Onslow',
+        'Orange',
+        'Pamlico',
+        'Pasquotank',
+        'Pender',
+        'Perquimans',
+        'Person',
+        'Pitt',
+        'Polk',
+        'Randolph',
+        'Richmond',
+        'Robeson',
+        'Rockingham',
+        'Rowan',
+        'Rutherford',
+        'Sampson',
+        'Scotland',
+        'Stanly',
+        'Stokes',
+        'Surry',
+        'Swain',
+        'Transylvania',
+        'Tyrrell',
+        'Union',
+        'Vance',
+        'Wake',
+        'Warren',
+        'Washington',
+        'Watauga',
+        'Wayne',
+        'Wilkes',
+        'Wilson',
+        'Yadkin',
+        'Yancey'
+        ], :include_blank => "Choose County" )%>
+    </div>
+  </div>
+  <div class="form-field-box ffb-col">
+    <div class="field">
+      <%= f.label :date_auth %><br />
+      <%= f.date_field :date_auth %>
+    </div>
+    <% unless @user.admin_auth %>
+    <div class="field">
+      <%= f.label :admin_auth %><br />
+      <%= f.date_field :admin_auth %>
+    </div>
+    <% end %>
+  </div>
+  <div class="form-field-box ffb-col">
+    <% unless @user.id %>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+  <% end %>

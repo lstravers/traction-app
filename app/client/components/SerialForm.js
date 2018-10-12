@@ -13,7 +13,7 @@ class SerialForm extends React.Component {
 
   render () {
     return (
-      <div className='container'>
+      <div>
         <Formik
           initialValues={{ serialNumbers: [''] }}
           validate={values => {
@@ -39,20 +39,22 @@ class SerialForm extends React.Component {
                 <FieldArray name='serialNumbers' render={arrayHelpers => (
                   <React.Fragment>
                     {values.serialNumbers.map((el, i) => (
-                      <Control key={i}>
-                        <Label htmlFor={`serialNumbers[${i}]`}>Enter serial number</Label>
-                        <Field type='text' name={`serialNumbers[${i}]`} />
-                        <ErrorMessage name={`serialNumbers[${i}]`} component='div' />
-                        <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
+                      <Control className='input-field' key={i}>
+                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>Enter Serial Number
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a onClick={() => arrayHelpers.remove([i])}><i class='fas fa-times-circle has-text-danger align' /></a></Label>
+                        <Field className='input' type='text' name={`serialNumbers[${i}]`} />
+                        <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
                       </Control>
                     ))}
-                    <Button className='serial-form-button button' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
+                    <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
                   </React.Fragment>
                 )} />
-                <Button className='serial-form-button button' type='submit' disabled={isSubmitting}>Submit</Button>
+                <Button className='button is-danger' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
               <div>
-                <Button className='serial-form-button button' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+                <Button className='button is-danger' type='button' onClick={this.props.setQr}>Scan QR code</Button>
               </div>
             </div>
           ) }
