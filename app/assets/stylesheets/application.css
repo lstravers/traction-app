@@ -85,7 +85,7 @@ login-img {
 /* Admin pages */
 
 .admin-container {
-  max-width: 90%;
+  max-width: 95%;
   margin: 20px;
 }
 
@@ -125,10 +125,22 @@ login-img {
 }
 
 .page-index {
-  width: 100%;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
 }
 
-/* User pages */
+.pagination {
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 600px) {
+  .tbl-desktop {
+    display: none;
+  }
+}
+
+/* Admin view - User pages */
 
 .volunteer-index-table {
   width: 100%;
@@ -144,8 +156,34 @@ login-img {
   background-color: #fff9de;
 }
 
-@media screen and (max-width: 600px) {
-  .tbl-desktop {
-    display: none;
-  }
+/* Admin view - Inventory pages */
+
+.inventory-index-table {
+  width: 100%;
+  font-size: .9rem;
+}
+
+.inventory-index-table th,
+.inventory-index-table td {
+  text-align: center;
+}
+
+.inventory-index-table tr:nth-child(even) {
+  background-color: #fff9de;
+}
+
+/* Admin view - Reversal pages */
+
+.reversal-index-table {
+  width: 100%;
+  font-size: .9rem;
+}
+
+.reversal-index-table th,
+.reversal-index-table td {
+  text-align: center;
+}
+
+.reversal-index-table tr:nth-child(even) {
+  background-color: #fff9de;
 }
