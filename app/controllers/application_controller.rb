@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
-   include ActionController::HttpAuthentication::Token::ControllerMethods
-   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
+ 
   protected
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end  
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, 

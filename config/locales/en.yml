@@ -30,4 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  email: Email
+  password: Constraseña
+  remember_me: Recordar mi constraseña
+  forgot_passsword: ¿Olvidaste tu constraseña?
+  hello_user: "Hello, %{name}!" 
+  welcome: ""
+
+
+
+es:
+  hello_user: "Hola, %{name}!"
+
