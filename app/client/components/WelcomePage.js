@@ -9,7 +9,7 @@ class WelcomePage extends React.Component {
       <React.Fragment>
         <div className='container-content'>
           <h1 className='greeting'> Hello, {currentUser.first_name}.</h1>
-          <p className='center-justify'>Thank for supporting your community! Please either scan a QR code or manually input a serial number that can be found on each Naloxone kit by select one of the options below. Once you have scanned a QR code or you have input a serial number, you will be prompted to fill out a client form. Please complete the form to the best of your knowledge before submitting and distributing a Naloxone kit to the client.</p>
+          <p className='center-justify'>Thank you for supporting our community! Please select an option below to scan a QR code or input a serial number and complete the corresponding form to the best of your knowledge before distributing a Naloxone kit.</p>
           <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</Button>
           <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Kit Serial Number</Button>
         </div>
