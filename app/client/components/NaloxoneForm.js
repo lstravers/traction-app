@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
@@ -177,7 +178,7 @@ const NaloxoneForm = (props) => (
           errors.lastName = 'Required'
         }
         if (!values.dateOfBirth || values.dateOfBirth.toString().length !== 4) {
-          errors.dateOfBirth = 'Required'
+          errors.dateOfBirth = 'Invalid Year'
         }
         return errors
       }}

@@ -16,71 +16,136 @@
 
  @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:700,900');
 
-/* Universal Styles */
+/* Universal */
  body {
-   background-color: #2374AB;
+   background: linear-gradient(to bottom, rgba(35,116,171,1) 0%, rgba(4,90,143,1) 100%);
  }
 
+ p {
+  font-family: Roboto;
+}
+
+.center-justify {
+  text-align: left;
+  margin: 0 auto;
+  width: 18em;
+}
+
  .button {
-  margin-right: 10px;
+  font-family: Roboto;
   margin-top: 10px;
-  width: 75%;  
+  width: 100%;  
+}
+
+.Card {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 90%;
+  background-color: white;
+}
+
+.pipe {
+  color: #FF8484;
 }
 
 /* HeaderVolunteer , HeaderAdmin */
  .header-logo {
-  width: 215px;
-  /* margin-top: 5px; */
-  margin-left: 10px;
+  width: 12rem;
+  margin-left: .5rem;
   margin-bottom: 0;
   }
 
-.container {
-  max-width: 90%;
-  padding-top: 50px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 10%;
+  .navbar-burger {
+    background-color: transparent;
+    color: #2374AB;
+  }
+
+/* Login Page */
+
+
+.login-image {
+  display: block;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%; 
 }
 
-.login-container {
-  max-width: 90%;
-  padding-top: 50px;
-  background-color: #fff;
-  height: 300px;
-  border-radius: 10%;
-  margin: 100px auto;
+.password-reset {
+  margin-top: .5rem;
+  margin-bottom: 0;
 }
 
-.login-form {
-  max-width: 75%;
-  margin: auto;
+/* WelcomeView */
+
+.container-content{
+  text-align: center; 
 }
-login-img {
-  width: 100px; 
-}
-.main {
-  margin:  100px auto;
-  text-align: center;
+
+.Card-container {
+  margin-top: 6rem;
 }
 
 .greeting {
+  text-align: center;
   font-family: "Open Sans";
-  margin-bottom: 5px;
-  font-size: 30px;
+  margin-bottom: .5rem;
+  font-size: 2rem;
   font-weight: 800;
 }
 
 /* Scanner */
+.delete-button-container {
+  text-align: right;
+  margin-bottom: .5rem;
+}
+
 .flash {
-  animation: flash linear .5s 1;
+    animation: flash linear .5s 1;
 }
 
 @keyframes flash {
-  0% { opacity: 1; }
-  50% { opacity: .1; }
-  100% {opacity: 1; }
+    0% {
+        background-color: green;
+        opacity: .1;
+    }
+
+    50% {
+        background-color: green;
+        opacity: 1;
+    }
+
+    100% {
+        background-color: green;
+        opacity: .1;
+    }
 }
+/* Manual Input*/
+
+.align {
+  text-align: left;
+}
+
+.input-delete {
+  margin-left: .5rem;
+}
+
+.manual-input-container {
+  margin-top: 4rem;
+}
+
+.label {
+  margin-top: .5rem;
+}
+
+.scanner-container {
+  margin-top: 5rem; 
+}
+/* .input-field {
+  margin-left: 25px;
+} */
 
 /* Admin pages */
 

@@ -1,33 +1,38 @@
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 </head>
-<%= image_tag "traction-logo-white-01.png", class: "login-image" %>
+
+<%= image_tag "traction-logo-white.svg", class: "login-image" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="login-container">
-  <div class="login-form">
-  <p class="has-text-danger"><%= alert %></p>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
-  </div>
+    <div class="Card">
+      <p class="has-text-danger"><%= alert %></p>
+      <div>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
-  </div>
+      <div>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+      </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+      <% if devise_mapping.rememberable? -%>
+        <div>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in", class:"button is-danger"%>
-  </div>
-  </div>
+      <div>
+        <%= f.submit "Log in", class:"button is-danger"%>
+      </div>
+
+      <div class="password-reset">
+        <%= render "devise/shared/links"%>
+      </div>
+
+      </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
