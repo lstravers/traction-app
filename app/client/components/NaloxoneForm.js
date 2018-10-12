@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import {Button} from 'bloomer'
+import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
 
@@ -210,84 +210,84 @@ const NaloxoneForm = (props) => (
         <Form className='form'>
           <div className='form-instructions'><p>Please fill out the following form</p></div>
           <div>
-            <label htmlFor='firstName'>First Name</label>
-            <Field type='text' name='firstName' />
-            <ErrorMessage name='firstName' component='div' />
+            <label className='label' htmlFor='firstName'>First Name</label>
+            <Field className='input' type='text' name='firstName' />
+            <ErrorMessage className='has-tex-danger' name='firstName' component='div' />
           </div>
 
           <div>
-            <label htmlFor='lastName'>Last Name</label>
-            <Field type='text' name='lastName' />
-            <ErrorMessage name='lastName' component='div' />
+            <label className='label' htmlFor='lastName'>Last Name</label>
+            <Field className='input' type='text' name='lastName' />
+            <ErrorMessage classame='has-text-danger' name='lastName' component='div' />
           </div>
 
           <div>
-            <label htmlFor='dateOfBirth'>Year Of Birth</label>
-            <Field type='number' name='dateOfBirth' placeholder='YYYY' />
-            <ErrorMessage name='dateOfBirth' component='div' />
+            <label className='label' htmlFor='dateOfBirth'>Year Of Birth</label>
+            <Field className='input' type='number' name='dateOfBirth' placeholder='YYYY' />
+            <ErrorMessage className='has-text=-danger' name='dateOfBirth' component='div' />
           </div>
 
           <div>
-            <label htmlFor='townCity'>Town/City</label>
-            <Field type='text' name='townCity' />
-            <ErrorMessage name='townCity' component='div' />
+            <label className='label' htmlFor='townCity'>Town/City</label>
+            <Field className='input' type='text' name='townCity' />
+            <ErrorMessage className='has-text-danger' name='townCity' component='div' />
           </div>
 
           <div>
-            <label htmlFor='county'>County</label>
-            <Field component='select' name='county'>
+            <label className='label' htmlFor='county'>County</label>
+            <Field className='input'component='select' name='county'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
             </Field>
-            <ErrorMessage name='county' component='div' />
+            <ErrorMessage className='has-text-danger' name='county' component='div' />
           </div>
 
           <div>
-            <label htmlFor='dateOfDistribution'>Date of Distribution</label>
-            <Field name='dateOfDistribution' />
-            <ErrorMessage name='dateOfDistribution' component='div' />
+            <label className='label' htmlFor='dateOfDistribution'>Date of Distribution</label>
+            <Field className='input' name='dateOfDistribution' />
+            <ErrorMessage className='has-text-danger' name='dateOfDistribution' component='div' />
           </div>
 
           <div>
-            <label htmlFor='numberOfKits'>Number of Naloxone Kits</label>
-            <Field type='number' name='numberOfKits' />
-            <ErrorMessage name='numberOfKits' component='div' />
+            <label className='label' htmlFor='numberOfKits'>Number of Naloxone Kits</label>
+            <Field className='input' type='number' name='numberOfKits' />
+            <ErrorMessage classame='has-text-danger' name='numberOfKits' component='div' />
           </div>
 
           <div>
             {props.results.map((result, idx) =>
               <div key={idx}>
                 <div>
-                  <label htmlFor={`kitSerialNumber[${idx}]`}>Kit Serial Number</label>
-                  <Field type='text' value={result} name={`kitSerialNumber[${idx}]`} />
-                  <ErrorMessage name={`kitSerialNumber[${idx}]`} component='div' />
+                  <label className='label' htmlFor={`kitSerialNumber[${idx}]`}>Kit Serial Number</label>
+                  <Field className='input' type='text' value={result} name={`kitSerialNumber[${idx}]`} />
+                  <ErrorMessage className='has-text-danger' name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
-                <label htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
+                <label className='label' htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
                 <Field component='select' name={`kitType[${idx}]`}>
                   <option>IM</option>
                   <option>E</option>
                   <option>N</option>
                 </Field>
-                <ErrorMessage name={`kitType[${idx}]`} component='div' />
+                <ErrorMessage className='has-text-danger' name={`kitType[${idx}]`} component='div' />
               </div>
             )}
           </div>
 
           <div>
-            <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
+            <label className='label'htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
               touched={touched.overdoseReversal}>
-              <Field
+              <Field className='radio'
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit1'
                 label='Yes'
                 value={'true'}
               />
-              <Field
+              <Field className='radio'
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit2'
@@ -295,11 +295,11 @@ const NaloxoneForm = (props) => (
                 value={'false'}
               />
             </RadioButtonGroup>
-            <ErrorMessage name='firstNaloxoneKit' component='div' />
+            <ErrorMessage className='has-text-danger' name='firstNaloxoneKit' component='div' />
           </div>
 
           <div>
-            <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
+            <label className='label' htmlFor='overdoseReversal'>Overdose Reversal?</label>
             <RadioButtonGroup id='overdoseReversal'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -319,50 +319,50 @@ const NaloxoneForm = (props) => (
                 value={'false'}
               />
             </RadioButtonGroup>
-            <ErrorMessage name='overdoseReversal' component='div' />
+            <ErrorMessage className='has-text-danger' name='overdoseReversal' component='div' />
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
-            <Field component='select' name='overdoseReversalKitType'>
-              <option value='selectOptions'onChange={props.handleChange}>Select</option>
+            <label className='label' htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
+            <Field className='select' component='select' name='overdoseReversalKitType'>
+              <option className='option' value='selectOptions'onChange={props.handleChange}>Select</option>
               <option value='IM'>IM</option>
               <option value='E'>E</option>
               <option value='N'>N</option>
             </Field>
-            <ErrorMessage name='overdoseReversalKitType' component='div' />
+            <ErrorMessage className='has-text-danger' name='overdoseReversalKitType' component='div' />
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalTownCity'>Overdose Reversal Town/City</label>
-            <Field type='text' name='overdoseReversalTownCity' />
-            <ErrorMessage name='overdoseReversalTownCity' component='div' />
+            <label className='label' htmlFor='overdoseReversalTownCity'>Overdose Reversal Town/City</label>
+            <Field className='input' type='text' name='overdoseReversalTownCity' />
+            <ErrorMessage className='has-text-danger' name='overdoseReversalTownCity' component='div' />
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
+            <label className='label' htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
             <Field component='select' name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
             </Field>
-            <ErrorMessage name='overdoseReversalCounty' component='div' />
+            <ErrorMessage className='has-text-danger' name='overdoseReversalCounty' component='div' />
           </div>
 
           <div>
-            <label htmlFor='numberOfDoses'>Number of Doses</label>
-            <Field type='number' name='numberOfDoses' />
+            <label className='label' htmlFor='numberOfDoses'>Number of Doses</label>
+            <Field className='input' type='number' name='numberOfDoses' />
             <ErrorMessage name='numberOfDoses' component='div' />
           </div>
 
           <div>
-            <label htmlFor='minutesBetweenDoses'>Minutes Between Doses</label>
-            <Field type='number' name='minutesBetweenDoses' />
+            <label className='label' htmlFor='minutesBetweenDoses'>Minutes Between Doses</label>
+            <Field className='input' type='number' name='minutesBetweenDoses' />
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <div className='submit-button-div'>
-            <button type='submit' className='submit-button' disabled={isSubmitting}>
+          <div>
+            <button className='button is-danger' type='submit' disabled={isSubmitting} >
         Submit
             </button>
           </div>

@@ -144,9 +144,12 @@
 .scanner-container {
   margin-top: 5rem; 
 }
-/* .input-field {
-  margin-left: 25px;
-} */
+
+/* Naloxone Form */
+
+fieldset {
+  border-style: none;
+}
 
 /* Admin pages */
 
