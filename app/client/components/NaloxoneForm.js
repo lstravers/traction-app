@@ -178,7 +178,7 @@ const NaloxoneForm = (props) => (
           errors.lastName = 'Required'
         }
         if (!values.dateOfBirth || values.dateOfBirth.toString().length !== 4) {
-          errors.dateOfBirth = 'Required'
+          errors.dateOfBirth = 'Invalid Year'
         }
         return errors
       }}

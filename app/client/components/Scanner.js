@@ -62,7 +62,7 @@ class Scanner extends Component {
           />
         </div>
         <div>
-          <Button className='button is-danger' onClick={this.props.setManualInput}>Enter Kit Serial Number</Button>
+          <Button className='button is-danger' onClick={this.props.setManualInput}>Input Kit Serial Codes</Button>
         </div>
         <div>
           <Button className='button is-danger' onClick={this.handleSubmit}>Done</Button>
