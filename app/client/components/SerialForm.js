@@ -40,19 +40,19 @@ class SerialForm extends React.Component {
                   <React.Fragment>
                     {values.serialNumbers.map((el, i) => (
                       <Control className='input-field' key={i}>
-                        <Label htmlFor={`serialNumbers[${i}]`}>Enter serial number</Label>
-                        <Field type='text' name={`serialNumbers[${i}]`} />
-                        <ErrorMessage name={`serialNumbers[${i}]`} component='div' />
-                        <div><Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button></div>
+                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>Enter Serial Number</Label>
+                        <Field className='input' type='text' name={`serialNumbers[${i}]`} />
+                        <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
+                        <Button className='button is-danger' type='button' onClick={() => arrayHelpers.remove([i])}>Delete Input</Button>
                       </Control>
                     ))}
-                    <Button className='serial-form-button button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
+                    <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
                   </React.Fragment>
                 )} />
-                <Button className='serial-form-button button is-danger' type='submit' disabled={isSubmitting}>Submit</Button>
+                <Button className='button is-danger' type='submit' disabled={isSubmitting}>Submit</Button>
               </Form>
               <div>
-                <Button className='serial-form-button button is-danger' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+                <Button className='button is-danger' type='button' onClick={this.props.setQr}>Scan QR code</Button>
               </div>
             </div>
           ) }

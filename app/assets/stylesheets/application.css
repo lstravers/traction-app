@@ -106,10 +106,24 @@
   100% {opacity: 1; }
 }
 
+/* Manual Input*/
+
+.input-delete {
+  margin-left: .5rem;
+}
+
+.manual-input-container {
+  margin-top: 4rem;
+}
+
+.label {
+  margin-top: .5rem;
+}
+
 .scanner-container {
   margin-top: 5rem; 
 }
-.input-field {
+/* .input-field {
   margin-left: 25px;
-}
+} */
 

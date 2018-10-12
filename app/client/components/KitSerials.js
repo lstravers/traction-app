@@ -69,7 +69,7 @@ class KitSerials extends React.Component {
       )
     } else if (status === 'manual') {
       return (
-        <div>
+        <div className='manual-input-container'>
           <Card><SerialForm setForm={this.setForm} resultsConcat={this.resultsConcat} results={this.state.results} setQr={this.setQr} /></Card>
         </div>
       )
