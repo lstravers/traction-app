@@ -32,7 +32,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' onClick={() => window.location.href = '/admin'}>
-    <i class="fas fa-home"></i> | Home
+                  <i className='fas fa-home' /> | Home
                 </a>
               </div>
             </div>
@@ -40,14 +40,14 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/home'}>
-    <i class="fas fa-hands-helping"></i> | Naloxone Distribution                </a>
+                  <i className='fas fa-hands-helping' /> | Naloxone Distribution                </a>
               </div>
             </div>
 
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/reversals'}>
-    <i class="fas fa-heartbeat"></i> | Total Reversals
+                  <i className='fas fa-heartbeat' /> | Total Reversals
                 </a>
               </div>
             </div>
@@ -55,7 +55,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/inventories'}>
-    <i class="fas fa-medkit"></i> | Inventory
+                  <i className="fas fa-medkit"></i> | Distributed Naloxone Kits
                 </a>
               </div>
             </div>
@@ -63,7 +63,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/users'}>
-    <i class="fas fa-user"></i> | Volunteers
+                  <i className='fas fa-user' /> | Volunteers
                 </a>
               </div>
             </div>
@@ -71,7 +71,7 @@ class HeaderAdmin extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-    <i class="fas fa-sign-out-alt"></i> | Logout
+                  <i className='fas fa-sign-out-alt' /> | Logout
                 </a>
               </div>
             </div>
@@ -79,7 +79,8 @@ class HeaderAdmin extends Component {
         )
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
-              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>              <a role='button' className='navbar-burger burger is-large' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+              <a onClick={() => window.location.href = '/'}><img className='header-logo' src={TractionLogo} /></a>
+              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
