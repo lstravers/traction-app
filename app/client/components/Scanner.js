@@ -52,7 +52,7 @@ class Scanner extends Component {
     const flashClass = flash ? `flash` : ''
     return (
       <React.Fragment>
-        <div className='delete-button-container'><a onClick={this.escapePatch} ><i class='fas fa-times-circle has-text-danger' /></a></div>
+        <div className='delete-button-container'><a onClick={this.escapePatch} ><i className='fas fa-times-circle has-text-danger' /></a></div>
         <div className={`${flashClass}`}>
           <QrReader
             delay={this.state.delay}
