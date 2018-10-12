@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
+import { Button } from 'bloomer'
 
 class Scanner extends Component {
   constructor (props) {
@@ -13,6 +14,7 @@ class Scanner extends Component {
     }
     this.handleScan = this.handleScan.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.escapePatch = this.escapePatch.bind(this)
   }
 
   handleScan (data) {
@@ -41,24 +43,31 @@ class Scanner extends Component {
     }
   }
 
+  escapePatch () {
+    window.location.href = '/home'
+  }
+
   render () {
     let { flash } = this.state
     const flashClass = flash ? `flash` : ''
     return (
-      <div className='scan-container'>
-        <div className='exit-button-div'><button className='exit-button' onClick={() => window.location.href = '/home'}>X</button></div>
+      <React.Fragment>
+        <div className='delete-button-container'><a onClick={this.escapePatch} ><i class='fas fa-times-circle has-text-danger' /></a></div>
         <div className={`${flashClass}`}>
           <QrReader
             delay={this.state.delay}
             onError={this.handleError}
             onScan={this.handleScan}
-            style={{ width: '50%' }}
+            style={{ width: '100%' }}
           />
         </div>
-        <div className='serial-button-div'><button className='serial-button' onClick={this.props.setManualInput}>Input Kit Serial Codes</button></div>
-        <div className='done-button-div'><button className='done-button' onClick={this.handleSubmit}>Done</button></div>
-        <div className='kit-count'>Kits Scanned: {this.props.results.length}</div>
-      </div>)
+        <div>
+          <Button className='button is-danger' onClick={this.props.setManualInput}>Input Kit Serial Codes</Button>
+        </div>
+        <div>
+          <Button className='button is-danger' onClick={this.handleSubmit}>Done</Button>
+        </div>
+      </React.Fragment>)
   }
 }
 
