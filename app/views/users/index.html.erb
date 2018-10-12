@@ -1,12 +1,7 @@
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-<meta name="viewport" content="initial-scale=1.0 width=device-width">
-</head>
-
 <div class="admin-container">
   <div class="admin-header">List of Volunteers <i class="far fa-user"></i></div>
   <div class="admin-panel">
-    <div class="search-container">
+    <div class="search-container"> 
       <%= form_tag users_path, method: :get do %>
       <%= select_tag :search_term_county, "<option>Alamance</option>
           <option>Alexander</option>
