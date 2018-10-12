@@ -33,7 +33,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' onClick={() => window.location.href = '/home'}>
-                  <i class='fas fa-home' /><span className='pipe'> | </span>Home
+                  <i className='fas fa-home' /> | Home
                 </a>
               </div>
             </div>
@@ -41,7 +41,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/kitserials'}>
-                  <i class='fas fa-qrcode' /><span className='pipe'> | </span>Scan QR Code
+                  <i className='fas fa-qrcode' /> | Scan QR Code
                 </a>
               </div>
             </div>
@@ -49,7 +49,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/kitserials?status=manual'}>
-                  <i class='fas fa-medkit' /><span className='pipe'> | </span>Input Kit Serial Codes
+                  <i className='fas fa-medkit' /> | Input Kit Serial Codes
                 </a>
               </div>
             </div>
@@ -57,7 +57,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-                  <i class='fas fa-sign-out-alt' /><span className='pipe'> | </span>Logout
+                  <i className='fas fa-sign-out-alt' /> | Logout
                 </a>
               </div>
             </div>
