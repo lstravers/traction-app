@@ -4,7 +4,7 @@
 </head>
 
 <div class="admin-container">
-  <div class="admin-header">List of Volunteers</div>
+  <div class="admin-header">List of Volunteers <i class="far fa-user"></i></div>
   <div class="admin-panel">
     <div class="search-container">
       <%= form_tag users_path, method: :get do %>
@@ -107,63 +107,57 @@
           <option>Wilkes</option>
           <option>Wilson</option>
           <option>Yadkin</option>
-          <option>Yancey</option>", :include_blank => "Choose County" %>
-      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Search by City Name' %>
+          <option>Yancey</option>", :include_blank => "Choose County" %><br>
+      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Search by City Name' %><br>
       <%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Search by Last Name' %>
       <%= submit_tag "Search"%>
       <% end %>
     </div>
-    <table>
+    <table class="volunteer-index-table">
       <tr>
-        <th><%= sort_link "first_name" %></th>
-        <th><%= sort_link "last_name" %></th>
-        <th><%= sort_link "admin"%></th>
-        <th><%= sort_link "admin_auth", "Admin Date" %></th>
-        <th><%= sort_link "email"%></th>
-        <th><%= sort_link "phone"%></th>
-        <th><%= sort_link "contact_type", "Contact Method" %></th>
-        <th><%= sort_link "county" %></th>
-        <th>Address1</th>
-        <th>Address2</th>
-        <th><%= sort_link "city" %></th>
-        <th><%= sort_link "state" %></th>
-        <th><%= sort_link "zip" %></th>
-        <th><%= sort_link "date_auth", "Date Volunteer" %></th>
-        <th><%= sort_link "deactivated", "Active" %></th>
-        <th></th>
+        <th class="tbl-media"><%= sort_link "last_name", "Name" %></th>
+        <th class="tbl-desktop"><%= sort_link "email"%></th>
+        <th class="tbl-desktop"><%= sort_link "phone"%></th>
+        <th class="tbl-desktop"><%= sort_link "contact_type"%></th>
+        <th class="tbl-media"><%= sort_link "county" %></th>
+        <th class="tbl-desktop"><%= sort_link "city", "Address"%></th>
+        <th class="tbl-desktop"><%= sort_link "date_auth", "Date Volunteer" %></th>
+        <th class="tbl-desktop"><%= sort_link "admin_auth", "Admin Date" %></th>
+        <th class="tbl-media"><%= sort_link "admin"%></th>
+        <th class="tbl-media"></th>
+        <th class="tbl-media"><%= sort_link "deactivated", "Active" %></th>
       </tr>
     
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.first_name%></td>
-          <td><%= user.last_name %></td>
-          <td><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
+          <td class="tbl-media"><%= user.first_name%><br><%= user.last_name %></td>
+          <td class="tbl-desktop"><%= user.email %></td>
+          <td class="tbl-desktop"><%= user.phone %></td>
+          <td class="tbl-desktop"><%= user.contact_type %></td>
+          <td class="tbl-media"><%= user.county %></td>
+          <td class="tbl-desktop"><%= user.address1 %><br>
+              <% if user.address2 %>
+              <%= user.address2 %><br>
+              <% end %>
+              <%= user.city %>, <%= user.state %> <%= user.zip %></td>
+          <td class="tbl-desktop"><%= user.date_auth %></td>
+          <td class="tbl-desktop"><%= user.admin_auth %></td>
+          <td class="tbl-media"><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
               link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
               end %>
           </td>
-          <td><%= user.admin_auth %></td>
-          <td><%= user.email %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.contact_type %></td>
-          <td><%= user.county %></td>
-          <td><%= user.address1 %></td>
-          <td><%= user.address2 %></td>
-          <td><%= user.city %></td>
-          <td><%= user.state %></td>
-          <td><%= user.zip %></td>
-          <td><%= user.date_auth %></td>
-          <td><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
+          <td class="tbl-media"><%= link_to 'Update', edit_user_path(user) %></td>
+          <td class="tbl-media"><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
                   link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
                   end %>
           </td>
-          <td><%= link_to 'Update', edit_user_path(user) %></td>
         </tr>
         <% end %>
     </table>
-  </div>
-  <div class="page_index">  
+    <div class="page-index">  
       <%= paginate @users %>
-      <%= page_entries_info @users %><br>
+      <%= page_entries_info @users %>
+    </div>
       <%= link_to 'Back', admin_path %>
   </div>
 </div>
