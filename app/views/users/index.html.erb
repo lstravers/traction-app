@@ -1,165 +1,161 @@
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-<meta name="viewport" content="initial-scale=1.0 width=device-width">
-</head>
-
-<h1>All Volunteers</h1>
-
-<%= form_tag users_path, method: :get do %>
-<%= select_tag :search_term_county, "<option>Alamance</option>
-    <option>Alexander</option>
-    <option>Alleghany</option>
-    <option>Anson</option>
-    <option>Ashe</option>
-    <option>Avery</option>
-    <option>Beaufort</option>
-    <option>Bertie</option>
-    <option>Bladen</option>
-    <option>Brunswuick</option>
-    <option>Buncombe</option>
-    <option>Burke</option>
-    <option>Cabarrus</option>
-    <option>Caldwell</option>
-    <option>Camden</option>
-    <option>Carteret</option>
-    <option>Caswell</option>
-    <option>Catawba</option>
-    <option>Chatham</option>
-    <option>Cherokee</option>
-    <option>Chowan</option>
-    <option>Clay</option>
-    <option>Cleveland</option>
-    <option>Columbus</option>
-    <option>Craven</option>
-    <option>Cumberland</option>
-    <option>Currituck</option>
-    <option>Dare</option>
-    <option>Davidson</option>
-    <option>Davie</option>
-    <option>Duplin</option>
-    <option>Durham</option>
-    <option>Edgecombe</option>
-    <option>Forsyth</option>
-    <option>Franklin</option>
-    <option>Gaston</option>
-    <option>Gates</option>
-    <option>Graham</option>
-    <option>Granville</option>
-    <option>Greene</option>
-    <option>Guilford</option>
-    <option>Halifax</option>
-    <option>Harnett</option>
-    <option>Haywood</option>
-    <option>Henderson</option>
-    <option>Hertford</option>
-    <option>Hoke</option>
-    <option>Hyde</option>
-    <option>Iredell</option>
-    <option>Jackson</option>
-    <option>Johnston</option>
-    <option>Jones</option>
-    <option>Lee</option>
-    <option>Lenoir</option>
-    <option>Lincoln</option>
-    <option>McDowell</option>
-    <option>Macon</option>
-    <option>Madison</option>
-    <option>Martin</option>
-    <option>Mecklenburg</option>
-    <option>Mitchell</option>
-    <option>Montgomery</option>
-    <option>Moore</option>
-    <option>Nash</option>
-    <option>New Hanover</option>
-    <option>Northampton</option>
-    <option>Onslow</option>
-    <option>Orange</option>
-    <option>Pamlico</option>
-    <option>Pasquotank</option>
-    <option>Pender</option>
-    <option>Perquimans</option>
-    <option>Person</option>
-    <option>Pitt</option>
-    <option>Polk</option>
-    <option>Randolph</option>
-    <option>Richmond</option>
-    <option>Robeson</option>
-    <option>Rockingham</option>
-    <option>Rowan</option>
-    <option>Rutherford</option>
-    <option>Sampson</option>
-    <option>Scotland</option>
-    <option>Stanly</option>
-    <option>Stokes</option>
-    <option>Surry</option>
-    <option>Swain</option>
-    <option>Transylvania</option>
-    <option>Tyrrell</option>
-    <option>Union</option>
-    <option>Vance</option>
-    <option>Wake</option>
-    <option>Warren</option>
-    <option>Washington</option>
-    <option>Watauga</option>
-    <option>Wayne</option>
-    <option>Wilkes</option>
-    <option>Wilson</option>
-    <option>Yadkin</option>
-    <option>Yancey</option>", :include_blank => "Choose County" %>
-<%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Search by City Name' %>
-<%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Search by Last Name' %>
-<%= submit_tag "Search"%>
-<% end %>
-
-<table>
-  <tr>
-    <th><%= sort_link "first_name" %></th>
-    <th><%= sort_link "last_name" %></th>
-    <th><%= sort_link "admin"%></th>
-    <th><%= sort_link "admin_auth", "Admin Date" %></th>
-    <th><%= sort_link "email"%></th>
-    <th><%= sort_link "phone"%></th>
-    <th><%= sort_link "contact_type", "Contact Method" %></th>
-    <th><%= sort_link "county" %></th>
-    <th>Address1</th>
-    <th>Address2</th>
-    <th><%= sort_link "city" %></th>
-    <th><%= sort_link "state" %></th>
-    <th><%= sort_link "zip" %></th>
-    <th><%= sort_link "date_auth", "Date Volunteer" %></th>
-    <th><%= sort_link "deactivated", "Active" %></th>
-    <th></th>
-  </tr>
- 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.first_name%></td>
-      <td><%= user.last_name %></td>
-      <td><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
-          link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
-          end %>
-      </td>
-      <td><%= user.admin_auth %></td>
-      <td><%= user.email %></td>
-      <td><%= user.phone %></td>
-      <td><%= user.contact_type %></td>
-      <td><%= user.county %></td>
-      <td><%= user.address1 %></td>
-      <td><%= user.address2 %></td>
-      <td><%= user.city %></td>
-      <td><%= user.state %></td>
-      <td><%= user.zip %></td>
-      <td><%= user.date_auth %></td>
-      <td><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
-              link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
+<div class="admin-container">
+  <div class="admin-header">List of Volunteers <i class="far fa-user"></i></div>
+  <div class="admin-panel">
+    <div class="search-container"> 
+      <%= form_tag users_path, method: :get do %>
+      <%= select_tag :search_term_county, "<option>Alamance</option>
+          <option>Alexander</option>
+          <option>Alleghany</option>
+          <option>Anson</option>
+          <option>Ashe</option>
+          <option>Avery</option>
+          <option>Beaufort</option>
+          <option>Bertie</option>
+          <option>Bladen</option>
+          <option>Brunswuick</option>
+          <option>Buncombe</option>
+          <option>Burke</option>
+          <option>Cabarrus</option>
+          <option>Caldwell</option>
+          <option>Camden</option>
+          <option>Carteret</option>
+          <option>Caswell</option>
+          <option>Catawba</option>
+          <option>Chatham</option>
+          <option>Cherokee</option>
+          <option>Chowan</option>
+          <option>Clay</option>
+          <option>Cleveland</option>
+          <option>Columbus</option>
+          <option>Craven</option>
+          <option>Cumberland</option>
+          <option>Currituck</option>
+          <option>Dare</option>
+          <option>Davidson</option>
+          <option>Davie</option>
+          <option>Duplin</option>
+          <option>Durham</option>
+          <option>Edgecombe</option>
+          <option>Forsyth</option>
+          <option>Franklin</option>
+          <option>Gaston</option>
+          <option>Gates</option>
+          <option>Graham</option>
+          <option>Granville</option>
+          <option>Greene</option>
+          <option>Guilford</option>
+          <option>Halifax</option>
+          <option>Harnett</option>
+          <option>Haywood</option>
+          <option>Henderson</option>
+          <option>Hertford</option>
+          <option>Hoke</option>
+          <option>Hyde</option>
+          <option>Iredell</option>
+          <option>Jackson</option>
+          <option>Johnston</option>
+          <option>Jones</option>
+          <option>Lee</option>
+          <option>Lenoir</option>
+          <option>Lincoln</option>
+          <option>McDowell</option>
+          <option>Macon</option>
+          <option>Madison</option>
+          <option>Martin</option>
+          <option>Mecklenburg</option>
+          <option>Mitchell</option>
+          <option>Montgomery</option>
+          <option>Moore</option>
+          <option>Nash</option>
+          <option>New Hanover</option>
+          <option>Northampton</option>
+          <option>Onslow</option>
+          <option>Orange</option>
+          <option>Pamlico</option>
+          <option>Pasquotank</option>
+          <option>Pender</option>
+          <option>Perquimans</option>
+          <option>Person</option>
+          <option>Pitt</option>
+          <option>Polk</option>
+          <option>Randolph</option>
+          <option>Richmond</option>
+          <option>Robeson</option>
+          <option>Rockingham</option>
+          <option>Rowan</option>
+          <option>Rutherford</option>
+          <option>Sampson</option>
+          <option>Scotland</option>
+          <option>Stanly</option>
+          <option>Stokes</option>
+          <option>Surry</option>
+          <option>Swain</option>
+          <option>Transylvania</option>
+          <option>Tyrrell</option>
+          <option>Union</option>
+          <option>Vance</option>
+          <option>Wake</option>
+          <option>Warren</option>
+          <option>Washington</option>
+          <option>Watauga</option>
+          <option>Wayne</option>
+          <option>Wilkes</option>
+          <option>Wilson</option>
+          <option>Yadkin</option>
+          <option>Yancey</option>", :include_blank => "Choose County" %>
+      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Search by City Name' %>
+      <%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Search by Last Name' %>
+      <%= submit_tag "Search"%>
+      <% end %>
+    </div>
+    <table class="volunteer-index-table">
+      <tr>
+        <th class="tbl-media"><%= sort_link "last_name", "Name" %></th>
+        <th class="tbl-desktop"><%= sort_link "email"%></th>
+        <th class="tbl-desktop"><%= sort_link "phone"%></th>
+        <th class="tbl-desktop"><%= sort_link "contact_type"%></th>
+        <th class="tbl-media"><%= sort_link "county" %></th>
+        <th class="tbl-desktop"><%= sort_link "city", "Address"%></th>
+        <th class="tbl-desktop"><%= sort_link "date_auth", "Date Volunteer" %></th>
+        <th class="tbl-desktop"><%= sort_link "admin_auth", "Admin Date" %></th>
+        <th class="tbl-media"><%= sort_link "admin"%></th>
+        <th class="tbl-media"></th>
+        <th class="tbl-media"><%= sort_link "deactivated", "Active" %></th>
+      </tr>
+    
+      <% @users.each do |user| %>
+        <tr>
+          <td class="tbl-media"><%= user.first_name%><br><%= user.last_name %></td>
+          <td class="tbl-desktop"><%= user.email %></td>
+          <td class="tbl-desktop"><%= user.phone %></td>
+          <td class="tbl-desktop"><%= user.contact_type %></td>
+          <td class="tbl-media"><%= user.county %></td>
+          <td class="tbl-desktop"><%= user.address1 %><br>
+              <% if user.address2 %>
+              <%= user.address2 %><br>
+              <% end %>
+              <%= user.city %>, <%= user.state %> <%= user.zip %></td>
+          <td class="tbl-desktop"><%= user.date_auth %></td>
+          <td class="tbl-desktop"><%= user.admin_auth %></td>
+          <td class="tbl-media"><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
+              link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
               end %>
-      </td>
-      <td><%= link_to 'Update', edit_user_path(user) %></td>
-    </tr>
-    <% end %>
-</table>
-  <%= paginate @users %>
-  <%= page_entries_info @users %><br>
-  <%= link_to 'Back', admin_path %>
+          </td>
+          <td class="tbl-media"><%= link_to 'Update', edit_user_path(user) %></td>
+          <td class="tbl-media"><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
+                  link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
+                  end %>
+          </td>
+        </tr>
+        <% end %>
+    </table>
+    <div class="page-index">  
+      <%= paginate @users %>
+      <%= page_entries_info @users %>
+    </div>
+      <%= link_to 'Back', admin_path %>
+  </div>
+</div>
+      
 
   

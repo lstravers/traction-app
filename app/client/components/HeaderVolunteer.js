@@ -33,7 +33,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-start'>
                 <a className='navbar-item' onClick={() => window.location.href = '/home'}>
-    Home
+                  <i className='fas fa-home' /> | Home
                 </a>
               </div>
             </div>
@@ -41,7 +41,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/kitserials'}>
-    Scan QR Code
+                  <i className='fas fa-qrcode' /> | Scan QR Code
                 </a>
               </div>
             </div>
@@ -49,7 +49,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div>
                 <a className='navbar-item' onClick={() => window.location.href = '/kitserials?status=manual'}>
-    Input Kit Serial Codes
+                  <i className='fas fa-medkit' /> | Input Kit Serial Codes
                 </a>
               </div>
             </div>
@@ -57,7 +57,7 @@ class HeaderVolunteer extends Component {
             <div id='navbar-main' className='navbar-menu is-active'>
               <div className='navbar-end'>
                 <a className='navbar-item' onClick={() => window.location.href = '/logout'}>
-    Logout
+                  <i className='fas fa-sign-out-alt' /> | Logout
                 </a>
               </div>
             </div>
@@ -66,11 +66,11 @@ class HeaderVolunteer extends Component {
           : (<nav className='navbar' role='navigation' aria-label='main navigation'>
             <div className='navbar-brand'>
               <a onClick={() => window.location.href = '/home'}><img className='header-logo'src={TractionLogo} /></a>
-              <a role='button' className='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
+              <div className='navbar-burger burger is-danger' aria-label='menu' aria-expanded='false' data-target='navbar-main' onClick={this.handleClick}>
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
                 <span aria-hidden='true' />
-              </a>
+              </div>
             </div>
           </nav>
           )}
