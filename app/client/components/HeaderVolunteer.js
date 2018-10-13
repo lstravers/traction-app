@@ -3,6 +3,8 @@ import { Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarStart, NavbarEnd, 
 import 'bulma/css/bulma.css'
 
 import TractionLogo from 'images/traction-logo.png'
+import usFlag from 'images/united-states.png'
+import spainFlag from 'images/spain.png'
 
 class HeaderVolunteer extends Component {
   constructor () {
@@ -39,16 +41,22 @@ class HeaderVolunteer extends Component {
           <NavbarMenu isActive={false} onClick={this.onClickNav}>
             <NavbarStart>
               <NavbarItem>
-                <a onClick={() => (window.location.href = '/home')}>Home</a>
+                <a className='header-link' onClick={() => (window.location.href = '/home')}>Home</a>
               </NavbarItem>
               <NavbarItem>
-                <a onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</a>
+                <a className='header-link' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</a>
               </NavbarItem>
               <NavbarItem>
-                <a onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Serial Codes</a>
+                <a className='header-link' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Serial Codes</a>
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
+              <NavbarItem>
+                <img src={usFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+              </NavbarItem>
+              <NavbarItem>
+                <img src={spainFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+              </NavbarItem>
               <NavbarItem isHidden='touch'>
                 <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>Logout</Button>
               </NavbarItem>
