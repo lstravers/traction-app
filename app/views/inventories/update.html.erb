@@ -3,21 +3,21 @@
 <meta name="viewport" content="initial-scale=1.0 width=device-width">
 </head>
 
-<h1>Update an Existing Kit in Inventory</h1><br> 
+<h1><%= t(:head_update_kit) %></h1> 
   
-<%= form.label :Serial Number %><br>
+<%= form.label "#{t(:kit_serial)}" %><br>
       <%= form.text_field :serial_num %> 
     </p>
    
     <p>
-      <%= form.label :Kit Type %><br>
+      <%= form.label "#{t(:kit_type)}" %><br>
       <%= form.text_field :kit_type %>
     </p>
     <p>
     
   <p>
-    <%= form.submit %>
+    <%= form.submit "#{t(:submit)}" %>
   </p>
  
  
-<%= link_to 'Back', inventories_path %>
+<%= link_to "#{t(:back)}", inventories_path %>

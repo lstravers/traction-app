@@ -102,25 +102,25 @@
           <option>Wilkes</option>
           <option>Wilson</option>
           <option>Yadkin</option>
-          <option>Yancey</option>", :include_blank => "Choose County" %>
-      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => 'Search by City Name' %>
-      <%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => 'Search by Last Name' %>
+          <option>Yancey</option>", :include_blank => "#{t(:choose_county)}" %>
+      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => "#{t(:search_city)}" %>
+      <%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => "#{t(:search_lname)}" %>
       <%= submit_tag "Search"%>
       <% end %>
     </div>
     <table class="volunteer-index-table">
       <tr>
-        <th class="tbl-media"><%= sort_link "last_name", "Name" %></th>
-        <th class="tbl-desktop"><%= sort_link "email"%></th>
-        <th class="tbl-desktop"><%= sort_link "phone"%></th>
-        <th class="tbl-desktop"><%= sort_link "contact_type"%></th>
-        <th class="tbl-media"><%= sort_link "county" %></th>
-        <th class="tbl-desktop"><%= sort_link "city", "Address"%></th>
-        <th class="tbl-desktop"><%= sort_link "date_auth", "Date Volunteer" %></th>
-        <th class="tbl-desktop"><%= sort_link "admin_auth", "Admin Date" %></th>
-        <th class="tbl-media"><%= sort_link "admin"%></th>
+        <th class="tbl-media"><%= sort_link "last_name", "#{t(:name)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "#{t(:email)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "#{t(:phone)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "#{t(:contact_type)}" %></th>
+        <th class="tbl-media"><%= sort_link "county", "#{t(:county)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "city", "#{t(:address)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "date_auth", "#{t(:date_auth)}" %></th>
+        <th class="tbl-desktop"><%= sort_link "admin_auth", "#{t(:admin_auth)}" %></th>
+        <th class="tbl-media"><%= sort_link "admin", "#{t(:admin)}" %></th>
         <th class="tbl-media"></th>
-        <th class="tbl-media"><%= sort_link "deactivated", "Active" %></th>
+        <th class="tbl-media"><%= sort_link "deactivated", "#{t(:deactivated?)}" %></th>
       </tr>
     
       <% @users.each do |user| %>
@@ -153,7 +153,7 @@
       <%= paginate @users %>
       <%= page_entries_info @users %>
     </div>
-      <%= link_to 'Back', admin_path %>
+      <%= link_to "#{t(:back)}", admin_path %>
   </div>
 </div>
       
