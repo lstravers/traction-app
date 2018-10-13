@@ -3,33 +3,33 @@
 <meta name="viewport" content="initial-scale=1.0 width=device-width">
 </head>
 <p>
-  <strong>Serial Number:</strong>
+  <strong><%= t(:kit_serial) %></strong>
   <%= @inventory.serial_num %>
 </p>
 <p>
-  <strong>Kit Type:</strong>
+  <strong><%= t(:kit_type) %></strong>
   <%= @inventory.kit_type%>
 </p>
  
 <p>
-  <strong>Expiration Date:</strong>
+  <strong><%= t(:expiration_date) %></strong>
   <%= @inventory.serial_num %>
 </p>
 <p>
-<strong>Distribution Date:</strong>
+<strong><%= t(:distributed) %></strong>
 <%= @inventory.serial_num%>
 </p>
 <p>
-<strong>Client id:</strong>
+<strong><%= t(:client_id) %></strong>
 <%= @inventory.serial_num%>
 </p>
-<strong>User id:</strong>
+<strong><%= t(:user_id) %></strong>
 <%= @inventory.serial_num%>
 </p>
-<strong>checkout:</strong>
+<strong><%= t(:checkout) %></strong>
 <%= @inventory.serial_num%>
 </p>
 
  
-<%= link_to 'Update', edit_inventory_path(@inventory) %> |
-<%= link_to 'Back', inventories_path %>
+<%= link_to "#{t(:update)}", edit_inventory_path(@inventory) %> |
+<%= link_to "#{t(:back)}", inventories_path %>
