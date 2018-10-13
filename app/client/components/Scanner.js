@@ -1,3 +1,4 @@
+/* globals I18n */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import QrReader from 'react-qr-reader'
@@ -62,10 +63,10 @@ class Scanner extends Component {
           />
         </div>
         <div>
-          <Button className='button is-danger' onClick={this.props.setManualInput}>Input Kit Serial Codes</Button>
+          <Button className='button is-danger' onClick={this.props.setManualInput}>{I18n.t('manual')}</Button>
         </div>
         <div>
-          <Button className='button is-danger' onClick={this.handleSubmit}>Done</Button>
+          <Button className='button is-danger' onClick={this.handleSubmit}>{I18n.t('submit')}</Button>
         </div>
       </React.Fragment>)
   }

@@ -1,5 +1,5 @@
+/* globals I18n */
 import React from 'react'
-
 import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'

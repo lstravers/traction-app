@@ -231,11 +231,6 @@ fieldset {
   font-size: .9rem;
 }
 
-.volunteer-index-table th,
-.volunteer-index-table td {
-  text-align: center;
-}
-
 .volunteer-index-table tr:nth-child(even) {
   background-color: #fff9de;
 }
@@ -247,11 +242,6 @@ fieldset {
   font-size: .9rem;
 }
 
-.inventory-index-table th,
-.inventory-index-table td {
-  text-align: center;
-}
-
 .inventory-index-table tr:nth-child(even) {
   background-color: #fff9de;
 }
@@ -261,11 +251,6 @@ fieldset {
 .reversal-index-table {
   width: 100%;
   font-size: .9rem;
-}
-
-.reversal-index-table th,
-.reversal-index-table td {
-  text-align: center;
 }
 
 .reversal-index-table tr:nth-child(even) {

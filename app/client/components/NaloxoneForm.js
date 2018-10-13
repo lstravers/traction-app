@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Select, Button } from 'bloomer'
 import 'bulma/css/bulma.css'
+=======
+/* globals I18n */
+import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+>>>>>>> d44d616f11de262532889266181005407a386c9c
 import moment from 'moment'
 import request from 'superagent'
 
-// const apiDomain = 'http://harm-reduction-tracker.herokuapp.com'
+// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 const apiDomain = 'http://localhost:3000'
+
 const counties = [
   'Select',
   'Alamance',
@@ -209,33 +216,33 @@ const NaloxoneForm = (props) => (
     >
       {({ isSubmitting, values, errors, touched, handleReset }) => (
         <Form className='form'>
-          <div className='form-instructions'><p>Please fill out the following form</p></div>
+          <div className='form-instructions'><p>{I18n.t('intro_form')}</p></div>
           <div>
-            <label className='label' htmlFor='firstName'>First Name</label>
+            <label className='label' htmlFor='firstName'>{I18n.t('first_name')}</label>
             <Field className='input' type='text' name='firstName' />
             <ErrorMessage className='has-text-danger' name='firstName' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='lastName'>Last Name</label>
+            <label className='label' htmlFor='lastName'>{I18n.t('last_name')}</label>
             <Field className='input' type='text' name='lastName' />
             <ErrorMessage className='has-text-danger' name='lastName' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='dateOfBirth'>Year Of Birth</label>
+            <label className='label' htmlFor='dateOfBirth'>{I18n.t('birth_year')}</label>
             <Field className='input' type='number' name='dateOfBirth' placeholder='YYYY' />
             <ErrorMessage className='has-text-danger' name='dateOfBirth' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='townCity'>Town/City</label>
+            <label className='label' htmlFor='townCity'>{I18n.t('town_city')}</label>
             <Field className='input' type='text' name='townCity' />
             <ErrorMessage className='has-text-danger' name='townCity' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='county'>County</label>
+            <label className='label' htmlFor='county'>{I18n.t('county')}/label>
             <Field component={Select} name='county'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
@@ -245,13 +252,13 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label' htmlFor='dateOfDistribution'>Date of Distribution</label>
+            <label className='label' htmlFor='dateOfDistribution'>{I18n.t('distributed')}</label>
             <Field className='input' name='dateOfDistribution' />
             <ErrorMessage className='has-text-danger' name='dateOfDistribution' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='numberOfKits'>Number of Naloxone Kits</label>
+            <label className='label' htmlFor='numberOfKits'>{I18n.t('kit_amount')}</label>
             <Field className='input' type='number' name='numberOfKits' />
             <ErrorMessage classame='has-text-danger' name='numberOfKits' component='div' />
           </div>
@@ -260,11 +267,11 @@ const NaloxoneForm = (props) => (
             {props.results.map((result, idx) =>
               <div key={idx}>
                 <div>
-                  <label className='label' htmlFor={`kitSerialNumber[${idx}]`}>Kit Serial Number</label>
+                  <label className='label' htmlFor={`kitSerialNumber[${idx}]`}>{I18n.t('kit_serial')}</label>
                   <Field className='input' type='text' value={result} name={`kitSerialNumber[${idx}]`} />
                   <ErrorMessage className='has-text-danger' name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
-                <label className='label' htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
+                <label className='label' htmlFor={`kitType[${idx}]`}>{I18n.t('kit_type')}</label>
                 <Field component={Select} name={`kitType[${idx}]`}>
                   <option>IM</option>
                   <option>E</option>
@@ -276,7 +283,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label'htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
+            <label className='label'htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -300,7 +307,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label' htmlFor='overdoseReversal'>Overdose Reversal?</label>
+            <label className='label' htmlFor='overdoseReversal'>{I18n.t('reversal')}</label>
             <RadioButtonGroup id='overdoseReversal'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -324,7 +331,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label' htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
+            <label className='label' htmlFor='overdoseReversalKitType'>{I18n.t('reversal_kit_type')}</label>
             <Field component={Select} name='overdoseReversalKitType'>
               <option className='option' value='selectOptions' >Select</option>
               <option value='IM'>IM</option>
@@ -335,13 +342,13 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label' htmlFor='overdoseReversalTownCity'>Overdose Reversal Town/City</label>
+            <label className='label' htmlFor='overdoseReversalTownCity'>{I18n.t('reversal_town')}</label>
             <Field className='input' type='text' name='overdoseReversalTownCity' />
             <ErrorMessage className='has-text-danger' name='overdoseReversalTownCity' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
+            <label className='label' htmlFor='overdoseReversalCounty'>{I18n.t('reversal_county')}</label>
             <Field component={Select} name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
@@ -351,22 +358,22 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label' htmlFor='numberOfDoses'>Number of Doses</label>
+            <label className='label' htmlFor='numberOfDoses'>{I18n.t('amount_doses')}</label>
             <Field className='input' type='number' name='numberOfDoses' />
             <ErrorMessage name='numberOfDoses' component='div' />
           </div>
 
           <div>
-            <label className='label' htmlFor='minutesBetweenDoses'>Minutes Between Doses</label>
+            <label className='label' htmlFor='minutesBetweenDoses'>{I18n.t('minutes_doses')}</label>
             <Field className='input' type='number' name='minutesBetweenDoses' />
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</Button>
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Kit Serial Number</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
           <div>
             <button className='button is-danger' type='submit' disabled={isSubmitting} >
-        Submit
+            {I18n.t('submit')}
             </button>
           </div>
         </Form>

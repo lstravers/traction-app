@@ -1,3 +1,4 @@
+/* globals I18n */
 import React, { Component } from 'react'
 import { Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarStart, NavbarEnd, NavbarMenu, Button } from 'bloomer'
 import 'bulma/css/bulma.css'

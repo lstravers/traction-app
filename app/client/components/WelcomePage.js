@@ -1,3 +1,4 @@
+/* globals I18n */
 import React from 'react'
 import 'bulma/css/bulma.css'
 import { Button } from 'bloomer'
@@ -8,10 +9,10 @@ class WelcomePage extends React.Component {
     return (
       <React.Fragment>
         <div className='container-content'>
-          <h1 className='greeting'> Hello, {currentUser.first_name}.</h1>
-          <p className='center-justify'>Thank you for supporting our community! Please select an option below to scan a QR code or input a serial number and complete the corresponding form to the best of your knowledge before distributing a Naloxone kit.</p>
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</Button>
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Kit Serial Number</Button>
+          <h1 className='greeting'>{I18n.t('hello_user', {name: currentUser.first_name})}</h1>
+          <p className='center-justify'>>{I18n.t('intro')}</p>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
         </div>
       </React.Fragment>
     )

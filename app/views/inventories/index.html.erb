@@ -1,16 +1,16 @@
 <div class="admin-container">
-  <div class="admin-header">List of Naloxone Kits <i class="fas fa-medkit"></i></div>
+  <div class="admin-header">Distributed Naloxone Kits <i class="fas fa-medkit"></i></div>
   <div class="admin-panel">
   <table class="inventory-index-table">
     <tr>
-      <th class="tbl-media"><%= sort_link "serial_num", "Serial Number" %></th>
-      <th class="tbl-media"><%= sort_link "kit_type" %></th>
-      <th class="tbl-media"><%= sort_link "expiration_date" %></th>
-      <th class="tbl-media"><%= sort_link "distributed_date" %></th>
-      <th class="tbl-desktop"><%= sort_link "client_id" %></th>
-      <th class="tbl-desktop">County</th>
-      <th class="tbl-desktop">City</th>
-      <th class="tbl-desktop">Volunteer Name</th>
+      <th class="tbl-media"><%= sort_link "serial_num", "#{t(:kit_serial)}" %></th>
+      <th class="tbl-media"><%= sort_link "kit_type", "#{t(:kit_type)}" %></th>
+      <th class="tbl-media"><%= sort_link "expiration_date", "#{t(:expiration_date)}" %></th>
+      <th class="tbl-media"><%= sort_link "distributed_date","#{t(:distributed)}" %></th>
+      <th class="tbl-desktop"><%= sort_link "client_id", "#{t(:client_id)}" %></th>
+      <th class="tbl-desktop"><%= t(:county) %></th>
+      <th class="tbl-desktop"><%= t(:city) %></th>
+      <th class="tbl-desktop"><%= t(:volname) %></th>
       <th class="tbl-media"></th>
     </tr>
   
@@ -24,7 +24,7 @@
         <td class="tbl-desktop"><%= Client.find(inventory.client_id).county %></td>
         <td class="tbl-desktop"><%= Client.find(inventory.client_id).city %></td>
         <td class="tbl-desktop"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
-        <td class="tbl-media"><%= link_to 'Update', edit_inventory_path(inventory) %></td>
+        <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(inventory) %></td>
       </tr>
     <% end %>
   </table>
@@ -32,6 +32,6 @@
     <%= paginate @inventories %>
     <%= page_entries_info @inventories %>
   </div>
-  <%= link_to 'Back', admin_path %>
+  <%= link_to "#{t(:back)}", admin_path %>
   </div>
 </div>
