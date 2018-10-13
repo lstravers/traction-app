@@ -1,3 +1,4 @@
+/* globals I18n */
 import React from 'react'
 import {Button} from 'bloomer'
 
@@ -6,11 +7,11 @@ class ThankYouPage extends React.Component {
     return (
       <div>
         <div className='thank-container'>
-          <h1 className='thanks'> Thank you for your submission!</h1>
+          <h1 className='thanks'>{I18n.t('thanks')}</h1>
           <div>
-            <p className='instructions'>Please select an option to continue</p>
-            <div><Button className='is-danger' onClick={this.props.setQr} className='scan-button'>Scan QR Code</Button></div>
-            <div><Button className='is-danger' onClick={this.props.setManualInput} className='input-button'>Input Kit Serial Codes</Button></div>
+            <p className='instructions'>{I18n.t('select')}</p>
+            <div><Button className='is-danger' onClick={this.props.setQr} className='scan-button'>{I18n.t('scanner')}</Button></div>
+            <div><Button className='is-danger' onClick={this.props.setManualInput} className='input-button'>{I18n.t('manual')}</Button></div>
           </div>
         </div>
       </div>

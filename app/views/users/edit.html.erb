@@ -1,10 +1,10 @@
 <div class="admin-container">
-  <div class="admin-header">Editing Volunteer Info Form <i class="far fa-user"></i></div>
+  <div class="admin-header"><%= t(:head_edit_vol) %> <i class="far fa-user"></i></div>
   <div class="admin-panel">
-    <h2>Use this form to edit Volunteer information<h2>
+    <h2><%= t(:use_form_edit_vol) %><h2>
 
     <%= render 'form' %>
 
-    <%= link_to "Back", :back %>
+    <%= link_to "#{t(:back)}", :back %>
   </div>
 </div>

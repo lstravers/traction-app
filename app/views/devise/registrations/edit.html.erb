@@ -1,91 +1,98 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="admin-container">
+  <div class="admin-header"><%= t(:edit) %> <%= resource_name.to_s.humanize %></div>
+  <div class="admin-panel">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.phone_field :phone %>
-  </div>
+      <%= f.label t(:first_name) %><br />
+      <%= f.text_field :first_name %>
+    </div>
   <div class="field">
-    <%= f.label :county %><br />
-    <%= f.text_field :county %>
-  </div>
-  <div class="field">
-    <%= f.label :address1 %><br />
-    <%= f.text_field :address1 %>
-  </div>
-  <div class="field">
-    <%= f.label :address2 %><br />
-    <%= f.text_field :address2 %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-  <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-  <%= f.label :admin %><br />
-    <%= f.check_box :admin, {}, false %>
-  </div>
-  <div class="field">
-  <%= f.label :contact_type %><br />
-    <%= f.text_field :contact_type %>
-  </div>
-  <div class="field">
-  <%= f.label :date_auth %><br />
-    <%= f.date_field :date_auth %>
-  </div>
-  <div class="field">
-  <%= f.label :admin_auth %><br />
-    <%= f.date_field :admin_auth %>
-  </div>
+      <%= f.label t(:last_name) %><br />
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label t(:phone) %><br />
+      <%= f.phone_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label t(:county) %><br />
+      <%= f.text_field :county %>
+    </div>
+    <div class="field">
+      <%= f.label t(:address1) %><br />
+      <%= f.text_field :address1 %>
+    </div>
+    <div class="field">
+      <%= f.label t(:address2) %><br />
+      <%= f.text_field :address2 %>
+    </div>
+    <div class="field">
+      <%= f.label t(:city) %><br />
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label t(:state) %><br />
+      <%= f.text_field :state %>
+    </div>
+    <div class="field">
+    <%= f.label t(:zip) %><br />
+      <%= f.text_field :zip %>
+    </div>
+    <div class="field">
+    <%= f.label t(:admin) %><br />
+      <%= f.check_box :admin, {}, false %>
+    </div>
+    <div class="field">
+    <%= f.label t(:contact_type) %><br />
+      <%= f.text_field :contact_type %>
+    </div>
+    <div class="field">
+    <%= f.label t(:date_auth) %><br />
+      <%= f.date_field :date_auth %>
+    </div>
+    <div class="field">
+    <%= f.label t(:admin_auth) %><br />
+      <%= f.date_field :admin_auth %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label t(:email) %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label t(:password) %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label t(:password_confirmation) %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label t(:current_password) %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
 
-<%= link_to "Back", :back %>
+    <div class="actions">
+      <%= f.submit "#{t(:update)}" %>
+    </div>
+  <% end %>
+  
+  <%= link_to "#{t(:back)}", :back %>
+
+  </div>
+</div>
+
+
