@@ -141,7 +141,7 @@
               link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
               end %>
           </td>
-          <td class="tbl-media"><%= link_to 'Update', edit_user_path(user) %></td>
+          <td class="tbl-media"><%= link_to 'Update', edit_user_path(id: user.id) %></td>
           <td class="tbl-media"><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
                   link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
                   end %>
