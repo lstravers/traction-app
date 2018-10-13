@@ -52,21 +52,30 @@
 }
 
 /* HeaderVolunteer , HeaderAdmin */
- .header-logo {
-  width: 12rem;
+.burger-inactive {
+  color: #2374AB;
+  background-color: transparent;
+}
+
+.burger-active {
+  color: #FF8484;
+  background-color: transparent;
+}
+
+.header-logo {
+  width: 130px;
   margin-left: .5rem;
   margin-bottom: 0;
   margin-top: .2rem;
   }
 
-  .navbar-burger {
-    background-color: transparent;
-    color: #2374AB;
-  }
+.navbar-start {
+  margin-left: .5rem;
+}
 
-  a.navbar-burger.is-active {
-    color: #ff3860;
-  }
+.header-link {
+  color: #353531;
+}
 
 /* Login Page */
 
@@ -159,6 +168,11 @@ fieldset {
 
 .select{
   margin-bottom: .5rem;
+}
+
+/* ThankYouPage */
+.confirmation-container {
+  margin-top: 10rem; 
 }
 /* Admin pages */
 
