@@ -111,6 +111,8 @@ en:
   contact_type: "Contact Type"
   choose_method: "Choose Method"
   choose_county: "Choose County"
+  search_city: "Search by City"
+  search_lname: "Search by Last Name"
 
 es:
   email: "Email"
@@ -191,7 +193,8 @@ es:
   contact_type: "¿Preferencia para contactar?"
   choose_method: "Seleccione forma de contacto"
   choose_county: "Seleccione County"
-
+  search_city: "Busqueda por Ciudad"
+  search_lname: "Busqueda por Apellido"
 
 
 Kits scanned:

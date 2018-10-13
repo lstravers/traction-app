@@ -42,30 +42,30 @@ class HeaderAdmin extends Component {
           <NavbarMenu isActive={false} onClick={this.onClickNav}>
             <NavbarStart>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/admin')}>Home</a>
+                <a className='header-link' onClick={() => (window.location.href = '/admin')}>{I18n.t('home')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/home')}>Nalaxone Distribution</a>
+                <a className='header-link' onClick={() => (window.location.href = '/home')}>{I18n.t('naloxone_link')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/reversals')}>Reversals Overview</a>
+                <a className='header-link' onClick={() => (window.location.href = '/reversals')}>{I18n.t('total_reversals')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/inventories')}>Distributed Naloxone Kits</a>
+                <a className='header-link' onClick={() => (window.location.href = '/inventories')}>{I18n.t('distributed_kits')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/users')}>Volunteers</a>
+                <a className='header-link' onClick={() => (window.location.href = '/users')}>{I18n.t('volunteers')}</a>
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
               <NavbarItem>
-                <img src={usFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+                <img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' />
               </NavbarItem>
               <NavbarItem>
-                <img src={spainFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+                <img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' />
               </NavbarItem>
               <NavbarItem isHidden='touch'>
-                <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>Logout</Button>
+                <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>{I18n.t('logout')}</Button>
               </NavbarItem>
             </NavbarEnd>
           </NavbarMenu>
