@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+/* globals I18n */
+import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import {Button} from 'bloomer'
 import moment from 'moment'
 import request from 'superagent'
 
-const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-// const apiDomain = 'http://localhost:3000'
+// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+const apiDomain = 'http://localhost:3000'
 
 const counties = [
   'Select',
@@ -209,33 +209,33 @@ const NaloxoneForm = (props) => (
     >
       {({ isSubmitting, values, errors, touched, handleReset }) => (
         <Form className='form'>
-          <div className='form-instructions'><p>Please fill out the following form</p></div>
+          <div className='form-instructions'><p>{I18n.t('intro_form')}</p></div>
           <div>
-            <label htmlFor='firstName'>First Name</label>
+            <label htmlFor='firstName'>{I18n.t('first_name')}</label>
             <Field type='text' name='firstName' />
             <ErrorMessage name='firstName' component='div' />
           </div>
 
           <div>
-            <label htmlFor='lastName'>Last Name</label>
+            <label htmlFor='lastName'>{I18n.t('last_name')}</label>
             <Field type='text' name='lastName' />
             <ErrorMessage name='lastName' component='div' />
           </div>
 
           <div>
-            <label htmlFor='dateOfBirth'>Year Of Birth</label>
+            <label htmlFor='dateOfBirth'>{I18n.t('birth_year')}</label>
             <Field type='number' name='dateOfBirth' placeholder='YYYY' />
             <ErrorMessage name='dateOfBirth' component='div' />
           </div>
 
           <div>
-            <label htmlFor='townCity'>Town/City</label>
+            <label htmlFor='townCity'>{I18n.t('town_city')}</label>
             <Field type='text' name='townCity' />
             <ErrorMessage name='townCity' component='div' />
           </div>
 
           <div>
-            <label htmlFor='county'>County</label>
+            <label htmlFor='county'>{I18n.t('county')}</label>
             <Field component='select' name='county'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
@@ -245,13 +245,13 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='dateOfDistribution'>Date of Distribution</label>
+            <label htmlFor='dateOfDistribution'>{I18n.t('distributed')}</label>
             <Field name='dateOfDistribution' />
             <ErrorMessage name='dateOfDistribution' component='div' />
           </div>
 
           <div>
-            <label htmlFor='numberOfKits'>Number of Naloxone Kits</label>
+            <label htmlFor='numberOfKits'>{I18n.t('kit_amount')}</label>
             <Field type='number' name='numberOfKits' />
             <ErrorMessage name='numberOfKits' component='div' />
           </div>
@@ -260,15 +260,15 @@ const NaloxoneForm = (props) => (
             {props.results.map((result, idx) =>
               <div key={idx}>
                 <div>
-                  <label htmlFor={`kitSerialNumber[${idx}]`}>Kit Serial Number</label>
+                  <label htmlFor={`kitSerialNumber[${idx}]`}>{I18n.t('kit_serial')}</label>
                   <Field type='text' value={result} name={`kitSerialNumber[${idx}]`} />
                   <ErrorMessage name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
-                <label htmlFor={`kitType[${idx}]`}>Naloxone Kit Type</label>
+                <label htmlFor={`kitType[${idx}]`}>{I18n.t('kit_type')}</label>
                 <Field component='select' name={`kitType[${idx}]`}>
-                  <option>IM</option>
-                  <option>E</option>
-                  <option>N</option>
+                  <option value='IM'>IM</option>
+                  <option value='E'>E</option>
+                  <option value='N'>N</option>
                 </Field>
                 <ErrorMessage name={`kitType[${idx}]`} component='div' />
               </div>
@@ -276,7 +276,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='firstNaloxoneKit'>First Ever Naloxone Kit?</label>
+            <label htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -300,7 +300,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='overdoseReversal'>Overdose Reversal?</label>
+            <label htmlFor='overdoseReversal'>{I18n.t('reversal')}</label>
             <RadioButtonGroup id='overdoseReversal'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -324,9 +324,9 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalKitType'>Overdose Reversal Kit Type</label>
+            <label htmlFor='overdoseReversalKitType'>{I18n.t('reversal_kit_type')}</label>
             <Field component='select' name='overdoseReversalKitType'>
-              <option value='selectOptions'onChange={props.handleChange}>Select</option>
+              <option value='selectOptions'>Select</option>
               <option value='IM'>IM</option>
               <option value='E'>E</option>
               <option value='N'>N</option>
@@ -335,13 +335,13 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalTownCity'>Overdose Reversal Town/City</label>
+            <label htmlFor='overdoseReversalTownCity'>{I18n.t('reversal_town')}</label>
             <Field type='text' name='overdoseReversalTownCity' />
             <ErrorMessage name='overdoseReversalTownCity' component='div' />
           </div>
 
           <div>
-            <label htmlFor='overdoseReversalCounty'>Overdose Reversal County</label>
+            <label htmlFor='overdoseReversalCounty'>{I18n.t('reversal_county')}</label>
             <Field component='select' name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
@@ -351,20 +351,20 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label htmlFor='numberOfDoses'>Number of Doses</label>
+            <label htmlFor='numberOfDoses'>{I18n.t('amount_doses')}</label>
             <Field type='number' name='numberOfDoses' />
             <ErrorMessage name='numberOfDoses' component='div' />
           </div>
 
           <div>
-            <label htmlFor='minutesBetweenDoses'>Minutes Between Doses</label>
+            <label htmlFor='minutesBetweenDoses'>{I18n.t('minutes_doses')}</label>
             <Field type='number' name='minutesBetweenDoses' />
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
           <div className='submit-button-div'>
             <button type='submit' className='submit-button' disabled={isSubmitting}>
-        Submit
+              {I18n.t('submit')}
             </button>
           </div>
         </Form>
