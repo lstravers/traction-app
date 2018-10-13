@@ -1,65 +1,65 @@
 <%= form_with model: @user, local: true do |f| %>  
   <div class="form-field-box">
     <div class="field">
-      <%= f.label :deactivated? %><br />
+      <%= f.label t(:deactivated?) %><br />
       <%= f.check_box :deactivated %>
     </div>
     <div class="field">
-      <%= f.label :admin? %><br />
+      <%= f.label t(:admin?) %><br />
       <%= f.check_box :admin %>
   </div>
   </div>
   <div class="form-field-box ffb-col">
     <div class="field">
-      <%= f.label :first_name %><br />
+      <%= f.label t(:first_name) %><br />
       <%= f.text_field :first_name %>
     </div>
     <div class="field">
-      <%= f.label :last_name %><br />
+      <%= f.label t(:last_name) %><br />
       <%= f.text_field :last_name %>
     </div>
   </div>
   <div class="form-field-box ffb-col">
     <div class="field">
-      <%= f.label :phone %><br />
+      <%= f.label t(:phone) %><br />
       <%= f.phone_field :phone %>
     </div>
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label t(:email) %><br />
       <%= f.email_field :email, autocomplete: "email" %>
     </div>
       <div class="field">
-      <%= f.label :contact_type %><br />
+      <%= f.label t(:contact_type) %><br />
       <%= f.select(:contact_type, ['Text',
           'Phone',
-          'Email'], :include_blank => "Choose Method") %>
+          'Email'], :include_blank => "#{t(:choose_contact)}") %>
     </div>
   </div>
   <div class="form-field-box ffb-col">
     <div class="field">
-      <%= f.label :address1 %><br />
+      <%= f.label t(:address1) %><br />
       <%= f.text_field :address1 %>
     </div>
     <div class="field">
-      <%= f.label :address2 %><br />
+      <%= f.label t(:address2) %><br />
       <%= f.text_field :address2 %>
     </div>
   </div>
   <div class="form-field-box ffb-col">
     <div class="field">
-      <%= f.label :city %><br />
+      <%= f.label t(:city) %><br />
       <%= f.text_field :city %>
     </div>
     <div class="field">
-      <%= f.label :state %><br />
+      <%= f.label t(:state) %><br />
       <%= f.text_field :state, maxlength: 2 %>
     </div>
     <div class="field">
-      <%= f.label :zip %><br />
+      <%= f.label t(:zip) %><br />
       <%= f.text_field :zip, maxlength: 12 %>
     </div>
     <div class="field">
-      <%= f.label :county %><br />
+      <%= f.label t(:county) %><br />
       <%= f.select(:county, [
         'Select',
         'Alamance',
@@ -162,17 +162,17 @@
         'Wilson',
         'Yadkin',
         'Yancey'
-        ], :include_blank => "Choose County" )%>
+        ], :include_blank => "#{t(:choose_county)}" )%>
     </div>
   </div>
   <div class="form-field-box ffb-col">
     <div class="field">
-      <%= f.label :date_auth %><br />
+      <%= f.label t(:date_auth) %><br />
       <%= f.date_field :date_auth %>
     </div>
     <% unless @user.admin_auth %>
     <div class="field">
-      <%= f.label :admin_auth %><br />
+      <%= f.label t(:admin_auth) %><br />
       <%= f.date_field :admin_auth %>
     </div>
     <% end %>
@@ -180,19 +180,19 @@
   <div class="form-field-box ffb-col">
     <% unless @user.id %>
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label t(:password) %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label t(:password_confirmation) %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "#{t(:submit)}" %>
   </div>
   <% end %>

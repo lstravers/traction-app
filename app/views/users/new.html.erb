@@ -1,10 +1,10 @@
 <div class="admin-container">
-  <div class="admin-header">New Volunteer Info Form <i class="far fa-user"></i></div>
+  <div class="admin-header"><%= t(:head_new_vol)%> <i class="far fa-user"></i></div>
   <div class="admin-panel">
-    <h2>Please register a new volunteer account.<h2>
+    <h2><%= t(:register_new) %><h2>
 
     <%= render 'form' %>
 
-    <%= link_to "Back", :back %>
+    <%= link_to "#{t(:back)}", :back %>
   </div>
 </div>

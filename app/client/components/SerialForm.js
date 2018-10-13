@@ -44,7 +44,7 @@ class SerialForm extends React.Component {
                         <Label className='label' htmlFor={`serialNumbers[${i}]`}>{I18n.t('enter_serial')}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a onClick={() => arrayHelpers.remove([i])}><i class='fas fa-times-circle has-text-danger align' /></a></Label>
+                          <a onClick={() => arrayHelpers.remove([i])}><i className='fas fa-times-circle has-text-danger align' /></a></Label>
                         <Field className='input' type='text' name={`serialNumbers[${i}]`} />
                         <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
                       </Control>
