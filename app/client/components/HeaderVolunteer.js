@@ -41,13 +41,13 @@ class HeaderVolunteer extends Component {
           <NavbarMenu isActive={false} onClick={this.onClickNav}>
             <NavbarStart>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/home')}>Home</a>
+                <a className='header-link' onClick={() => (window.location.href = '/home')}>{I18n.t('home')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials')}>Scan QR Code</a>
+                <a className='header-link' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Serial Codes</a>
+                <a className='header-link' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</a>
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
@@ -58,7 +58,7 @@ class HeaderVolunteer extends Component {
                 <img src={spainFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
               </NavbarItem>
               <NavbarItem isHidden='touch'>
-                <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>Logout</Button>
+                <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>{I18n.t('logout')}</Button>
               </NavbarItem>
             </NavbarEnd>
           </NavbarMenu>

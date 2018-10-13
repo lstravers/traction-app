@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Select, Button } from 'bloomer'
 import 'bulma/css/bulma.css'
-=======
-/* globals I18n */
-import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
->>>>>>> d44d616f11de262532889266181005407a386c9c
 import moment from 'moment'
 import request from 'superagent'
 
