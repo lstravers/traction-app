@@ -1,7 +1,7 @@
 <div class="admin-container">
-    <div class="admin-header">Admin Panel <i class="fas fa-user-plus"></i></div>
+    <div class="admin-header"><%= t(:admin_panel) %> <i class="fas fa-user-plus"></i></div>
     <div class="admin-panel">
-        <p>Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!</p>
+        <p><%= t(:welcome) %>, <%= current_user.first_name %> <%= current_user.last_name %>!</p>
         <div class="admin-nav">
             <ul class="ap-ul">
                 <li class="li-ndistro"><i class="fas fa-hands-helping"></i> <%= link_to "#{t(:naloxone_link)}", home_index_path %></li>
