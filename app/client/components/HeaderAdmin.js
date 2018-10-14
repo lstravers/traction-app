@@ -59,10 +59,10 @@ class HeaderAdmin extends Component {
             </NavbarStart>
             <NavbarEnd>
               <NavbarItem>
-                <a className='header-link'  onClick={() => (window.location.href = '')}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+                <a className='header-link'  onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link'  onClick={() => (window.location.href = '')}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+                <a className='header-link'  onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem isHidden='touch'>
                 <Button className='is-danger' onClick={() => (window.location.href = 'logout')}>{I18n.t('logout')}</Button>
