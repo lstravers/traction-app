@@ -1,23 +1,22 @@
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-<meta name="viewport" content="initial-scale=1.0 width=device-width">
-</head>
-
-<h1><%= t(:head_update_kit) %></h1> 
-  
-<%= form.label "#{t(:kit_serial)}" %><br>
-      <%= form.text_field :serial_num %> 
-    </p>
-   
-    <p>
-      <%= form.label "#{t(:kit_type)}" %><br>
-      <%= form.text_field :kit_type %>
-    </p>
-    <p>
+<div class="admin-container">
+  <div class="admin-header"><%= t(:head_update_kit) %> <i class="fas fa-medkit"></i></div>
+  <div class="admin-panel">
+  <%= form.label "#{t(:kit_serial)}" %><br>
+        <%= form.text_field :serial_num %> 
+      </p>
     
-  <p>
-    <%= form.submit "#{t(:submit)}" %>
-  </p>
- 
- 
-<%= link_to "#{t(:back)}", inventories_path %>
+      <p>
+        <%= form.label "#{t(:kit_type)}" %><br>
+        <%= form.text_field :kit_type %>
+      </p>
+      <p>
+      
+    <p>
+      <%= form.submit "#{t(:submit)}" %>
+    </p>
+  
+  
+  <%= link_to "#{t(:back)}", inventories_path %>
+
+  </div>
+</div>
