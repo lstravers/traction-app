@@ -42,13 +42,13 @@ class HeaderVolunteer extends Component {
           <NavbarMenu isActive={false} onClick={this.onClickNav}>
             <NavbarStart>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/home')}>{I18n.t('home')}</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/home`)}>{I18n.t('home')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/kitserials`)}>{I18n.t('scanner')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/kitserials?status=manual`)}>{I18n.t('manual')}</a>
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
@@ -81,13 +81,13 @@ class HeaderVolunteer extends Component {
                 <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/home')}>Home</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/home`)}>Home</a>
               </NavbarItem >
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials')}>Scan QR Codes</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/kitserials`)}>Scan QR Codes</a>
               </NavbarItem >
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/kitserials?status=manual')}>Input Serial Codes</a>
+                <a className='header-link' onClick={() => (window.location.href = `/${I18n.locale}/kitserials?status=manual`)}>Input Serial Codes</a>
               </NavbarItem >
               <NavbarItem>
                 <a className='header-link' onClick={() => (window.location.href = '/logout')}>Logout</a>
