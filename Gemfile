@@ -31,7 +31,7 @@ gem 'faker'
 gem 'webpacker'
 gem 'react-rails'
 gem 'devise'
-
+gem "serviceworker-rails"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

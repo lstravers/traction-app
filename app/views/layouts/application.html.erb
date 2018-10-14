@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Harm Reduction Tracker</title>
+    <title>Traction App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <meta name="theme-color" content="#FF8484"/>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'style' %>
 
@@ -15,7 +16,11 @@
     <%= javascript_include_tag 'application' %>
     
     <meta name="viewport" content="initial-scale=1.0 width=device-width" />
-  </head>
+   <link rel="manifest" href="/manifest.json" />
+   <html lang="en">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <meta name="Description" content="Traction App - tracks distribution of Naloxone Kits to enhance harm reduction efforts in North Carolina.">
+</head>
 
   <body>
   <% if current_user %>
@@ -27,4 +32,7 @@
   <% end %>
   <%= yield %>
   </body>
+
+<noscript>Javascript use required for page to load</noscript>
+
 </html>
