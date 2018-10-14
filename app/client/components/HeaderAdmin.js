@@ -58,11 +58,11 @@ class HeaderAdmin extends Component {
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
-              <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
-              <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem isHidden='touch'>
                 <Button className='is-danger' onClick={() => (window.location.href = 'logout')}>{I18n.t('logout')}</Button>
@@ -82,6 +82,10 @@ class HeaderAdmin extends Component {
           </NavbarBrand>
           <NavbarMenu isActive onClick={this.handleClick}>
             <NavbarStart>
+              <NavbarItem>
+                <a style={{ marginRight: '.5rem' }} onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              </NavbarItem>
               <NavbarItem>
                 <a className='header-link' onClick={() => (window.location.href = '/admin')}>Home</a>
               </NavbarItem>
