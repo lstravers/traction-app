@@ -63,7 +63,7 @@ class Scanner extends Component {
           />
         </div>
         <div>
-          <Button className='button is-danger' onClick={this.props.setManualInput}>{I18n.t('manual')}</Button>
+          <Button className='button is-danger' onClick={this.props.setManualInput}>{I18n.t('manual')}</Button> 
         </div>
         <div>
           <Button className='button is-danger' onClick={this.handleSubmit}>{I18n.t('submit')}</Button>

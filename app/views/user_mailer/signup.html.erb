@@ -27,15 +27,13 @@
 </style>
 
 <div class="admin-container">
-  <div class="admin-header">Hello <%= @resource.email %>!</div>
+  <div class="admin-header">Welcome to Traction Application!</div>
   <div class="admin-panel">
+    <img src="https://harm-reduction-tracker.herokuapp.com/packs/_/assets/images/traction-logo-34d7e5d61a2fecf3780bf45a6e5095c2.png" alt="rss feed" width="150px"/><br >
+    <a href="https://harm-reduction-tracker.herokuapp.com"> Link to Traction Appliction</a>
+    <p>
+      <%= @greeting %>
 
-    <p>Someone has requested a link to change your password. You can do this through the link below.</p>
-
-    <p><%= link_to 'Change my password', edit_password_url(@resource, reset_password_token: @token) %></p>
-
-    <p>If you didn't request this, please ignore this email.</p>
-    <p>Your password won't change until you access the link above and create a new one.</p>
-
-    </div>
+    </p>
+  </div>
 </div>
