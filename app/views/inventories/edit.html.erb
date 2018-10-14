@@ -1,46 +1,47 @@
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-<meta name="viewport" content="initial-scale=1.0 width=device-width">
-</head>
-<h2>Edit a Kit in the Inventory<h2>
+<div class="admin-container">
+  <div class="admin-header"><%= t(:head_edit_inventory) %> <i class="fas fa-medkit"></i></div>
+  <div class="admin-panel">
 
-<%= form_with model: @inventory, local:true do |form| %>
+  <%= form_with model: @inventory, local:true do |form| %>
 
-  <% if @inventory.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@inventory.errors.count, "error") %> prohibited
-        this inventory from being updated:
-      </h2>
-      <ul>
-        <% @user.inventories.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @inventory.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@inventory.errors.count, "error") %> prohibited
+          this inventory from being updated:
+        </h2>
+        <ul>
+          <% @user.inventories.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+  <p>  
+    <%= form.label t(:kit_serial) %><br>
+    <%= form.text_field :serial_num %> 
+  </p>
+    
+  <p>
+    <%= form.label t(:kit_type) %><br>
+    <%= form.text_field :kit_type %>
+  </p>
+
+  <p>
+    <%= form.label t(:expiration_date) %><br>
+    <%= form.text_field :expiration_date %>
+  </p>
+
+  <p>
+    <%= form.label t(:distributed) %><br>
+    <%= form.text_field :distributed_date %>
+  </p>
+
+    <%= form.submit %>
   <% end %>
-  
-<p>  
-  <%= form.label :Serial_Number %><br>
-  <%= form.text_field :serial_num %> 
-</p>
-   
-<p>
-  <%= form.label :Kit_Type %><br>
-  <%= form.text_field :kit_type %>
-</p>
 
-<p>
-  <%= form.label :Expiration_Date %><br>
-  <%= form.text_field :expiration_date %>
-</p>
+  <%= link_to "#{t(:back)}", inventories_path %>
 
-<p>
-  <%= form.label :Distribution_Date %><br>
-  <%= form.text_field :distributed_date %>
-</p>
-
-  <%= form.submit %>
-<% end %>
-
-<%= link_to 'Back', inventories_path %> 
+  </div>
+</div>

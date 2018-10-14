@@ -1,3 +1,4 @@
+/* globals I18n */
 import React from 'react'
 import {Button, Control, Label} from 'bloomer'
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik'
@@ -40,21 +41,21 @@ class SerialForm extends React.Component {
                   <React.Fragment>
                     {values.serialNumbers.map((el, i) => (
                       <Control className='input-field' key={i}>
-                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>Enter Serial Number
+                        <Label className='label' htmlFor={`serialNumbers[${i}]`}>{I18n.t('enter_serial')}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a onClick={() => arrayHelpers.remove([i])}><i className='fas fa-times-circle has-text-danger align' /></a></Label>
+                          <a onClick={() => arrayHelpers.remove([i])}><i className='fas fa-times-circle has-text-danger align' /></a></Label>
                         <Field className='input' type='text' name={`serialNumbers[${i}]`} />
                         <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
                       </Control>
                     ))}
-                    <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>Add Input</Button>
+                    <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>{I18n.t('add')}</Button>
                   </React.Fragment>
                 )} />
-                <Button className='button is-danger' type='submit' disabled={isSubmitting}>Submit</Button>
+                <Button className='button is-danger' type='submit' disabled={isSubmitting}>{I18n.t('submit')}</Button>
               </Form>
               <div>
-                <Button className='button is-danger' type='button' onClick={this.props.setQr}>Scan QR code</Button>
+                <Button className='button is-danger' type='button' onClick={this.props.setQr}>{I18n.t('scanner')}</Button>
               </div>
             </div>
           ) }

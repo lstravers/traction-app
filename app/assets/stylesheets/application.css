@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800|Roboto:700,900');
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,800i|Roboto:400,700,900');
 
 /* Universal */
  body {
@@ -23,12 +23,13 @@
 
  p {
   font-family: Roboto;
+  font-weight: 400;
 }
 
 .center-justify {
   text-align: left;
   margin: 0 auto;
-  width: 18em;
+  width: 19em;
 }
 
  .button {
@@ -51,16 +52,30 @@
 }
 
 /* HeaderVolunteer , HeaderAdmin */
- .header-logo {
-  width: 12rem;
+.burger-inactive {
+  color: #2374AB;
+  background-color: transparent;
+}
+
+.burger-active {
+  color: #FF8484;
+  background-color: transparent;
+}
+
+.header-logo {
+  width: 130px;
   margin-left: .5rem;
   margin-bottom: 0;
+  margin-top: .2rem;
   }
 
-  .navbar-burger {
-    background-color: transparent;
-    color: #2374AB;
-  }
+.navbar-start {
+  margin-left: .5rem;
+}
+
+.header-link {
+  color: #353531;
+}
 
 /* Login Page */
 
@@ -85,7 +100,7 @@
 }
 
 .Card-container {
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 
 .greeting {
@@ -93,7 +108,7 @@
   font-family: "Open Sans";
   margin-bottom: .5rem;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 /* Scanner */
@@ -144,15 +159,27 @@
 .scanner-container {
   margin-top: 5rem; 
 }
-/* .input-field {
-  margin-left: 25px;
-} */
 
+/* Naloxone Form */
+
+fieldset {
+  border-style: none;
+}
+
+.select{
+  margin-bottom: .5rem;
+}
+
+/* ThankYouPage */
+.confirmation-container {
+  margin-top: 10rem; 
+}
 /* Admin pages */
 
 .admin-container {
   max-width: 95%;
   margin: 20px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);
 }
 
 .admin-header {
@@ -168,7 +195,6 @@
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #2374AB;
-  border-radius: 0 0 5% 5%;
   padding: 15px;
 }
 

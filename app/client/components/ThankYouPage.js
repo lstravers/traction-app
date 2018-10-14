@@ -1,17 +1,17 @@
+/* globals I18n */
 import React from 'react'
-import {Button} from 'bloomer'
+import 'bulma/css/bulma.css'
+import { Button } from 'bloomer'
 
 class ThankYouPage extends React.Component {
   render () {
     return (
       <div>
-        <div className='thank-container'>
-          <h1 className='thanks'> Thank you for your submission!</h1>
-          <div>
-            <p className='instructions'>Please select an option to continue</p>
-            <div><Button className='is-danger' onClick={this.props.setQr} className='scan-button'>Scan QR Code</Button></div>
-            <div><Button className='is-danger' onClick={this.props.setManualInput} className='input-button'>Input Kit Serial Codes</Button></div>
-          </div>
+        <h1 className='greeting'>{I18n.t('thanks')}</h1>
+        <div>
+          <p className='center-justify'>{I18n.t('select')}</p>
+          <div><Button className='is-danger' onClick={this.props.setQr} >{I18n.t('scanner')}</Button></div>
+          <div><Button className='is-danger' onClick={this.props.setManualInput} >{I18n.t('manual')}</Button></div>
         </div>
       </div>
     )

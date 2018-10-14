@@ -1,5 +1,5 @@
+/* globals I18n */
 import React from 'react'
-
 import NaloxoneForm from './NaloxoneForm'
 import SerialForm from './SerialForm'
 import Scanner from './Scanner'
@@ -81,7 +81,7 @@ class KitSerials extends React.Component {
       )
     } else if (status === 'thankYou') {
       return (
-        <div>
+        <div className='confirmation-container'>
           <Card><ThankYouPage setManualInput={this.setManualInput} setForm={this.setForm} setQr={this.setQr} /></Card>
         </div>
       )

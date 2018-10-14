@@ -1,13 +1,13 @@
 <div class="admin-container">
-  <div class="admin-header">List of Reversals <i class="fas fa-heartbeat"></i></div>
+  <div class="admin-header"><%= t(:head_reverse) %> <i class="fas fa-heartbeat"></i></div>
   <div class="admin-panel">
     <table class="reversal-index-table">
       <tr>
-        <th class="tbl-media"><%= sort_link "county" %></th>
-        <th class="tbl-media"><%= sort_link "town" %></th>
-        <th class="tbl-media"><%= sort_link "doses", "Doses Count" %></th>
-        <th class="tbl-media"><%= sort_link "kit_type" %></th>
-        <th class="tbl-media"><%= sort_link "time_between", "Dose Timing" %></th>
+        <th class="tbl-media"><%= sort_link "county", "#{t(:county)}" %></th>
+        <th class="tbl-media"><%= sort_link "town", "#{t(:town)}" %></th>
+        <th class="tbl-media"><%= sort_link "doses", "#{t(:doses)}" %></th>
+        <th class="tbl-media"><%= sort_link "kit_type", "#{t(:kit_type)}" %></th>
+        <th class="tbl-media"><%= sort_link "time_between", "#{t(:minutes_doses)}" %></th>
       </tr>
     
       <% @reversals.each do |reversal| %>
@@ -24,6 +24,6 @@
         <%= paginate @reversals %>
         <%= page_entries_info @reversals %>
     </div>
-    <%= link_to 'Back', admin_path %>
+    <%= link_to "#{t(:back)}", admin_path %>
   </div>
 </div>
