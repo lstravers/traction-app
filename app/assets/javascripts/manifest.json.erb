@@ -1,0 +1,27 @@
+<% icon_sizes = Rails.configuration.serviceworker.icon_sizes %>
+{
+    "short_name": "Traction",
+    "name": "Traction",
+    "icons": [
+      {
+        "src": "images/traction-icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }, 
+      {
+        "src": "images/flash-page.png", 
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "images/flash-page512.png", 
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#2374AB",
+    "theme_color": "#FF8484",
+    "display": "standalone"
+  }
+
