@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      UserMailer.signup(@user).deliver_now
       redirect_to users_path, notice: "Your account was created successfully."
     else
       render 'new', notice: "Account not created"
