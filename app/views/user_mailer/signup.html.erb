@@ -2,10 +2,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 </head>
 
-<h1>Welcome to Traction Application!</h1>
-<img src="https://harm-reduction-tracker.herokuapp.com/assets/traction-logo-white-88d3d8c9b0b2872962f98672c39399914786d2158eddbc1a934bf7b194958f1c.png" alt="rss feed" width="50px"/>
-<a href="https://harm-reduction-tracker.herokuapp.com"> Link to Traction Appliction</a>
-<p>
-  <%= @greeting %>
+<style>
+.admin-container {
+  max-width: 90%;
+  margin: 20px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);
+}
 
-</p>
+.admin-header {
+  width: 100%;
+  background-color: #fff9de;
+  height: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #2374AB;
+}
+
+.admin-panel {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #2374AB;
+  padding: 15px;
+}
+</style>
+
+<div class="admin-container">
+  <div class="admin-header">Welcome to Traction Application!</div>
+  <div class="admin-panel">
+    <img src="https://harm-reduction-tracker.herokuapp.com/packs/_/assets/images/traction-logo-34d7e5d61a2fecf3780bf45a6e5095c2.png" alt="rss feed" width="150px"/><br >
+    <a href="https://harm-reduction-tracker.herokuapp.com"> Link to Traction Appliction</a>
+    <p>
+      <%= @greeting %>
+
+    </p>
+  </div>
+</div>
