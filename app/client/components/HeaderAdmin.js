@@ -42,30 +42,30 @@ class HeaderAdmin extends Component {
           <NavbarMenu isActive={false} onClick={this.onClickNav}>
             <NavbarStart>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/admin')}>{I18n.t('home')}</a>
+                <a className='header-link' onClick={() => (window.location.href = 'admin')}>{I18n.t('home')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/home')}>{I18n.t('naloxone_link')}</a>
+                <a className='header-link' onClick={() => (window.location.href = 'home')}>{I18n.t('naloxone_link')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/reversals')}>{I18n.t('total_reversals')}</a>
+                <a className='header-link' onClick={() => (window.location.href = 'reversals')}>{I18n.t('total_reversals')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/inventories')}>{I18n.t('distributed_kits')}</a>
+                <a className='header-link' onClick={() => (window.location.href = 'inventories')}>{I18n.t('distributed_kits')}</a>
               </NavbarItem>
               <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.href = '/users')}>{I18n.t('volunteers')}</a>
+                <a className='header-link' onClick={() => (window.location.href = 'users')}>{I18n.t('volunteers')}</a>
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
-              <NavbarItem>
-                <img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' />
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
-              <NavbarItem>
-                <img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' />
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem isHidden='touch'>
-                <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>{I18n.t('logout')}</Button>
+                <Button className='is-danger' onClick={() => (window.location.href = 'logout')}>{I18n.t('logout')}</Button>
               </NavbarItem>
             </NavbarEnd>
           </NavbarMenu>
@@ -82,6 +82,10 @@ class HeaderAdmin extends Component {
           </NavbarBrand>
           <NavbarMenu isActive onClick={this.handleClick}>
             <NavbarStart>
+              <NavbarItem>
+                <a style={{ marginRight: '.5rem' }} onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              </NavbarItem>
               <NavbarItem>
                 <a className='header-link' onClick={() => (window.location.href = '/admin')}>Home</a>
               </NavbarItem>
