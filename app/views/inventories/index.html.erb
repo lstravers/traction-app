@@ -1,5 +1,5 @@
 <div class="admin-container">
-  <div class="admin-header">Distributed Naloxone Kits <i class="fas fa-medkit"></i></div>
+  <div class="admin-header"><%= t(:distributed_kits) %> <i class="fas fa-medkit"></i></div>
   <div class="admin-panel">
   <table class="inventory-index-table">
     <tr>
@@ -24,7 +24,7 @@
         <td class="tbl-desktop"><%= Client.find(inventory.client_id).county %></td>
         <td class="tbl-desktop"><%= Client.find(inventory.client_id).city %></td>
         <td class="tbl-desktop"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
-        <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(inventory) %></td>
+        <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(id: inventory.id) %></td>
       </tr>
     <% end %>
   </table>
