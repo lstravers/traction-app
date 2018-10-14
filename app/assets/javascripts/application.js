@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require serviceworker-companion
 //= require i18n
 //= require i18n/translations
-
-//= require_tree .
