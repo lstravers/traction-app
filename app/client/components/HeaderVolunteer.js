@@ -52,10 +52,10 @@ class HeaderVolunteer extends Component {
             </NavbarStart>
             <NavbarEnd>
               <NavbarItem>
-                <img src={usFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+                <a className='header-link' onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem>
-                <img src={spainFlag} style={{width: '1rem'}} class='flag flag-as' alt='flag' />
+                <a className='header-link' onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem isHidden='touch'>
                 <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>{I18n.t('logout')}</Button>

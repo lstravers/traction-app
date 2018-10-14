@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :reversals
     # resource :session, only: [:new, :create, :destroy]
     resources :clients
+    get "l10n_es", to: "localize#to_es", as: :l10n_es
+    get "l10n_en", to: "localize#to_en", as: :l10n_en
     root to: "home#index"
 
     # You can also override after_sign_in_path_for and
