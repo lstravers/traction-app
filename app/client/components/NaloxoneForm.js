@@ -364,8 +364,8 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials`)}>{I18n.t('scanner')}</Button>
-          <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials?status=manual`)}>{I18n.t('manual')}</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
           <div>
             <button className='button is-danger' type='submit' disabled={isSubmitting} >
               {I18n.t('submit')}
