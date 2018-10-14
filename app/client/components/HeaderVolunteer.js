@@ -1,3 +1,4 @@
+/* globals I18n */
 import React, { Component } from 'react'
 import { Navbar, NavbarBrand, NavbarItem, NavbarBurger, NavbarStart, NavbarEnd, NavbarMenu, Button } from 'bloomer'
 import 'bulma/css/bulma.css'
@@ -51,11 +52,11 @@ class HeaderVolunteer extends Component {
               </NavbarItem>
             </NavbarStart>
             <NavbarEnd>
-              <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
-              <NavbarItem>
-                <a className='header-link' onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              <NavbarItem className='flag-icon'>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
               </NavbarItem>
               <NavbarItem isHidden='touch'>
                 <Button className='is-danger' onClick={() => (window.location.href = '/logout')}>{I18n.t('logout')}</Button>
@@ -75,6 +76,10 @@ class HeaderVolunteer extends Component {
           </NavbarBrand>
           <NavbarMenu isActive onClick={this.handleClick}>
             <NavbarStart>
+              <NavbarItem>
+                <a style={{ marginRight: '.5rem' }} onClick={() => (window.location.assign('/l10n_en'))}><img src={usFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+                <a onClick={() => (window.location.assign('/l10n_es'))}><img src={spainFlag} style={{width: '1rem'}} className='flag flag-as' alt='flag' /></a>
+              </NavbarItem>
               <NavbarItem>
                 <a className='header-link' onClick={() => (window.location.href = '/home')}>Home</a>
               </NavbarItem >
