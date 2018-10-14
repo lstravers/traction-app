@@ -8,17 +8,17 @@
     <%= javascript_include_tag 'application' %>
 
     <script type="text/javascript">
-      I18n.defaultLocale = "<%= I18n.default_locale %>";
-      I18n.locale = "<%= I18n.locale %>";      
+      I18n.defaultLocale = "<%= I18n.default_locale %>"
+      I18n.locale = "<%= I18n.locale %>"  
     </script>
- <meta name="theme-color" content="#FF8484"/>
+    <meta name="theme-color" content="#FF8484"/>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'style' %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 
-    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
     
   
     <meta name="viewport" content="initial-scale=1.0 width=device-width" />
@@ -26,7 +26,7 @@
    <html lang="en">
    <meta name="apple-mobile-web-app-capable" content="yes">
    <meta name="Description" content="Traction App - tracks distribution of Naloxone Kits to enhance harm reduction efforts in North Carolina.">
-</head>
+    </head>
 
   <body>
   <% if current_user %>
