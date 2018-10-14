@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end  
 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, 
       :phone, :county, :address1, :address2, :city, :state, :zip, :admin, 

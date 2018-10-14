@@ -62,6 +62,10 @@
   background-color: transparent;
 }
 
+.flag-icon {
+  margin-top: .5rem;
+}
+
 .header-logo {
   width: 130px;
   margin-left: .5rem;
@@ -69,13 +73,15 @@
   margin-top: .2rem;
   }
 
+.header-link {
+   color: #353531;
+}
+
 .navbar-start {
   margin-left: .5rem;
 }
 
-.header-link {
-  color: #353531;
-}
+
 
 /* Login Page */
 
@@ -179,6 +185,7 @@ fieldset {
 .admin-container {
   max-width: 95%;
   margin: 20px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);
 }
 
 .admin-header {
@@ -194,7 +201,6 @@ fieldset {
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #2374AB;
-  border-radius: 0 0 5% 5%;
   padding: 15px;
 }
 
