@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
-    skip_before_action :verify_authenticity_token
-
+    before_action :verify_authenticity_token
     before_action :set_client, only: [:show, :edit, :destroy]
     
 
@@ -86,4 +85,23 @@ class ClientsController < ApplicationController
         #end
     end
   
+    
+
+     protected
+     
+
+     def verify_authenticity_token
+        
+        token = current_user.auth_token
+        @user = User.find_by_auth_token(token)
+       
+        unless @user
+            render json: { error: "ACCESS DENIED" }, status: :unauthorized
+            end
+       
+     end
+
+
+
+    
 end
