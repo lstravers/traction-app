@@ -21,14 +21,14 @@ class InventoriesController < ApplicationController
     # end
 
     def index
-        if search_params[:search_term_county].present?
-          @inventories = Inventory.search_by_county(search_params[:search_term_county]).order("created_at DESC").page(params[:page]).per(20)
-        elsif search_params[:search_term_city].present?
-          @inventories = Inventory.search_by_city(search_params[:search_term_city]).order("created_at DESC").page(params[:page]).per(20)        
+        if search_params[:search_term_icounty].present?
+          @inventories = Inventory.search_by_icounty(search_params[:search_term_icounty]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        elsif search_params[:search_term_icity].present?
+          @inventories = Inventory.search_by_icity(search_params[:search_term_icity]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         else
           @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         end
-      end
+    end
 
     def show
         @inventory = Inventory.find(params[:id])
@@ -105,8 +105,7 @@ class InventoriesController < ApplicationController
     private
 
     def inventory_params
-        params.require(:inventory).permit(:user_id, :serial_num, :kit_type, :expiration_date, :distributed_date)
-       
+        params.require(:inventory).permit(:user_id, :serial_num, :kit_type, :expiration_date, :distributed_date) 
     end
 
     def sort_column
@@ -114,7 +113,7 @@ class InventoriesController < ApplicationController
     end
       
     def sortable_columns
-        ["kit_type", "expiration_date", "serial_num", "distributed_date"]
+        ["kit_type", "expiration_date", "serial_num", "distributed_date", "client_id", "county", "city", "last_name"]
     end
 
     def sort_direction
@@ -122,13 +121,13 @@ class InventoriesController < ApplicationController
     end
     def check_admin
         if current_user 
-        redirect_to root_path unless current_user.admin?
+            redirect_to root_path unless current_user.admin?
         else
             redirect_to root_path
     end 
     end 
     
     def search_params
-        params.permit(:search_term_county, :search_term_city)
+        params.permit(:search_term_icounty, :search_term_icity)
       end
 end

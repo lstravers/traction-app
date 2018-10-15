@@ -3,7 +3,7 @@
   <div class="admin-panel">
   <div class="search-container"> 
       <%= form_tag inventories_path, method: :get do %>
-      <%= select_tag :search_term_county, "<option>Alamance</option>
+      <%= select_tag :search_term_icounty, "<option>Alamance</option>
           <option>Alexander</option>
           <option>Alleghany</option>
           <option>Anson</option>
@@ -103,7 +103,7 @@
           <option>Wilson</option>
           <option>Yadkin</option>
           <option>Yancey</option>", :include_blank => "#{t(:choose_county)}" %>
-      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => "#{t(:search_city)}" %>
+      <%= text_field_tag :search_term_icity, params[:search_term_icity], :placeholder => "#{t(:search_city)}" %>
       <%= submit_tag "Search"%>
       <% end %>
     </div>
@@ -127,8 +127,8 @@
         <td class="tbl-media"><%= inventory.expiration_date %></td>
         <td class="tbl-media"><%= inventory.distributed_date %></td>
         <td class="tbl-desktop"><%= inventory.client_id %></td>
-        <td class="tbl-desktop"><%= Client.find(inventory.client_id).county %></td>
-        <td class="tbl-desktop"><%= Client.find(inventory.client_id).city %></td>
+        <td class="tbl-desktop"><%= inventory.client.county %></td>
+        <td class="tbl-desktop"><%= inventory.client.city %></td>
         <td class="tbl-desktop"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
         <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(id: inventory.id) %></td>
       </tr>
