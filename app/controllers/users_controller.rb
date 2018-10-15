@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       UserMailer.signup(@user).deliver_now
       redirect_to users_path, notice: "Your account was created successfully."
     else
-      render 'new', notice: "Account not created"
+      render :new, notice: "Something went wrong. Please try again."
     end
   end
 
