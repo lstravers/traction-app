@@ -36,6 +36,7 @@ en:
   remember_me: "Remember Me"
   forgot_password: "Forgot Password?" 
   hello_user: "Welcome, %{name}!" 
+  welcome: "Welcome"
   intro: "Thank for supporting our community! Please select an option below to scan a QR code or input a serial number and complete the corresponding form to the best of your knowledge before distributing a Naloxone kit."
   scanner: "Scan QR Code"
   manual: "Input Kit Serial Code"
@@ -107,12 +108,15 @@ en:
   send_reset: "Send me password reset instructions"
   resend_confirm: "Resend confirmation instructions"
   deactivated?: "Deactivated?"
+  active: "Active"
   admin?: "Admin?"
   contact_type: "Contact Type"
   choose_method: "Choose Method"
   choose_county: "Choose County"
   search_city: "Search by City"
   search_lname: "Search by Last Name"
+  admin_panel: "Admin Panel"
+  list_vol: "List of Volunteers"
 
 es:
   email: "Email"
@@ -121,6 +125,7 @@ es:
   remember_me: "Recordar mi constraseña"
   forgot_password: "¿Olvidaste tu constraseña?"
   hello_user: "Bienvenido(a), %{name}"
+  welcome: "Bienvenido(a)"
   intro: "¡Gracias por apoyar a nuestra comunidad! Por favor selecciona una de las opciones que aparecen abajo en esta pantalla antes de distribuir el paquete de Naloxone, leer Código QR o formato para Ingresar Código Serial del paquete."
   scanner: "Leer Código QR"
   manual: "Ingresar Código Serial del paquete"
@@ -189,12 +194,15 @@ es:
   send_reset: "Envío de instrucciones para cambiar contraseña"
   resend_confirm: "Reenvío de instrucciones de confirmación"
   deactivated?: "¿Inactivo?"
+  active: "Activo"
   admin?: "¿Administrador?"
   contact_type: "¿Preferencia para contactar?"
   choose_method: "Seleccione forma de contacto"
   choose_county: "Seleccione County"
   search_city: "Busqueda por Ciudad"
   search_lname: "Busqueda por Apellido"
+  admin_panel: "Tablero de Control del Administrador"
+  list_vol: "Lista de Voluntarios"
 
 
 Kits scanned:

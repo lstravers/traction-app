@@ -1,5 +1,5 @@
 <div class="admin-container">
-  <div class="admin-header">List of Volunteers <i class="far fa-user"></i></div>
+  <div class="admin-header"><%= t(:list_vol) %> <i class="far fa-user"></i></div>
   <div class="admin-panel">
     <div class="search-container"> 
       <%= form_tag users_path, method: :get do %>
@@ -119,8 +119,8 @@
         <th class="tbl-desktop"><%= sort_link "date_auth", "#{t(:date_auth)}" %></th>
         <th class="tbl-desktop"><%= sort_link "admin_auth", "#{t(:admin_auth)}" %></th>
         <th class="tbl-media"><%= sort_link "admin", "#{t(:admin)}" %></th>
-        <th class="tbl-media"></th>
-        <th class="tbl-media"><%= sort_link "deactivated", "#{t(:deactivated?)}" %></th>
+        <th class="tbl-desktop"></th>
+        <th class="tbl-media"><%= sort_link "deactivated", "#{t(:active)}" %></th>
       </tr>
     
       <% @users.each do |user| %>
@@ -141,7 +141,7 @@
               link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
               end %>
           </td>
-          <td class="tbl-media"><%= link_to 'Update', edit_user_path(id: user.id) %></td>
+          <td class="tbl-desktop"><%= link_to 'Update', edit_user_path(id: user.id) %></td>
           <td class="tbl-media"><%= link_to_if user.deactivated?, "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user-slash" do
                   link_to "", deactive_user_path(id: user.id), method: :put, class: "fas fa-user"
                   end %>
