@@ -6,8 +6,8 @@ import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
 
-const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-// const apiDomain = 'http://localhost:3000'
+// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
+const apiDomain = 'http://localhost:3000'
 
 const counties = [
   'Select',
@@ -156,7 +156,8 @@ const RadioButtonGroup = ({
 const NaloxoneForm = (props) => (
   <div>
     <Formik
-      initialValues={{ firstName: '',
+      initialValues={{
+        firstName: '',
         lastName: '',
         dateOfBirth: '',
         townCity: '',
@@ -171,7 +172,8 @@ const NaloxoneForm = (props) => (
         overdoseReversalTownCity: '',
         overdoseReversalCounty: '',
         numberOfDoses: '',
-        minutesBetweenDoses: '' }}
+        minutesBetweenDoses: ''
+      }}
       validate={values => {
         let errors = {}
         if (!values.firstName) {
@@ -186,8 +188,10 @@ const NaloxoneForm = (props) => (
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
+        console.log(values)
         return request.post(`${apiDomain}/clients`)
-          .send({'first_name': values.firstName,
+          .send({
+            'first_name': values.firstName,
             'last_name': values.lastName,
             'date_of_birth': values.dateOfBirth,
             'city': values.townCity,
@@ -201,7 +205,8 @@ const NaloxoneForm = (props) => (
             'rtown': values.overdoseReversalTownCity,
             'rcounty': values.overdoseReversalCounty,
             'rdoses': values.numberOfDoses,
-            'rtime_between': values.minutesBetweenDoses })
+            'rtime_between': values.minutesBetweenDoses
+          })
           .then(setSubmitting(false))
           .then(() => props.resetForm())
           .then(() => props.setThankYou())
@@ -278,7 +283,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label'htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
+            <label className='label' htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -287,14 +292,14 @@ const NaloxoneForm = (props) => (
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit1'
-                label='Yes (if yes, please continue)'
+                label='Yes'
                 value={'true'}
               />
               <Field className='radio'
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit2'
-                label='No (if no, please submit the form)'
+                label='No'
                 value={'false'}
               />
             </RadioButtonGroup>
@@ -311,14 +316,14 @@ const NaloxoneForm = (props) => (
                 component={RadioButton}
                 name='overdoseReversal'
                 id='overdoseReversal1'
-                label='Yes'
+                label='Yes (please continue)'
                 value={'true'}
               />
               <Field
                 component={RadioButton}
                 name='overdoseReversal'
                 id='overdoseReversal2'
-                label='No'
+                label='No (please submit the form)'
                 value={'false'}
               />
             </RadioButtonGroup>
@@ -364,13 +369,11 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
-          <div>
-            <button className='button is-danger' type='submit' disabled={isSubmitting} >
-              {I18n.t('submit')}
-            </button>
-          </div>
+          <button className='button is-danger' type='submit' disabled={isSubmitting} >
+            {I18n.t('submit')}
+          </button>
+          <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials`)}>{I18n.t('scanner')}</Button>
+          <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials?status=manual`)}>{I18n.t('manual')}</Button>
         </Form>
       )}
     </Formik>

@@ -37,7 +37,7 @@ en:
   forgot_password: "Forgot Password?" 
   hello_user: "Welcome, %{name}!" 
   welcome: "Welcome"
-  intro: "Thank for supporting our community! Please select an option below to scan a QR code or input a serial number and complete the corresponding form to the best of your knowledge before distributing a Naloxone kit."
+  intro: "Thank you for supporting our community! Please select an option below to scan a QR code or input a serial number and complete the corresponding form to the best of your knowledge before distributing a Naloxone kit."
   scanner: "Scan QR Code"
   manual: "Input Kit Serial Code"
   submit: "Submit"
