@@ -185,6 +185,7 @@ const NaloxoneForm = (props) => (
         return errors
       }}
       onSubmit={(values, { setSubmitting }) => {
+        console.log(values)
         return request.post(`${apiDomain}/clients`)
           .send({'first_name': values.firstName,
             'last_name': values.lastName,
