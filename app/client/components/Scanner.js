@@ -45,7 +45,7 @@ class Scanner extends Component {
   }
 
   escapePatch () {
-    window.location.href = '/home'
+    window.location.href = `/${I18n.locale}/home`
   }
 
   render () {

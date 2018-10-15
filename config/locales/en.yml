@@ -116,6 +116,7 @@ en:
   search_city: "Search by City"
   search_lname: "Search by Last Name"
   admin_panel: "Admin Panel"
+  list_vol: "List of Volunteers"
 
 es:
   email: "Email"
@@ -201,6 +202,7 @@ es:
   search_city: "Busqueda por Ciudad"
   search_lname: "Busqueda por Apellido"
   admin_panel: "Tablero de Control del Administrador"
+  list_vol: "Lista de Voluntarios"
 
 
 Kits scanned:
