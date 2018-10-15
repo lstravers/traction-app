@@ -5,6 +5,7 @@ import SerialForm from './SerialForm'
 import Scanner from './Scanner'
 import ThankYouPage from './ThankYouPage'
 import Card from './Card'
+import ScannerCard from './ScannerCard'
 
 class KitSerials extends React.Component {
   constructor (props) {
@@ -64,7 +65,7 @@ class KitSerials extends React.Component {
     if (status === 'qr') {
       return (
         <div className='scanner-container'>
-          <Card><Scanner setManualInput={this.setManualInput} resultsConcat={this.resultsConcat} setForm={this.setForm} results={this.state.results} /></Card>
+          <ScannerCard><Scanner setManualInput={this.setManualInput} resultsConcat={this.resultsConcat} setForm={this.setForm} results={this.state.results} /></ScannerCard>
         </div>
       )
     } else if (status === 'manual') {

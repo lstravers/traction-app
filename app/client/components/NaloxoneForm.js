@@ -1,16 +1,15 @@
 /* globals I18n */
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Select, Button } from 'bloomer'
+import { Button } from 'bloomer'
 import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
 
-// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-const apiDomain = 'http://localhost:3000'
+const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 
 const counties = [
-  'Select',
+  '--Select--',
   'Alamance',
   'Alexander',
   'Alleghany',
@@ -175,10 +174,10 @@ const NaloxoneForm = (props) => (
       validate={values => {
         let errors = {}
         if (!values.firstName) {
-          errors.firstName = 'Required'
+          errors.firstName = 'First Name Required'
         }
         if (!values.lastName) {
-          errors.lastName = 'Required'
+          errors.lastName = 'Last Name Required'
         }
         if (!values.dateOfBirth || values.dateOfBirth.toString().length !== 4) {
           errors.dateOfBirth = 'Invalid Year'
@@ -329,7 +328,7 @@ const NaloxoneForm = (props) => (
           <div>
             <label className='label' htmlFor='overdoseReversalKitType'>{I18n.t('reversal_kit_type')}</label>
             <Field component='select' name='overdoseReversalKitType'>
-              <option className='option' value='selectOptions' >Select</option>
+              <option className='option' value='selectOptions' >--Select--</option>
               <option value='IM'>IM</option>
               <option value='E'>E</option>
               <option value='N'>N</option>
@@ -365,13 +364,17 @@ const NaloxoneForm = (props) => (
             <ErrorMessage name='minutesBetweenDoses' component='div' />
           </div>
 
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
-          <Button className='is-danger' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
           <div>
-            <button className='button is-danger' type='submit' disabled={isSubmitting} >
+            <button className='button is-primary' type='submit' disabled={isSubmitting} >
               {I18n.t('submit')}
             </button>
+            <ErrorMessage className='has-text-danger' name='firstName' component='div' />
+            <ErrorMessage className='has-text-danger' name='lastName' component='div' />
+            <ErrorMessage className='has-text-danger' name='dateOfBirth' component='div' />
           </div>
+
+          <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
+          <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
         </Form>
       )}
     </Formik>

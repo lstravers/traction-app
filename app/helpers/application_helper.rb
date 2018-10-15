@@ -5,5 +5,5 @@ module ApplicationHelper
         icon = sort_direction == "asc" ? "glyphicon glyphicon-chevron-up" : "glyphicon glyphicon-chevron-down"
         icon = column == sort_column ? icon : ""
         link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}
-      end
+    end
 end
