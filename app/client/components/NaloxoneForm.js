@@ -1,13 +1,12 @@
 /* globals I18n */
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Select, Button } from 'bloomer'
+import { Button } from 'bloomer'
 import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
 
 const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-// const apiDomain = 'http://localhost:3000'
 
 const counties = [
   'Select',
@@ -238,7 +237,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='county'>{I18n.t('county')}</label>
-            <Field component={Select} name='county'>
+            <Field component='select' name='county'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
@@ -267,7 +266,7 @@ const NaloxoneForm = (props) => (
                   <ErrorMessage className='has-text-danger' name={`kitSerialNumber[${idx}]`} component='div' />
                 </div>
                 <label className='label' htmlFor={`kitType[${idx}]`}>{I18n.t('kit_type')}</label>
-                <Field component={Select} name={`kitType[${idx}]`}>
+                <Field component='select' name={`kitType[${idx}]`}>
                   <option>IM</option>
                   <option>E</option>
                   <option>N</option>
@@ -327,7 +326,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='overdoseReversalKitType'>{I18n.t('reversal_kit_type')}</label>
-            <Field component={Select} name='overdoseReversalKitType'>
+            <Field component='select' name='overdoseReversalKitType'>
               <option className='option' value='selectOptions' >Select</option>
               <option value='IM'>IM</option>
               <option value='E'>E</option>
@@ -344,7 +343,7 @@ const NaloxoneForm = (props) => (
 
           <div>
             <label className='label' htmlFor='overdoseReversalCounty'>{I18n.t('reversal_county')}</label>
-            <Field component={Select} name='overdoseReversalCounty'>
+            <Field component='select' name='overdoseReversalCounty'>
               {counties.map((county, idx) =>
                 <option key={idx} value={county}>{county}</option>
               )}
