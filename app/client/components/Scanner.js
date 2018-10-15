@@ -62,11 +62,13 @@ class Scanner extends Component {
             style={{ width: '100%' }}
           />
         </div>
+
         <div>
-          <Button className='button is-danger' onClick={this.props.setManualInput}>{I18n.t('manual')}</Button> 
+          <Button className='button is-primary' onClick={this.handleSubmit}>{I18n.t('submit')}</Button>
         </div>
+
         <div>
-          <Button className='button is-danger' onClick={this.handleSubmit}>{I18n.t('submit')}</Button>
+          <Button className='button is-danger sub-button' onClick={this.props.setManualInput}>{I18n.t('manual')}</Button>
         </div>
       </React.Fragment>)
   }

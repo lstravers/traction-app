@@ -42,20 +42,19 @@ class SerialForm extends React.Component {
                     {values.serialNumbers.map((el, i) => (
                       <Control className='input-field' key={i}>
                         <Label className='label' htmlFor={`serialNumbers[${i}]`}>{I18n.t('enter_serial')}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a onClick={() => arrayHelpers.remove([i])}><i className='fas fa-times-circle has-text-danger align' /></a></Label>
-                        <Field className='input' type='text' name={`serialNumbers[${i}]`} />
+                        </Label>
+                        <Field className='input serial-input' type='text' name={`serialNumbers[${i}]`} />
+                        <a onClick={() => arrayHelpers.remove([i])}><i className='fas fa-times-circle has-text-danger input-delete' /></a>
                         <ErrorMessage className='has-text-danger' name={`serialNumbers[${i}]`} component='div' />
                       </Control>
                     ))}
-                    <Button className='button is-danger' type='button' onClick={() => arrayHelpers.push('')}>{I18n.t('add')}</Button>
+                    <Button className='button is-primary' type='submit' disabled={isSubmitting}>{I18n.t('submit')}</Button>
+                    <Button className='button is-danger sub-button' type='button' onClick={() => arrayHelpers.push('')}>{I18n.t('add')}</Button>
                   </React.Fragment>
                 )} />
-                <Button className='button is-danger' type='submit' disabled={isSubmitting}>{I18n.t('submit')}</Button>
               </Form>
               <div>
-                <Button className='button is-danger' type='button' onClick={this.props.setQr}>{I18n.t('scanner')}</Button>
+                <Button className='button is-danger sub-button' type='button' onClick={this.props.setQr}>{I18n.t('scanner')}</Button>
               </div>
             </div>
           ) }
