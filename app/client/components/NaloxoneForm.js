@@ -287,14 +287,14 @@ const NaloxoneForm = (props) => (
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit1'
-                label='Yes'
+                label='Yes (if yes, please continue)'
                 value={'true'}
               />
               <Field className='radio'
                 component={RadioButton}
                 name='firstNaloxoneKit'
                 id='firstNaloxoneKit2'
-                label='No'
+                label='No (if no, please submit the form)'
                 value={'false'}
               />
             </RadioButtonGroup>
