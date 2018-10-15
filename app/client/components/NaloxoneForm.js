@@ -1,13 +1,12 @@
 /* globals I18n */
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Select, Button } from 'bloomer'
+import { Button } from 'bloomer'
 import 'bulma/css/bulma.css'
 import moment from 'moment'
 import request from 'superagent'
 
-// const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
-const apiDomain = 'http://localhost:3000'
+const apiDomain = 'https://harm-reduction-tracker.herokuapp.com'
 
 const counties = [
   'Select',
