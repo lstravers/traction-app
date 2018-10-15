@@ -3,22 +3,32 @@ class InventoriesController < ApplicationController
     helper_method :sort_column, :sort_direction
     # before_action :verify_authentication
 
-    def index
+    # def index
 
-        if search_params[:search_term].present?
-            @inventories = Inventory.search_by_expiration_date(search_params[:search_term]).order("created_at DESC").page(params[:page]).per(20)
+    #     if search_params[:search_term].present?
+    #         @inventories = Inventory.search_by_expiration_date(search_params[:search_term]).order("created_at DESC").page(params[:page]).per(20)
+    #     else
+    #         @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+    #     end
+    #     # if admin show all records
+    #     # if current_user.admin
+    #     # @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+    #     # render json: @inventory
+    #     # else
+    #     # volunteer only show their own records
+    #     # @inventories = Inventory.where(user_id: current_user.id)
+    #     # end
+    # end
+
+    def index
+        if search_params[:search_term_county].present?
+          @inventories = Inventory.search_by_county(search_params[:search_term_county]).order("created_at DESC").page(params[:page]).per(20)
+        elsif search_params[:search_term_city].present?
+          @inventories = Inventory.search_by_city(search_params[:search_term_city]).order("created_at DESC").page(params[:page]).per(20)        
         else
-            @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+          @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         end
-        # if admin show all records
-        # if current_user.admin
-        # @inventories = Inventory.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
-        # render json: @inventory
-        # else
-        # volunteer only show their own records
-        # @inventories = Inventory.where(user_id: current_user.id)
-        # end
-    end
+      end
 
     def show
         @inventory = Inventory.find(params[:id])
@@ -119,6 +129,6 @@ class InventoriesController < ApplicationController
     end 
     
     def search_params
-        params.permit(:search_term)
-    end
+        params.permit(:search_term_county, :search_term_city)
+      end
 end
