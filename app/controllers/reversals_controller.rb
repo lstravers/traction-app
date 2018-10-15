@@ -76,6 +76,11 @@ class ReversalsController < ApplicationController
         redirect_to root_path unless current_user.admin?
         else
             redirect_to root_path
-    end 
+        end 
     end
+
+    def search_params
+        params.permit(:search_term_county, :search_term_city)
+    end
+
 end
