@@ -5,8 +5,13 @@ class ReversalsController < ApplicationController
     #before_action :verify_authentication
 
     def index
-        @reversals = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
-        #render json: @reversal
+        if search_params[:search_term_county].present?
+            @reversals = Reversal.search_by_county(search_params[:search_term_county]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        elsif search_params[:search_term_city].present?
+            @reversals = Reversal.search_by_city(search_params[:search_term_city]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)        
+        else
+            @users = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+        end
     end
 
     def show
