@@ -10,7 +10,7 @@ class WelcomePage extends React.Component {
       <React.Fragment>
         <div className='container-content'>
           <h1 className='greeting'>{I18n.t('hello_user', {name: currentUser.first_name})}</h1>
-          <p className='center-justify'>{I18n.t('intro')}</p>
+          <p>{I18n.t('intro')}</p>
           <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials`)}>{I18n.t('scanner')}</Button>
           <Button className='is-danger' onClick={() => (window.location.href = `/${I18n.locale}/kitserials?status=manual`)}>{I18n.t('manual')}</Button>
         </div>
