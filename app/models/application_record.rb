@@ -7,5 +7,5 @@ class ApplicationRecord < ActiveRecord::Base
   pg_search_scope :search_by_town, :against => [:town]
   pg_search_scope :search_by_distributed_date, :against => [:distributed_date]
   pg_search_scope :search_by_expiration_date, :against => [:expiration_date]
-
+  
 end
