@@ -457,11 +457,6 @@ fieldset {
 }
 
 @media screen and (max-width: 812px) {
-/* Login Page */
-
-.login-image {
-  margin-top: 12em;
-}
 
 /* Welcome Page */
 .Card-container {
