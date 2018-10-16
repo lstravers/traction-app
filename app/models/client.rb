@@ -7,5 +7,6 @@ class Client < ApplicationRecord
   pg_search_scope :search_by_county, :against => [:county]
   pg_search_scope :search_by_city, :against => [:city]
   pg_search_scope :search_by_user, :against => [:user_id]
-  
+  pg_search_scope :search_by_icounty, :associated_against => { :inventory => :county }
+  pg_search_scope :search_by_icity, :associated_against => { :inventory => :city }
 end

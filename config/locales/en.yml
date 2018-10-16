@@ -73,7 +73,7 @@ en:
   volunteers: "Volunteers"
   login: "Log in"
   logout: "Logout"
-  register_new: "Register a new account"
+  register_new: "Register a new user"
   didnt_rcv_confirm: "Didn't receive confirmation instructions?"
   didnt_rcv_unlock: "Didn't receive unlock instructions?"
   resend_unlock: "Resend unlock instructions"

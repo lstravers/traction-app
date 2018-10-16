@@ -1,6 +1,113 @@
 <div class="admin-container">
   <div class="admin-header"><%= t(:distributed_kits) %> <i class="fas fa-medkit"></i></div>
   <div class="admin-panel">
+  <div class="search-container"> 
+      <%= form_tag inventories_path, method: :get do %>
+      <%= select_tag :search_term_icounty, "<option>Alamance</option>
+          <option>Alexander</option>
+          <option>Alleghany</option>
+          <option>Anson</option>
+          <option>Ashe</option>
+          <option>Avery</option>
+          <option>Beaufort</option>
+          <option>Bertie</option>
+          <option>Bladen</option>
+          <option>Brunswuick</option>
+          <option>Buncombe</option>
+          <option>Burke</option>
+          <option>Cabarrus</option>
+          <option>Caldwell</option>
+          <option>Camden</option>
+          <option>Carteret</option>
+          <option>Caswell</option>
+          <option>Catawba</option>
+          <option>Chatham</option>
+          <option>Cherokee</option>
+          <option>Chowan</option>
+          <option>Clay</option>
+          <option>Cleveland</option>
+          <option>Columbus</option>
+          <option>Craven</option>
+          <option>Cumberland</option>
+          <option>Currituck</option>
+          <option>Dare</option>
+          <option>Davidson</option>
+          <option>Davie</option>
+          <option>Duplin</option>
+          <option>Durham</option>
+          <option>Edgecombe</option>
+          <option>Forsyth</option>
+          <option>Franklin</option>
+          <option>Gaston</option>
+          <option>Gates</option>
+          <option>Graham</option>
+          <option>Granville</option>
+          <option>Greene</option>
+          <option>Guilford</option>
+          <option>Halifax</option>
+          <option>Harnett</option>
+          <option>Haywood</option>
+          <option>Henderson</option>
+          <option>Hertford</option>
+          <option>Hoke</option>
+          <option>Hyde</option>
+          <option>Iredell</option>
+          <option>Jackson</option>
+          <option>Johnston</option>
+          <option>Jones</option>
+          <option>Lee</option>
+          <option>Lenoir</option>
+          <option>Lincoln</option>
+          <option>McDowell</option>
+          <option>Macon</option>
+          <option>Madison</option>
+          <option>Martin</option>
+          <option>Mecklenburg</option>
+          <option>Mitchell</option>
+          <option>Montgomery</option>
+          <option>Moore</option>
+          <option>Nash</option>
+          <option>New Hanover</option>
+          <option>Northampton</option>
+          <option>Onslow</option>
+          <option>Orange</option>
+          <option>Pamlico</option>
+          <option>Pasquotank</option>
+          <option>Pender</option>
+          <option>Perquimans</option>
+          <option>Person</option>
+          <option>Pitt</option>
+          <option>Polk</option>
+          <option>Randolph</option>
+          <option>Richmond</option>
+          <option>Robeson</option>
+          <option>Rockingham</option>
+          <option>Rowan</option>
+          <option>Rutherford</option>
+          <option>Sampson</option>
+          <option>Scotland</option>
+          <option>Stanly</option>
+          <option>Stokes</option>
+          <option>Surry</option>
+          <option>Swain</option>
+          <option>Transylvania</option>
+          <option>Tyrrell</option>
+          <option>Union</option>
+          <option>Vance</option>
+          <option>Wake</option>
+          <option>Warren</option>
+          <option>Washington</option>
+          <option>Watauga</option>
+          <option>Wayne</option>
+          <option>Wilkes</option>
+          <option>Wilson</option>
+          <option>Yadkin</option>
+          <option>Yancey</option>", :include_blank => "#{t(:choose_county)}" %>
+      <%= text_field_tag :search_term_icity, params[:search_term_icity], :placeholder => "#{t(:search_city)}" %>
+      <%= submit_tag "Search"%>
+      <button id="clear_search" class="btn btn-primary" onclick="window.location.href='inventories'; return false;">Clear Search</button>
+      <% end %>
+    </div>
   <table class="inventory-index-table">
     <tr>
       <th class="tbl-media"><%= sort_link "serial_num", "#{t(:kit_serial)}" %></th>
@@ -10,7 +117,7 @@
       <th class="tbl-desktop"><%= sort_link "client_id", "#{t(:client_id)}" %></th>
       <th class="tbl-desktop"><%= t(:county) %></th>
       <th class="tbl-desktop"><%= t(:city) %></th>
-      <th class="tbl-desktop"><%= t(:volname) %></th>
+      <th class="tbl-desktop tbl-media-low"><%= t(:volname) %></th>
       <th class="tbl-media"></th>
     </tr>
   
@@ -21,9 +128,9 @@
         <td class="tbl-media"><%= inventory.expiration_date %></td>
         <td class="tbl-media"><%= inventory.distributed_date %></td>
         <td class="tbl-desktop"><%= inventory.client_id %></td>
-        <td class="tbl-desktop"><%= Client.find(inventory.client_id).county %></td>
-        <td class="tbl-desktop"><%= Client.find(inventory.client_id).city %></td>
-        <td class="tbl-desktop"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
+        <td class="tbl-desktop"><%= inventory.client.county %></td>
+        <td class="tbl-desktop"><%= inventory.client.city %></td>
+        <td class="tbl-desktop tbl-media-low"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
         <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(id: inventory.id) %></td>
       </tr>
     <% end %>

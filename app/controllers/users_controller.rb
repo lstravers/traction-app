@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 
   def index
     if search_params[:search_term_county].present?
-      @users = User.search_by_county(search_params[:search_term_county]).order("created_at DESC").page(params[:page]).per(20)
+      @users = User.search_by_county(search_params[:search_term_county]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
     elsif search_params[:search_term_city].present?
-      @users = User.search_by_city(search_params[:search_term_city]).order("created_at DESC").page(params[:page]).per(20)        
-    elsif search_params[:search_term_date].present?
-      @users = User.search_by_last_name(search_params[:search_term_last_name]).order("created_at DESC").page(params[:page]).per(20)
+      @users = User.search_by_city(search_params[:search_term_city]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)        
+    elsif search_params[:search_term_last_name].present?
+      @users = User.search_by_last_name(search_params[:search_term_last_name]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
     else
       @users = User.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       UserMailer.signup(@user).deliver_now
       redirect_to users_path, notice: "Your account was created successfully."
     else
-      render 'new', notice: "Account not created"
+      render :new, notice: "Something went wrong. Please try again."
     end
   end
 

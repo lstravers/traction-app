@@ -47,8 +47,26 @@
   background-color: white;
 }
 
-.pipe {
-  color: #FF8484;
+
+.sub-button {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+select {
+  background-color: #fff;
+  border-color: #dbdbdb;
+  color: #363636;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  max-width: 100%;
+  outline: 0;
+}
+
+select:hover {
+  border-color: #b5b5b5;
 }
 
 /* HeaderVolunteer , HeaderAdmin */
@@ -81,8 +99,6 @@
   margin-left: .5rem;
 }
 
-
-
 /* Login Page */
 
 
@@ -101,12 +117,8 @@
 
 /* WelcomeView */
 
-.container-content{
-  text-align: center; 
-}
-
 .Card-container {
-  margin-top: 8rem;
+  margin-top: 9rem;
 }
 
 .greeting {
@@ -144,14 +156,26 @@
     }
 }
 
+.ScannerCard {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 90%;
+  background-color: white;
+}
+
+.scanner-container {
+  margin-top: 4rem; 
+}
+
+
 /* Manual Input*/
 
-.align {
-  text-align: left;
-}
 
 .input-delete {
   margin-left: .5rem;
+  margin-top: .5em;
 }
 
 .manual-input-container {
@@ -162,9 +186,10 @@
   margin-top: .5rem;
 }
 
-.scanner-container {
-  margin-top: 5rem; 
+.serial-input {
+  width: 96%;
 }
+
 
 /* Naloxone Form */
 
@@ -180,10 +205,11 @@ fieldset {
 .confirmation-container {
   margin-top: 10rem; 
 }
+
 /* Admin pages */
 
 .admin-container {
-  max-width: 95%;
+  width: 95%;
   margin: 20px;
   box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);
 }
@@ -234,7 +260,11 @@ fieldset {
 
 .volunteer-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.volunteer-index-table td {
+  padding: 2px 3px;
 }
 
 .volunteer-index-table tr:nth-child(even) {
@@ -245,7 +275,11 @@ fieldset {
 
 .inventory-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.inventory-index-table td {
+  padding: 2px 3px;
 }
 
 .inventory-index-table tr:nth-child(even) {
@@ -256,7 +290,11 @@ fieldset {
 
 .reversal-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.reversal-index-table td {
+  padding: 2px 3px;
 }
 
 .reversal-index-table tr:nth-child(even) {
@@ -279,7 +317,79 @@ fieldset {
 
 /* Media Queries */
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 320px) {
+/* Universal Styles */ 
+
+    .center-justify {
+      text-align: left;
+      margin: 0 auto;
+      width: 16em;
+    }
+
+
+/* Login Page */
+
+
+.login-image {
+  display: block;
+  margin-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* WelcomeView */
+
+.Card-container {
+  margin-top: 5rem;
+}
+
+
+/* Scanner */
+.delete-button-container {
+  text-align: right;
+  margin-bottom: .5rem;
+}
+
+.scanner-container {
+  margin-top: 3rem; 
+}
+
+.serial-input {
+  width: 91%;
+}
+}
+
+@media screen and (min-width: 414px) {
+/* Universal Styles */ 
+
+.center-justify {
+  text-align: left;
+  margin: 0 auto;
+  width: 21em;
+}
+
+/* Login Page */
+
+.login-image {
+  display: block;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Welcome Page */
+
+.Card-container {
+  margin-top: 12rem;
+}
+
+.serial-input {
+  width: 93%;
+}
+
+}
+
+@media screen and (max-width: 660px) {
   .tbl-desktop {
     display: none;
   }
@@ -288,4 +398,269 @@ fieldset {
     flex-direction: column;
     justify-content: flex-start;
   }
+}
+
+@media screen and (max-width: 1090px) {
+  .tbl-media-mid {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 880px) {
+  .tbl-media-low {
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+
+  /* Universal Styles */ 
+
+  .center-justify {
+    text-align: left;
+    margin: 0 auto;
+    width: 41em;
+  }
+
+/* Login Page */
+
+.login-image {
+  display: block;
+  margin-top: 11em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 55%;
+}
+/* Welcome Page */ 
+
+.Card-container {
+  margin-top: 19rem;
+}
+
+/* Scanner */ 
+
+.ScannerCard {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 65%;
+  background-color: white;
+}
+
+.scanner-container {
+  margin-top: 7rem; 
+}
+  
+}
+
+@media screen and (max-width: 812px) {
+/* Login Page */
+
+.login-image {
+  margin-top: 12em;
+}
+
+/* Welcome Page */
+.Card-container {
+  margin-top: 13rem;
+}
+
+/* Scanner */
+
+.scanner-container {
+  margin-top: 7rem; 
+}
+
+.serial-input {
+  width: 91%;
+}
+
+}
+
+@media screen and (min-width: 1024px) {
+
+  /* Universal Styles */ 
+
+.Card {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 60%;
+  background-color: white;
+}
+
+.center-justify {
+  text-align: left;
+  margin: 0 auto;
+  width: 36em;
+}
+
+.sub-button {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+/* Login Page */
+
+.login-image {
+  display: block;
+  margin-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40%; 
+}
+
+.password-reset {
+  margin-top: .5rem;
+  margin-bottom: 0;
+}
+
+/* WelcomeView */
+
+.Card-container {
+  margin-top: 18rem;
+}
+
+.greeting {
+  text-align: center;
+  font-family: "Open Sans";
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Manual Input*/
+
+.align {
+  text-align: left;
+}
+
+.delete-input {
+  margin-left: 1rem;
+  padding-top: 1rem;
+}
+
+.input-delete {
+  margin-left: .5rem;
+}
+
+.manual-input-container {
+  margin-top: 8rem;
+}
+
+.label {
+  margin-top: .5rem;
+}
+
+/* Scanner */ 
+
+.ScannerCard {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 60%;
+  background-color: white;
+}
+
+.scanner-container {
+  margin-top: 7rem; 
+}
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+/* Universal Styles */
+
+.Card {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 90%;
+  background-color: white;
+}
+
+.center-justify {
+  text-align: left;
+  margin: 0 auto;
+  width: 56em;
+}
+
+/* Login Page */
+
+
+.login-image {
+display: block;
+margin-top: 13rem;
+margin-left: auto;
+margin-right: auto;
+max-width: 45%; 
+}
+
+/* Scanner */ 
+
+.ScannerCard {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 55%;
+  background-color: white;
+}
+
+.scanner-container {
+  margin-top: 14rem; 
+}
+
+}
+
+@media screen and (min-width: 1440px) {
+/* Universal Styles */ 
+  .Card {
+    border-radius: 5px;
+    box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+    padding: 1rem .5rem;
+    margin: 2rem auto;
+    width: 80%;
+    background-color: white;
+  }
+
+  .center-justify {
+    text-align: left;
+    margin: 0 auto;
+    width: 70em;
+  }
+
+  /* Login Page */
+
+
+.login-image {
+  display: block;
+  margin-top: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 35%; 
+  }
+
+/* Scanner */
+
+.ScannerCard {
+  border-radius: 5px;
+  box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);;
+  padding: 1rem .5rem;
+  margin: 2rem auto;
+  width: 40%;
+  background-color: white;
+}
+
+.serial-input {
+  width: 97%;
+}
+
 }
