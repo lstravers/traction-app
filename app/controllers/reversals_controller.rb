@@ -7,10 +7,10 @@ class ReversalsController < ApplicationController
     def index
         if search_params[:search_term_county].present?
             @reversals = Reversal.search_by_county(search_params[:search_term_county]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
-        elsif search_params[:search_term_city].present?
-            @reversals = Reversal.search_by_city(search_params[:search_term_city]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)        
+        elsif search_params[:search_term_town].present?
+            @reversals = Reversal.search_by_town(search_params[:search_term_town]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)        
         else
-            @users = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+            @reversals = Reversal.order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
         end
     end
 
@@ -85,7 +85,7 @@ class ReversalsController < ApplicationController
     end
 
     def search_params
-        params.permit(:search_term_county, :search_term_city)
+        params.permit(:search_term_county, :search_term_town)
     end
 
 end

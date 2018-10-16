@@ -106,6 +106,7 @@
       <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => "#{t(:search_city)}" %>
       <%= text_field_tag :search_term_last_name, params[:search_term_last_name], :placeholder => "#{t(:search_lname)}" %>
       <%= submit_tag "Search"%>
+      <button id="clear_search" class="btn btn-primary" onclick="window.location.href='users'; return false;">Clear Search</button>
       <% end %>
     </div>
     <table class="volunteer-index-table">
@@ -130,15 +131,27 @@
           <td class="tbl-desktop"><%= user.phone %></td>
           <td class="tbl-desktop"><%= user.contact_type %></td>
           <td class="tbl-media"><%= user.county %></td>
-          <td class="tbl-desktop"><%= user.address1 %><br>
-              <% if user.address2 %>
+          <td class="tbl-desktop">
+            <% if user.address1? %>
+              <%= user.address1 %><br>
+            <% end %>
+            <% if user.address2? %>
               <%= user.address2 %><br>
-              <% end %>
-              <%= user.city %>, <%= user.state %> <%= user.zip %></td>
+            <% end %>
+            <% if user.city? %>
+              <%= user.city %>, 
+            <% else %>
+            <% end %>
+            <% if user.state? %>
+              <%= user.state %> 
+            <% end %>
+            <% if user.zip? %>
+              <%= user.zip %>
+            <% end %>
           <td class="tbl-desktop"><%= user.date_auth %></td>
           <td class="tbl-desktop"><%= user.admin_auth %></td>
-          <td class="tbl-media"><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-plus" do
-              link_to "", elevate_user_path(id: user.id), method: :put, class: "far fa-user"
+          <td class="tbl-media"><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user" do
+              link_to "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-slash"
               end %>
           </td>
           <td class="tbl-desktop"><%= link_to 'Update', edit_user_path(id: user.id) %></td>
