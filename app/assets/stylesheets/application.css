@@ -460,20 +460,6 @@ fieldset {
   
 }
 
-@media screen and (max-width: 812px) {
-
-/* Scanner */
-
-.scanner-container {
-  margin-top: 7rem; 
-}
-
-.serial-input {
-  width: 91%;
-}
-
-}
-
 @media screen and (min-width: 1024px) {
 
   /* Universal Styles */ 
