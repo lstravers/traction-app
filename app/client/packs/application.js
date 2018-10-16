@@ -9,12 +9,12 @@
 
 console.log('Hello World from Webpacker')
 
-import 'semantic-ui-css';
+import 'semantic-ui-css'
 
-import jQuery from 'jquery';
-window.jQuery = jQuery;
-window.$ = jQuery;
+import jQuery from 'jquery'
+window.jQuery = jQuery
+window.$ = jQuery
 // Support component names relative to this directory:
-var componentRequireContext = require.context("components", true)
-var ReactRailsUJS = require("react_ujs")
+var componentRequireContext = require.context('components', true)
+var ReactRailsUJS = require('react_ujs')
 ReactRailsUJS.useContext(componentRequireContext)

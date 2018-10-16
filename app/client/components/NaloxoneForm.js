@@ -155,7 +155,8 @@ const RadioButtonGroup = ({
 const NaloxoneForm = (props) => (
   <div>
     <Formik
-      initialValues={{ firstName: '',
+      initialValues={{
+        firstName: '',
         lastName: '',
         dateOfBirth: '',
         townCity: '',
@@ -170,7 +171,8 @@ const NaloxoneForm = (props) => (
         overdoseReversalTownCity: '',
         overdoseReversalCounty: '',
         numberOfDoses: '',
-        minutesBetweenDoses: '' }}
+        minutesBetweenDoses: ''
+      }}
       validate={values => {
         let errors = {}
         if (!values.firstName) {
@@ -187,7 +189,8 @@ const NaloxoneForm = (props) => (
       onSubmit={(values, { setSubmitting }) => {
         console.log(values)
         return request.post(`${apiDomain}/clients`)
-          .send({'first_name': values.firstName,
+          .send({
+            'first_name': values.firstName,
             'last_name': values.lastName,
             'date_of_birth': values.dateOfBirth,
             'city': values.townCity,
@@ -201,7 +204,8 @@ const NaloxoneForm = (props) => (
             'rtown': values.overdoseReversalTownCity,
             'rcounty': values.overdoseReversalCounty,
             'rdoses': values.numberOfDoses,
-            'rtime_between': values.minutesBetweenDoses })
+            'rtime_between': values.minutesBetweenDoses
+          })
           .then(setSubmitting(false))
           .then(() => props.resetForm())
           .then(() => props.setThankYou())
@@ -278,7 +282,7 @@ const NaloxoneForm = (props) => (
           </div>
 
           <div>
-            <label className='label'htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
+            <label className='label' htmlFor='firstNaloxoneKit'>{I18n.t('first_kit')}</label>
             <RadioButtonGroup id='firstNaloxoneKit'
               value={values.overdoseReversal}
               error={errors.overdoseReversal}
@@ -311,14 +315,14 @@ const NaloxoneForm = (props) => (
                 component={RadioButton}
                 name='overdoseReversal'
                 id='overdoseReversal1'
-                label='Yes'
+                label='Yes (please continue)'
                 value={'true'}
               />
               <Field
                 component={RadioButton}
                 name='overdoseReversal'
                 id='overdoseReversal2'
-                label='No'
+                label='No (please submit the form)'
                 value={'false'}
               />
             </RadioButtonGroup>
