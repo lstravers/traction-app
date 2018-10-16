@@ -23,9 +23,9 @@ class KitSerials extends React.Component {
     this.resetForm = this.resetForm.bind(this)
   }
 
-  resultsConcat (values) {
+  resultsConcat (value, i) {
     this.setState({
-      results: this.state.results.concat(values)
+      results: this.state.results.concat(value)
     })
   }
 
