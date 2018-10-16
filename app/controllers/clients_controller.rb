@@ -71,7 +71,7 @@ class ClientsController < ApplicationController
                 @inventory = Inventory.find_by_serial_num(@serial)
 
                 if @inventory 
-                    Inventory.update(user_id: @user_id, client_id: @client2.id, 
+                    @inventory.update(user_id: @user_id, client_id: @client2.id, 
                     distributed_date: @client["distributed_date"])
 
                 else
