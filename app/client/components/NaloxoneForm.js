@@ -377,8 +377,10 @@ const NaloxoneForm = (props) => (
             <ErrorMessage className='has-text-danger' name='dateOfBirth' component='div' />
           </div>
 
-          <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
-          <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
+       <div className='sub-button-group'>
+            <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials')}>{I18n.t('scanner')}</Button>
+            <Button className='is-danger sub-button' onClick={() => (window.location.href = '/kitserials?status=manual')}>{I18n.t('manual')}</Button>
+       </div>
         </Form>
       )}
     </Formik>
