@@ -2,7 +2,7 @@
   <div class="admin-header"><%= t(:head_reverse) %> <i class="fas fa-heartbeat"></i></div>
   <div class="admin-panel">
   <div class="search-container"> 
-      <%= form_tag users_path, method: :get do %>
+      <%= form_tag reversals_path, method: :get do %>
       <%= select_tag :search_term_county, "<option>Alamance</option>
           <option>Alexander</option>
           <option>Alleghany</option>
@@ -103,8 +103,9 @@
           <option>Wilson</option>
           <option>Yadkin</option>
           <option>Yancey</option>", :include_blank => "#{t(:choose_county)}" %>
-      <%= text_field_tag :search_term_city, params[:search_term_city], :placeholder => "#{t(:search_city)}" %>
+      <%= text_field_tag :search_term_town, params[:search_term_town], :placeholder => "#{t(:search_city)}" %>
       <%= submit_tag "Search"%>
+      <button id="clear_search" class="btn btn-primary" onclick="window.location.href='reversals'; return false;">Clear Search</button>
       <% end %>
     </div>
     <table class="reversal-index-table">

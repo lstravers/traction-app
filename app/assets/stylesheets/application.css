@@ -99,8 +99,6 @@ select:hover {
   margin-left: .5rem;
 }
 
-
-
 /* Login Page */
 
 
@@ -211,7 +209,7 @@ fieldset {
 /* Admin pages */
 
 .admin-container {
-  max-width: 95%;
+  width: 95%;
   margin: 20px;
   box-shadow: 6px 7px 10px 1px rgba(0,0,0,0.31);
 }
@@ -262,7 +260,11 @@ fieldset {
 
 .volunteer-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.volunteer-index-table td {
+  padding: 2px 3px;
 }
 
 .volunteer-index-table tr:nth-child(even) {
@@ -273,7 +275,11 @@ fieldset {
 
 .inventory-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.inventory-index-table td {
+  padding: 2px 3px;
 }
 
 .inventory-index-table tr:nth-child(even) {
@@ -284,7 +290,11 @@ fieldset {
 
 .reversal-index-table {
   width: 100%;
-  font-size: .9rem;
+  font-size: 1rem;
+}
+
+.reversal-index-table td {
+  padding: 2px 3px;
 }
 
 .reversal-index-table tr:nth-child(even) {
@@ -379,7 +389,7 @@ fieldset {
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
   .tbl-desktop {
     display: none;
   }
@@ -387,6 +397,19 @@ fieldset {
   .ffb-col {
     flex-direction: column;
     justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .tbl-media-mid {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 880px) {
+  .tbl-media-low {
+    display: none;
   }
 }
 
