@@ -69,6 +69,10 @@ select:hover {
   border-color: #b5b5b5;
 }
 
+.sub-button-group {
+  margin-top: 1rem;
+}
+
 /* HeaderVolunteer , HeaderAdmin */
 .burger-inactive {
   color: #2374AB;
