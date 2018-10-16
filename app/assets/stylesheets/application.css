@@ -462,11 +462,6 @@ fieldset {
 
 @media screen and (max-width: 812px) {
 
-/* Welcome Page */
-.Card-container {
-  margin-top: 13rem;
-}
-
 /* Scanner */
 
 .scanner-container {
