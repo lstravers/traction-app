@@ -117,7 +117,7 @@
       <th class="tbl-desktop"><%= sort_link "client_id", "#{t(:client_id)}" %></th>
       <th class="tbl-desktop"><%= t(:county) %></th>
       <th class="tbl-desktop"><%= t(:city) %></th>
-      <th class="tbl-desktop"><%= t(:volname) %></th>
+      <th class="tbl-desktop tbl-media-low"><%= t(:volname) %></th>
       <th class="tbl-media"></th>
     </tr>
   
@@ -130,7 +130,7 @@
         <td class="tbl-desktop"><%= inventory.client_id %></td>
         <td class="tbl-desktop"><%= inventory.client.county %></td>
         <td class="tbl-desktop"><%= inventory.client.city %></td>
-        <td class="tbl-desktop"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
+        <td class="tbl-desktop tbl-media-low"><%= inventory.user.first_name %> <%= inventory.user.last_name %></td>
         <td class="tbl-media"><%= link_to "#{t(:update)}", edit_inventory_path(id: inventory.id) %></td>
       </tr>
     <% end %>

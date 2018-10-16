@@ -113,12 +113,12 @@
       <tr>
         <th class="tbl-media"><%= sort_link "last_name", "#{t(:name)}" %></th>
         <th class="tbl-desktop"><%= sort_link "email", "#{t(:email)}" %></th>
-        <th class="tbl-desktop"><%= sort_link "phone", "#{t(:phone)}" %></th>
-        <th class="tbl-desktop"><%= sort_link "contact_type", "#{t(:contact_type)}" %></th>
+        <th class="tbl-desktop tbl-media-low"><%= sort_link "phone", "#{t(:phone)}" %></th>
+        <th class="tbl-desktop tbl-media-mid"><%= sort_link "contact_type", "#{t(:contact_type)}" %></th>
         <th class="tbl-media"><%= sort_link "county", "#{t(:county)}" %></th>
-        <th class="tbl-desktop"><%= sort_link "city", "#{t(:address)}" %></th>
-        <th class="tbl-desktop"><%= sort_link "date_auth", "#{t(:date_auth)}" %></th>
-        <th class="tbl-desktop"><%= sort_link "admin_auth", "#{t(:admin_auth)}" %></th>
+        <th class="tbl-desktop tbl-media-low"><%= sort_link "city", "#{t(:address)}" %></th>
+        <th class="tbl-desktop tbl-media-mid"><%= sort_link "date_auth", "#{t(:date_auth)}" %></th>
+        <th class="tbl-desktop tbl-media-mid"><%= sort_link "admin_auth", "#{t(:admin_auth)}" %></th>
         <th class="tbl-media"><%= sort_link "admin", "#{t(:admin)}" %></th>
         <th class="tbl-desktop"></th>
         <th class="tbl-media"><%= sort_link "deactivated", "#{t(:active)}" %></th>
@@ -128,10 +128,10 @@
         <tr>
           <td class="tbl-media"><%= user.first_name%><br><%= user.last_name %></td>
           <td class="tbl-desktop"><%= user.email %></td>
-          <td class="tbl-desktop"><%= user.phone %></td>
-          <td class="tbl-desktop"><%= user.contact_type %></td>
+          <td class="tbl-desktop tbl-media-low"><%= user.phone %></td>
+          <td class="tbl-desktop tbl-media-mid"><%= user.contact_type %></td>
           <td class="tbl-media"><%= user.county %></td>
-          <td class="tbl-desktop">
+          <td class="tbl-desktop tbl-media-low">
             <% if user.address1? %>
               <%= user.address1 %><br>
             <% end %>
@@ -148,8 +148,8 @@
             <% if user.zip? %>
               <%= user.zip %>
             <% end %>
-          <td class="tbl-desktop"><%= user.date_auth %></td>
-          <td class="tbl-desktop"><%= user.admin_auth %></td>
+          <td class="tbl-desktop tbl-media-mid"><%= user.date_auth %></td>
+          <td class="tbl-desktop tbl-media-mid"><%= user.admin_auth %></td>
           <td class="tbl-media"><%= link_to_if user.admin?, "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user" do
               link_to "", elevate_user_path(id: user.id), method: :put, class: "fas fa-user-slash"
               end %>

@@ -264,7 +264,7 @@ fieldset {
 }
 
 .volunteer-index-table td {
-  padding: 2px;
+  padding: 2px 3px;
 }
 
 .volunteer-index-table tr:nth-child(even) {
@@ -279,7 +279,7 @@ fieldset {
 }
 
 .inventory-index-table td {
-  padding: 2px;
+  padding: 2px 3px;
 }
 
 .inventory-index-table tr:nth-child(even) {
@@ -294,7 +294,7 @@ fieldset {
 }
 
 .reversal-index-table td {
-  padding: 2px;
+  padding: 2px 3px;
 }
 
 .reversal-index-table tr:nth-child(even) {
@@ -389,7 +389,7 @@ fieldset {
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
   .tbl-desktop {
     display: none;
   }
@@ -397,6 +397,19 @@ fieldset {
   .ffb-col {
     flex-direction: column;
     justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .tbl-media-mid {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 880px) {
+  .tbl-media-low {
+    display: none;
   }
 }
 
