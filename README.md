@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Traction was built by a team of 5 junior developers as the capstone project of the immersive Momentum Learning, Inc. coding program.  The app seeks to aid the NC Harm Reduction Coalition and other groups in fighting the opioid crisis. It organizes community volunteers, captures data, and tracks the distribution of Naloxone (Narcan) kits utilizing QR codes. It vastly improves the efficiency and security of data collection and analysis.
 
-Things you may want to cover:
-
-* Ruby version
+* Ruby version 5.2.1
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database PostgreSQL
 
-* Database initialization
+* Database initialization Heroku
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Deployment: Heroku
