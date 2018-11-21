@@ -69,6 +69,10 @@ select:hover {
   border-color: #b5b5b5;
 }
 
+.sub-button-group {
+  margin-top: 1rem;
+}
+
 /* HeaderVolunteer , HeaderAdmin */
 .burger-inactive {
   color: #2374AB;
@@ -454,30 +458,6 @@ fieldset {
   margin-top: 7rem; 
 }
   
-}
-
-@media screen and (max-width: 812px) {
-/* Login Page */
-
-.login-image {
-  margin-top: 12em;
-}
-
-/* Welcome Page */
-.Card-container {
-  margin-top: 13rem;
-}
-
-/* Scanner */
-
-.scanner-container {
-  margin-top: 7rem; 
-}
-
-.serial-input {
-  width: 91%;
-}
-
 }
 
 @media screen and (min-width: 1024px) {

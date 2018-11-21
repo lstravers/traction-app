@@ -49,13 +49,13 @@ class SerialForm extends React.Component {
                       </Control>
                     ))}
                     <Button className='button is-primary' type='submit' disabled={isSubmitting}>{I18n.t('submit')}</Button>
-                    <Button className='button is-danger sub-button' type='button' onClick={() => arrayHelpers.push('')}>{I18n.t('add')}</Button>
+               <div className='sub-button-group'>
+                 <Button className='button is-danger sub-button' type='button' onClick={() => arrayHelpers.push('')}>{I18n.t('add')}</Button>
+                <Button className='button is-danger sub-button' type='button' onClick={this.props.setQr}>{I18n.t('scanner')}</Button>
+              </div>
                   </React.Fragment>
                 )} />
               </Form>
-              <div>
-                <Button className='button is-danger sub-button' type='button' onClick={this.props.setQr}>{I18n.t('scanner')}</Button>
-              </div>
             </div>
           ) }
         </Formik>
